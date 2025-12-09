@@ -2390,8 +2390,11 @@ python test_connection.py --mode hybrid</code></pre>
                 const elements = document.querySelectorAll('[data-zh][data-en]');
                 elements.forEach(element => {
                     const content = currentLang === 'zh' ? element.getAttribute('data-zh') : element.getAttribute('data-en');
-                    // Update all element types that have language data attributes
-                    element.textContent = content;
+                    if (element.tagName === 'A' || element.tagName === 'BUTTON' || element.tagName === 'SPAN') {
+                        element.textContent = content;
+                    } else if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'LI' || element.tagName === 'DIV') {
+                        element.textContent = content;
+                    }
                 });
 
                 // Update elements without data attributes but with class-based translation
@@ -2555,19 +2558,11 @@ python test_connection.py --mode hybrid</code></pre>
                     '现在您可以在自己的服务器上部署完全可控的AI智能体，无需依赖任何第三方服务': 'Now you can deploy fully controllable AI agents on your own servers without relying on any third-party services'
                 };
 
-                document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, span, div').forEach(element => {
-                    const originalText = element.getAttribute('data-original-text') || element.textContent;
+                document.querySelectorAll('h2, h3, h4, p, li, span').forEach(element => {
+                    const text = element.textContent;
                     
-                    // Store original text if not already stored
-                    if (!element.getAttribute('data-original-text')) {
-                        element.setAttribute('data-original-text', originalText);
-                    }
-                    
-                    if (currentLang === 'en' && translationMap[originalText]) {
-                        element.textContent = translationMap[originalText];
-                    } else {
-                        // Restore original text when switching back to Chinese
-                        element.textContent = originalText;
+                    if (currentLang === 'en' && translationMap[text]) {
+                        element.textContent = translationMap[text];
                     }
                 });
             }
