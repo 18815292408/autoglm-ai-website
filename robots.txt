@@ -1,0 +1,62 @@
+# AutoGLM AI Robots.txt
+# Generated for optimal search engine crawling and indexing
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the entire site
+Allow: /index-bilingual.html
+Allow: /
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Block access to sensitive files and directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /config/
+Disallow: /logs/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /temp/
+Disallow: /backup/
+
+# Block access to development files
+Disallow: /*.development.*
+Disallow: /*.test.*
+Disallow: /*.tmp.*
+Disallow: /*.bak*
+
+# Block access to system files
+Disallow: /robots.txt.bak
+Disallow: /sitemap.xml.bak
+
+# Crawl delay to be respectful to server resources
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://autoglm.com/sitemap.xml
+
+# Allow specific bots with special privileges
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
