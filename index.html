@@ -2018,27 +2018,7 @@ security:
                         <div class="tutorial-step">
                             <h5 data-zh="步骤2：云端模型服务部署" data-en="Step 2: Cloud Model Service Deployment">步骤2：云端模型服务部署</h5>
                             <div class="tutorial-code">
-                                <pre><code data-zh="# 云端模型服务配置
-model_service:
-  endpoint: "https://autoglm-model.example.com"
-  model: "GLM-Z1-9B"
-  max_tokens: 4096
-  temperature: 0.7
-  
-scaling:
-  min_instances: 1
-  max_instances: 10
-  cpu_threshold: 70" data-en="# Cloud Model Service Configuration
-model_service:
-  endpoint: "https://autoglm-model.example.com"
-  model: "GLM-Z1-9B"
-  max_tokens: 4096
-  temperature: 0.7
-  
-scaling:
-  min_instances: 1
-  max_instances: 10
-  cpu_threshold: 70"># 云端模型服务配置
+                                <pre><code># 云端模型服务配置
 model_service:
   endpoint: "https://autoglm-model.example.com"
   model: "GLM-Z1-9B"
@@ -2055,35 +2035,7 @@ scaling:
                         <div class="tutorial-step">
                             <h5 data-zh="步骤3：混合模式配置" data-en="Step 3: Hybrid Mode Configuration">步骤3：混合模式配置</h5>
                             <div class="tutorial-code">
-                                <pre><code data-zh="# hybrid_config.yaml
-local:
-  screen_capture: true
-  execution_engine: "local"
-  data_processing: "local"
-  
-cloud:
-  model_inference: true
-  endpoint: "https://autoglm-model.example.com"
-  api_key: "your-api-key"
-  
-privacy:
-  encrypt_before_upload: true
-  local_cache_enabled: true
-  sensitive_data_filters: ["passwords", "tokens", "keys"]" data-en="# hybrid_config.yaml
-local:
-  screen_capture: true
-  execution_engine: "local"
-  data_processing: "local"
-  
-cloud:
-  model_inference: true
-  endpoint: "https://autoglm-model.example.com"
-  api_key: "your-api-key"
-  
-privacy:
-  encrypt_before_upload: true
-  local_cache_enabled: true
-  sensitive_data_filters: ["passwords", "tokens", "keys"]"># hybrid_config.yaml
+                                <pre><code># hybrid_config.yaml
 local:
   screen_capture: true
   execution_engine: "local"
@@ -2104,15 +2056,7 @@ privacy:
                         <div class="tutorial-step">
                             <h5 data-zh="步骤4：启动混合模式" data-en="Step 4: Start Hybrid Mode">步骤4：启动混合模式</h5>
                             <div class="tutorial-code">
-                                <pre><code data-zh="# 启动混合模式服务
-python main.py --config hybrid_config.yaml --mode hybrid
-
-# 验证连接
-python test_connection.py --mode hybrid" data-en="# Start Hybrid Mode Service
-python main.py --config hybrid_config.yaml --mode hybrid
-
-# Verify Connection
-python test_connection.py --mode hybrid"># 启动混合模式服务
+                                <pre><code># 启动混合模式服务
 python main.py --config hybrid_config.yaml --mode hybrid
 
 # 验证连接
