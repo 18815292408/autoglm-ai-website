@@ -1825,7 +1825,7 @@
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤2：安装AutoGLM AI</h5>
+                            <h5 data-zh="步骤2：安装AutoGLM AI" data-en="Step 2: Install AutoGLM AI">步骤2：安装AutoGLM AI</h5>
                             <div class="tutorial-code">
                                 <pre><code># 克隆代码
 git clone https://github.com/zai-org/Open-AutoGLM.git
@@ -1841,7 +1841,7 @@ git clone https://huggingface.co/zai-org/GLM-Z1-9B-0414 models/</code></pre>
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤3：配置本地运行</h5>
+                            <h5 data-zh="步骤3：配置本地运行" data-en="Step 3: Configure Local Operation">步骤3：配置本地运行</h5>
                             <div class="tutorial-code">
                                 <pre><code># 配置文件 config.yaml
 model:
@@ -1856,7 +1856,7 @@ execution:
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤4：启动服务</h5>
+                            <h5 data-zh="步骤4：启动服务" data-en="Step 4: Start Service">步骤4：启动服务</h5>
                             <div class="tutorial-code">
                                 <pre><code># 启动AutoGLM AI本地服务
 python main.py --config config.yaml --mode local
@@ -1873,7 +1873,7 @@ curl http://localhost:8000/health</code></pre>
                         <p style="margin-bottom: 1rem;" data-zh="屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。" data-en="Screen content is transmitted to cloud models, analysis results return instructions to the operating environment for execution. Developers need to ensure transmission and cloud processing security.">屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。</p>
                         
                         <div class="tutorial-step">
-                            <h5>步骤1：云端服务器准备</h5>
+                            <h5 data-zh="步骤1：云端服务器准备" data-en="Step 1: Cloud Server Preparation">步骤1：云端服务器准备</h5>
                             <ul>
                                 <li data-zh="<strong>云平台</strong>：AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series" data-en="<strong>Cloud Platform</strong>: AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series"><strong>云平台</strong>：AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series</li>
                                 <li data-zh="<strong>网络配置</strong>：配置VPC、安全组、负载均衡器" data-en="<strong>Network Configuration</strong>: Configure VPC, security groups, load balancers"><strong>网络配置</strong>：配置VPC、安全组、负载均衡器</li>
@@ -1883,7 +1883,7 @@ curl http://localhost:8000/health</code></pre>
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤2：部署云端服务</h5>
+                            <h5 data-zh="步骤2：部署云端服务" data-en="Step 2: Deploy Cloud Service">步骤2：部署云端服务</h5>
                             <div class="tutorial-code">
                                 <pre><code># Docker部署
 docker run -d --name autoglm-cloud \
@@ -1899,7 +1899,7 @@ kubectl apply -f autoglm-cloud-deployment.yaml</code></pre>
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤3：配置客户端连接</h5>
+                            <h5 data-zh="步骤3：配置客户端连接" data-en="Step 3: Configure Client Connection">步骤3：配置客户端连接</h5>
                             <div class="tutorial-code">
                                 <pre><code># 客户端配置 client_config.yaml
 cloud:
@@ -1914,7 +1914,7 @@ security:
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤4：安全配置</h5>
+                            <h5 data-zh="步骤4：安全配置" data-en="Step 4: Security Configuration">步骤4：安全配置</h5>
                             <ul>
                                 <li data-zh="<strong>传输加密</strong>：确保所有数据传输使用TLS 1.3" data-en="<strong>Transmission Encryption</strong>: Ensure all data transmission uses TLS 1.3"><strong>传输加密</strong>：确保所有数据传输使用TLS 1.3</li>
                                 <li data-zh="<strong>数据清理</strong>：配置自动清理屏幕截图和分析结果" data-en="<strong>Data Cleanup</strong>: Configure automatic cleanup of screenshots and analysis results"><strong>数据清理</strong>：配置自动清理屏幕截图和分析结果</li>
@@ -1930,7 +1930,7 @@ security:
                         <p style="margin-bottom: 1rem;" data-zh="屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。" data-en="Screen content is captured locally, transmitted to cloud models for analysis, analysis results return for local execution. The best solution balancing security and efficiency.">屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。</p>
                         
                         <div class="tutorial-step">
-                            <h5>步骤1：本地环境配置</h5>
+                            <h5 data-zh="步骤1：本地环境配置" data-en="Step 1: Local Environment Configuration">步骤1：本地环境配置</h5>
                             <ul>
                                 <li data-zh="<strong>本地机器</strong>：普通办公电脑即可，无需高端GPU" data-en="<strong>Local Machine</strong>: Regular office computer is sufficient, no high-end GPU needed"><strong>本地机器</strong>：普通办公电脑即可，无需高端GPU</li>
                                 <li data-zh="<strong>屏幕捕获</strong>：配置本地屏幕捕获服务" data-en="<strong>Screen Capture</strong>: Configure local screen capture service"><strong>屏幕捕获</strong>：配置本地屏幕捕获服务</li>
@@ -1940,7 +1940,7 @@ security:
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤2：云端模型服务部署</h5>
+                            <h5 data-zh="步骤2：云端模型服务部署" data-en="Step 2: Cloud Model Service Deployment">步骤2：云端模型服务部署</h5>
                             <div class="tutorial-code">
                                 <pre><code># 云端模型服务配置
 model_service:
@@ -1957,7 +1957,7 @@ scaling:
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤3：混合模式配置</h5>
+                            <h5 data-zh="步骤3：混合模式配置" data-en="Step 3: Hybrid Mode Configuration">步骤3：混合模式配置</h5>
                             <div class="tutorial-code">
                                 <pre><code># hybrid_config.yaml
 local:
@@ -1978,7 +1978,7 @@ privacy:
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>步骤4：启动混合模式</h5>
+                            <h5 data-zh="步骤4：启动混合模式" data-en="Step 4: Start Hybrid Mode">步骤4：启动混合模式</h5>
                             <div class="tutorial-code">
                                 <pre><code># 启动混合模式服务
 python main.py --config hybrid_config.yaml --mode hybrid
@@ -2390,11 +2390,8 @@ python test_connection.py --mode hybrid</code></pre>
                 const elements = document.querySelectorAll('[data-zh][data-en]');
                 elements.forEach(element => {
                     const content = currentLang === 'zh' ? element.getAttribute('data-zh') : element.getAttribute('data-en');
-                    if (element.tagName === 'A' || element.tagName === 'BUTTON' || element.tagName === 'SPAN') {
-                        element.textContent = content;
-                    } else if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'LI' || element.tagName === 'DIV') {
-                        element.textContent = content;
-                    }
+                    // Update all element types that have language data attributes
+                    element.textContent = content;
                 });
 
                 // Update elements without data attributes but with class-based translation
@@ -2558,11 +2555,19 @@ python test_connection.py --mode hybrid</code></pre>
                     '现在您可以在自己的服务器上部署完全可控的AI智能体，无需依赖任何第三方服务': 'Now you can deploy fully controllable AI agents on your own servers without relying on any third-party services'
                 };
 
-                document.querySelectorAll('h2, h3, h4, p, li, span').forEach(element => {
-                    const text = element.textContent;
+                document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, span, div').forEach(element => {
+                    const originalText = element.getAttribute('data-original-text') || element.textContent;
                     
-                    if (currentLang === 'en' && translationMap[text]) {
-                        element.textContent = translationMap[text];
+                    // Store original text if not already stored
+                    if (!element.getAttribute('data-original-text')) {
+                        element.setAttribute('data-original-text', originalText);
+                    }
+                    
+                    if (currentLang === 'en' && translationMap[originalText]) {
+                        element.textContent = translationMap[originalText];
+                    } else {
+                        // Restore original text when switching back to Chinese
+                        element.textContent = originalText;
                     }
                 });
             }
