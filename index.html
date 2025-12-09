@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGLM AI - 开源本地化AI智能体，自主部署手机AI自动化框架 | 智谱AI官方</title>
+    <meta name="description" content="AutoGLM AI是智谱AI开源的革命性AI智能体框架，支持本地化部署。基于GLM-Z1-9B轻量级模型，可在您的服务器上自主运行。完全开源，数据安全可控，支持开发者定制化AI Agent应用。">
+    <meta name="keywords" content="AutoGLM AI, AutoGLM AI开源, AutoGLM AI本地部署, AI智能体, AutoGLM AI框架, AutoGLM AI开发, AutoGLM AI GitHub, 智谱AI, 本地AI Agent, 私有化AI部署, AutoGLM AI搭建教程, AutoGLM AI手机助手, AutoGLM AI自动化工具, AutoGLM AI开源项目, AutoGLM AI技术架构, AutoGLM AI部署指南, AutoGLM AI性能优化, AutoGLM AI应用场景, AutoGLM AI企业解决方案, AutoGLM AI手机AI助手, AutoGLM AI移动端AI, AutoGLM AI开源智能体, GLM-Z1-9B, MobileRL, AutoGLM AI解耦架构, AutoGLM AI量化部署, AutoGLM AI Docker部署, AutoGLM AI Kubernetes, AutoGLM AI企业级AI, AutoGLM AI安全部署, AutoGLM AI本地化大模型, AutoGLM AI私有化部署, AI代理, AutoGLM AI智能体框架, AutoGLM AI自动操作, AutoGLM AI屏幕理解, AutoGLM AI任务执行, AutoGLM AI开源模型, AutoGLM AI轻量级模型">
+    <meta name="author" content="智谱AI">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autoglm.com/">
+    <meta property="og:title" content="AutoGLM AI - 开源本地化AI智能体框架，手机自动化解决方案">
+    <meta property="og:description" content="AutoGLM AI是首个开源手机AI智能体框架，支持本地化私有部署。数据完全可控，为企业提供AI自动化解决方案。基于GLM-Z1-9B模型，性能卓越。">
+    <meta property="og:image" content="https://autoglm.com/images/autoglm-open-source-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://autoglm.com/">
+    <meta property="twitter:title" content="AutoGLM AI - 开源本地化AI智能体框架">
+    <meta property="twitter:description" content="AutoGLM AI：首个开源手机AI自动化智能体，本地部署，数据安全，企业AI自动化解决方案">
+    <meta property="twitter:image" content="https://autoglm.com/images/autoglm-open-source-twitter.jpg">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF8C42'/%3E%3Cstop offset='100%25' style='stop-color:%23FF6B35'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Ctext x='50' y='65' font-family='Arial, sans-serif' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #FFB366 0%, #FF8C42 50%, #FF6B35 100%);
+            --light-gradient: linear-gradient(135deg, #FFCC99 0%, #FFB366 100%);
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-orange: #FF8C42;
+            --accent-light: #FFCC99;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --success-color: #4CAF50;
+            --code-bg: rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .nav-cta {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 140, 66, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 179, 102, 0.1) 0%, transparent 50%),
+                        var(--dark-bg);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-value {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+        }
+
+        .value-item i {
+            color: var(--accent-orange);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        /* Demo Container */
+        .demo-container {
+            margin-top: 4rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-video {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 179, 102, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-orange);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-orange);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(255, 140, 66, 0.05) 100%);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pain-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .pain-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pain-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .pain-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .pain-list {
+            list-style: none;
+        }
+
+        .pain-list li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pain-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+
+        .solution-message {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--accent-orange);
+            margin-top: 2rem;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            background: var(--dark-bg);
+        }
+
+        .solution-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .solution-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .solution-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .solution-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .solution-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--light-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .solution-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .solution-content ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .solution-content li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .solution-content li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .solution-visual {
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 179, 102, 0.1));
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 179, 102, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Tech Details Section */
+        .tech-details {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(255, 140, 66, 0.05) 100%);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        .tech-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tech-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .tech-card ul {
+            list-style: none;
+        }
+
+        .tech-card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tech-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+
+        /* Workflow Section */
+        .workflow {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .workflow-steps::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: var(--primary-gradient);
+            z-index: 0;
+        }
+
+        .workflow-step {
+            background: var(--dark-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            width: 200px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+        }
+
+        /* Deployment Tutorial */
+        .deployment-tutorial-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .tutorial-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .tutorial-step {
+            background: rgba(255, 140, 66, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 140, 66, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-step h5 {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .tutorial-step ul {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .tutorial-step li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .tutorial-step li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .tutorial-code {
+            background: var(--code-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .tutorial-code pre {
+            color: var(--text-primary);
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .tutorial-code code {
+            background: rgba(255, 140, 66, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .tutorial-section h4 {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-orange);
+        }
+
+        /* FAQ */
+        .faq-category {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FAQ Interactive Components */
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 140, 66, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-icon {
+            color: var(--accent-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.2), rgba(255, 179, 102, 0.1));
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+            border: 2px solid var(--accent-orange);
+            margin-bottom: 3rem;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, rgba(255, 140, 66, 0.05), var(--dark-bg));
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: var(--light-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-orange);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .deployment-options-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .deployment-option-card {
+            background: rgba(255, 140, 66, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 140, 66, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .deployment-option-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .deployment-option-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .deployment-option-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .deployment-option-specs {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .deployment-option-specs li {
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .deployment-option-specs li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+
+        .modal-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Icon placeholders */
+        .icon::before {
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .icon-github::before { content: "⚡"; }
+        .icon-star::before { content: "⭐"; }
+        .icon-code::before { content: "</>"; }
+        .icon-shield::before { content: "🛡️"; }
+        .icon-rocket::before { content: "🚀"; }
+        .icon-chart::before { content: "📊"; }
+        .icon-cpu::before { content: "💻"; }
+        .icon-cloud::before { content: "☁️"; }
+        .icon-download::before { content: "⬇️"; }
+        .icon-heart::before { content: "❤️"; }
+        .icon-laptop::before { content: "💻"; }
+        .icon-cogs::before { content: "⚙️"; }
+        .icon-code-branch::before { content: "📂"; }
+        .icon-docker::before { content: "🐳"; }
+        .icon-chart-line::before { content: "📈"; }
+        .icon-exchange-alt::before { content: "🔄"; }
+        .icon-microchip::before { content: "🔧"; }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            /* Modal responsive styles */
+            .modal-content {
+                margin: 1rem;
+                padding: 2rem;
+                max-height: 90vh;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .deployment-options-grid {
+                gap: 1rem;
+            }
+
+            .deployment-option-card {
+                padding: 1rem;
+            }
+
+            .deployment-option-title {
+                font-size: 1.1rem;
+            }
+
+            .modal-cta {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-cta .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .solution-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .solution-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .workflow-steps {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .workflow-steps::before {
+                display: none;
+            }
+
+            .workflow-step {
+                width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Fix FontAwesome icons */
+        .fa, .fas, .fab {
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+        }
+
+        .fa-code-branch::before { content: "📂"; }
+        .fa-shield-alt::before { content: "🛡️"; }
+        .fa-server::before { content: "🖥️"; }
+        .fa-cogs::before { content: "⚙️"; }
+        .fa-laptop::before { content: "💻"; }
+        .fa-cloud::before { content: "☁️"; }
+        .fa-microchip::before { content: "🔧"; }
+        .fa-code-branch::before { content: "📂"; }
+        .fa-cogs::before { content: "⚙️"; }
+        .fa-docker::before { content: "🐳"; }
+        .fa-chart-line::before { content: "📈"; }
+        .fa-exchange-alt::before { content: "🔄"; }
+        .fa-microchip::before { content: "🔧"; }
+        .fa-book::before { content: "📚"; }
+        .fa-bars::before { content: "☰"; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">AutoGLM AI</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">AutoGLM AI特性</a></li>
+                <li><a href="#deep-tech">技术架构</a></li>
+                <li><a href="#enhanced-performance">性能数据</a></li>
+                <li><a href="#deployment">部署方案</a></li>
+                <li><a href="#deployment-tutorial">部署教程</a></li>
+                <li><a href="#ecosystem">生态系统</a></li>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content fade-in">
+            <h1>AutoGLM AI - 企业级开源本地化AI智能体框架</h1>
+            <p class="hero-subtitle">
+                智谱AI开源的革命性AI智能体框架，支持本地化私有部署，数据完全可控。基于GLM-Z1-9B轻量级模型，在您的服务器上自主运行AI智能体，提供企业级安全保护
+            </p>
+            
+            <div class="hero-value">
+                <div class="value-item">
+                    <i class="fas fa-code-branch"></i>
+                    <span>AutoGLM AI完全开源免费</span>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>AutoGLM AI本地部署数据安全</span>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-server"></i>
+                    <span>AutoGLM AI私有化自主可控</span>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-cogs"></i>
+                    <span>AutoGLM AI开发者友好定制</span>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <button class="btn-primary" id="deploymentPlanBtn">
+                    <i class="fas fa-rocket"></i>
+                    立即获取AutoGLM AI部署方案
+                </button>
+                <a href="#deployment-tutorial" class="btn-secondary">
+                    <i class="fas fa-book"></i>
+                    查看AutoGLM AI部署教程
+                </a>
+            </div>
+
+            <div class="demo-container" id="demo">
+                <div class="demo-video">
+                    <div>
+                        <i class="fas fa-code" style="font-size: 4rem; color: var(--accent-orange); margin-bottom: 1rem;"></i>
+                        <h3>AutoGLM AI开源架构</h3>
+                        <p>基于GLM-Z1-9B模型、MobileRL框架和解耦架构，AutoGLM AI提供完全开源的AI智能体解决方案</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="section pain-points" id="features">
+        <div class="container">
+            <h2 class="section-title fade-in">这些AI智能体部署困扰，AutoGLM AI为您解决！</h2>
+            
+            <div class="pain-grid">
+                <div class="pain-card fade-in">
+                    <div class="pain-icon">🔒</div>
+                    <h3>云端AI服务数据安全担忧</h3>
+                    <div class="pain-list">
+                        <li>担心敏感数据泄露到第三方服务器</li>
+                        <li>无法控制数据流向和存储位置</li>
+                        <li>企业合规要求严格，无法使用公有云AI</li>
+                    </div>
+                </div>
+
+                <div class="pain-card fade-in">
+                    <div class="pain-icon">💰</div>
+                    <h3>AI服务成本高昂不可控</h3>
+                    <div class="pain-list">
+                        <li>按token计费，大规模应用成本暴增</li>
+                        <li>厂商锁定，迁移成本高</li>
+                        <li>缺乏定价透明度，难以预算规划</li>
+                    </div>
+                </div>
+
+                <div class="pain-card fade-in">
+                    <div class="pain-icon">⚙️</div>
+                    <h3>定制化需求难以满足</h3>
+                    <div class="pain-list">
+                        <li>标准API功能有限，无法深度定制</li>
+                        <li>无法集成到现有系统和工作流</li>
+                        <li>缺少针对特定场景的优化能力</li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-message">
+                这些问题，AutoGLM AI能一次性解决！选择本地部署，自主可控。
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section solutions" id="solutions">
+        <div class="container">
+            <h2 class="section-title fade-in">看看AutoGLM AI如何为您解决这些问题</h2>
+            
+            <div class="solution-grid">
+                <div class="solution-item fade-in">
+                    <div class="solution-content">
+                        <div class="faq-category">解决方案 1</div>
+                        <h3>AutoGLM AI完全开源，本地部署数据安全可控</h3>
+                        <p>AutoGLM AI核心优势：采用Apache-2.0和MIT双开源协议，代码和模型权重完全开放</p>
+                        <ul>
+                            <li>本地化部署，数据完全不出您的服务器</li>
+                            <li>零厂商锁定，完全自主可控</li>
+                            <li>符合企业合规和数据安全要求</li>
+                        </ul>
+                    </div>
+                    <div class="solution-visual">
+                        <div>
+                            <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--accent-orange);"></i>
+                            <p>AutoGLM AI开源架构，本地部署，数据安全</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-item fade-in">
+                    <div class="solution-content">
+                        <div class="faq-category">解决方案 2</div>
+                        <h3>AutoGLM AI轻量级模型，硬件门槛低部署成本可控</h3>
+                        <p>AutoGLM AI技术优势：基于GLM-Z1-9B轻量级模型，90亿参数高效设计，轻量高效</p>
+                        <ul>
+                            <li>算力消耗仅为同类大模型的1/30</li>
+                            <li>支持消费级显卡（RTX 3080/4090）本地部署</li>
+                            <li>推理速度比传统大模型快8倍</li>
+                        </ul>
+                    </div>
+                    <div class="solution-visual">
+                        <div>
+                            <i class="fas fa-microchip" style="font-size: 3rem; color: var(--accent-orange);"></i>
+                            <p>AutoGLM AI轻量高效，降低部署门槛</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-item fade-in">
+                    <div class="solution-content">
+                        <div class="faq-category">解决方案 3</div>
+                        <h3>AutoGLM AI开发者友好，深度定制灵活扩展</h3>
+                        <p>AutoGLM AI架构优势：解耦架构设计，模块化框架，支持深度定制</p>
+                        <ul>
+                            <li>规划层与执行层分离，独立升级优化</li>
+                            <li>提供完整训练框架（MobileRL、ComputerRL）</li>
+                            <li>支持LoRA微调和自定义模型训练</li>
+                        </ul>
+                    </div>
+                    <div class="solution-visual">
+                        <div>
+                            <i class="fas fa-code" style="font-size: 3rem; color: var(--accent-orange);"></i>
+                            <p>AutoGLM AI开发者友好，深度定制扩展</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats fade-in">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-primary);">AutoGLM AI性能数据说话</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">55.2%</div>
+                        <div class="stat-label">VAB-WebArena-Lite网页任务成功率<br>（超越GPT-4o的18.2%，性能提升160%）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">53.6%</div>
+                        <div class="stat-label">AndroidLab移动端控制成功率<br>（领先GPT-4o的31.2%）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">89.7%</div>
+                        <div class="stat-label">国产App通用任务成功率<br>（微信、美团、淘宝等深度优化）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">96.2%</div>
+                        <div class="stat-label">OpenTable订餐场景成功率<br>（标准化流程表现极佳）</div>
+                    </div>
+                </div>
+                <p style="text-align: center; color: var(--accent-orange); margin-top: 2rem; font-size: 1.1rem;">
+                    这就是为什么AutoGLM AI成为全球首选的手机AI智能体！
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Tech Architecture Section -->
+    <section class="section tech-details" id="deep-tech">
+        <div class="container">
+            <h2 class="section-title fade-in">深度技术架构：突破性的AI智能体设计</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-microchip"></div>
+                    <div class="faq-category">GLM-Z1核心模型</div>
+                    <h3>90亿参数的轻量级强大模型</h3>
+                    <ul>
+                        <li><strong>90B参数设计</strong>：GLM-Z1-9B采用90亿参数架构，在数学推理和通用任务上媲美更大规模模型</li>
+                        <li><strong>131k上下文窗口</strong>：集成YaRN技术，支持131,072个Token的长上下文处理能力</li>
+                        <li><strong>15T Token训练</strong>：采用与千亿级GLM-4相同的高质量数据管线进行训练</li>
+                        <li><strong>Transformer架构变体</strong>：通过层归一化和先进注意力机制优化确保训练推理稳定性</li>
+                        <li><strong>知识蒸馏传承</strong>：从GLM-4.5 MoE架构的经验传递，具备复杂逻辑"思维链"能力</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-code-branch"></div>
+                    <div class="faq-category">解耦中间界面架构</div>
+                    <h3>规划层与执行层的革命性分离</h3>
+                    <ul>
+                        <li><strong>规划层（Planner）</strong>：负责"慢思考"，理解自然语言指令并拆解为语义化步骤</li>
+                        <li><strong>执行层（Grounding/Actor）</strong>：负责"快行动"，结合屏幕截图定位具体UI元素坐标</li>
+                        <li><strong>灵活性提升</strong>：规划层可升级为更强模型而无需重新训练执行层</li>
+                        <li><strong>准确性增强</strong>：执行层针对特定操作系统微调，学习UI规范提高精准度</li>
+                        <li><strong>鲁棒性保障</strong>：UI更新时只需执行层重新适应，维护成本大幅降低</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-chart-line"></div>
+                    <div class="faq-category">MobileRL强化学习框架</div>
+                    <h3>自适应在线课程强化学习</h3>
+                    <ul>
+                        <li><strong>AdaGRPO算法</strong>：难度自适应组相对策略优化，包含三个创新点</li>
+                        <li><strong>AdaPR（自适应优先重放）</strong>：重点复盘高难度但偶尔成功的轨迹</li>
+                        <li><strong>FCF（失败控制过滤）</strong>：降低持续失败任务权重，防止局部最优</li>
+                        <li><strong>SPA（最短路径奖励）</strong>：引入路径长度惩罚，鼓励模型用最少步骤完成任务</li>
+                        <li><strong>课程学习策略</strong>：先简单后复杂，模拟人类学习过程</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cpu"></div>
+                    <div class="faq-category">多模态交互机制</div>
+                    <h3>视觉识别与语音交互系统</h3>
+                    <ul>
+                        <li><strong>纯视觉方案</strong>：采用微调后的多模态模型（GLM-4V变体）解析屏幕</li>
+                        <li><strong>屏幕识别能力</strong>：能识别图标、文字、游戏画面中的动态元素</li>
+                        <li><strong>语音交互支持</strong>：结合GLM-4-Voice模型，支持端到端语音输入输出</li>
+                        <li><strong>情绪理解</strong>：能理解语音中的情绪和停顿，执行过程中可语音汇报进度</li>
+                        <li><strong>模糊元素匹配</strong>：支持对模糊元素的匹配，适应各种复杂UI界面</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-shield"></div>
+                    <div class="faq-category">GLM-Z1-Rumination沉思模型</div>
+                    <h3>类似OpenAI o1的慢思考机制</h3>
+                    <ul>
+                        <li><strong>思维链生成</strong>：生成最终行动代码前先生成"思维链"进行自我反思</li>
+                        <li><strong>假设验证</strong>：支持假设验证和规划修正的动态调整机制</li>
+                        <li><strong>强化学习验证</strong>：对数学/代码任务使用确定性反馈训练</li>
+                        <li><strong>成对排序反馈</strong>：对开放式任务生成多个思考路径进行优劣排序</li>
+                        <li><strong>边想边干能力</strong>：执行过程中遇到问题可触发新"反思"过程调整计划</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cloud"></div>
+                    <div class="faq-category">ComputerRL桌面端框架</div>
+                    <h3>PC环境的强化学习扩展</h3>
+                    <ul>
+                        <li><strong>复杂操作支持</strong>：处理拖拽、右键、快捷键等复杂键鼠操作</li>
+                        <li><strong>LPO优化技术</strong>：利用Location Preference Optimization解决精确定位问题</li>
+                        <li><strong>动态位置奖励</strong>：动态位置奖励函数解决大屏幕高分辨率问题</li>
+                        <li><strong>多任务训练</strong>：支持多任务、多轮对话的训练基础设施</li>
+                        <li><strong>全流程管道</strong>：提供从SFT到RL的全流程训练管道</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Performance Data Section -->
+    <section class="section" id="enhanced-performance">
+        <div class="container">
+            <h2 class="section-title fade-in">深度性能评测数据与竞品对比</h2>
+            
+            <div class="stats fade-in">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-primary);">权威基准测试详细数据</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">55.2%</div>
+                        <div class="stat-label">VAB-WebArena-Lite<br>首次成功率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">59.1%</div>
+                        <div class="stat-label">VAB-WebArena-Lite<br>二次尝试成功率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">53.6%</div>
+                        <div class="stat-label">AndroidLab<br>移动端控制成功率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">89.7%</div>
+                        <div class="stat-label">国产App通用任务<br>成功率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">96.2%</div>
+                        <div class="stat-label">OpenTable订餐<br>场景成功率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80.2%</div>
+                        <div class="stat-label">AndroidWorld<br>基准测试成功率</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-grid" style="margin-top: 4rem;">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-chart-line"></div>
+                    <div class="faq-category">响应速度与资源占用</div>
+                    <h3>极致性能表现</h3>
+                    <ul>
+                        <li><strong>推理速度</strong>：GLM-Z1-Air模型推理速度是DeepSeek-R1的8倍</li>
+                        <li><strong>首响应时间</strong>：用户指令后首个动作响应时间在秒级</li>
+                        <li><strong>算力需求</strong>：计算资源消耗仅为同类大模型的1/30</li>
+                        <li><strong>内存占用</strong>：9B模型设计支持在消费级显卡上高效运行</li>
+                        <li><strong>能耗优化</strong>：本地部署潜力显著，降低部署成本和能耗</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-github"></div>
+                    <div class="faq-category">成本优势分析</div>
+                    <h3>极高的性价比</h3>
+                    <ul>
+                        <li><strong>API定价</strong>：约$0.086/1M Token，远低于GPT-4o等竞品</li>
+                        <li><strong>单任务成本</strong>：约0.2美元，但对所有用户完全免费</li>
+                        <li><strong>本地部署成本</strong>：基于开源模型，无持续API费用</li>
+                        <li><strong>维护成本</strong>：模块化设计降低长期维护成本</li>
+                        <li><strong>硬件投入</strong>：支持消费级显卡，硬件投入门槛低</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Competitor Comparison Table -->
+            <div style="background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 1px solid var(--border-color); margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--accent-orange);">竞品详细对比分析</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>评测维度</th>
+                            <th>AutoGLM</th>
+                            <th>GPT-4o</th>
+                            <th>Claude 3.5 Sonnet</th>
+                            <th>DeepSeek R1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>核心定位</td>
+                            <td class="highlight-cell">Phone/OS Agent (行动派)</td>
+                            <td>通用多模态大模型</td>
+                            <td>Desktop Agent (桌面派)</td>
+                            <td>Reasoning Model (逻辑派)</td>
+                        </tr>
+                        <tr>
+                            <td>VAB-WebArena-Lite</td>
+                            <td class="highlight-cell">55.2%</td>
+                            <td>18.2%</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>AndroidLab</td>
+                            <td class="highlight-cell">53.6%</td>
+                            <td>31.2%</td>
+                            <td>29.0%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>执行效率</td>
+                            <td class="highlight-cell">极高 (9B模型, 8x速度)</td>
+                            <td>中等</td>
+                            <td>中等</td>
+                            <td>低 (大模型推理慢)</td>
+                        </tr>
+                        <tr>
+                            <td>API成本</td>
+                            <td class="highlight-cell">极低 (~$0.086/1M Token)</td>
+                            <td>高</td>
+                            <td>高</td>
+                            <td>极低 (价格战)</td>
+                        </tr>
+                        <tr>
+                            <td>移动端支持</td>
+                            <td class="highlight-cell">优秀</td>
+                            <td>有限</td>
+                            <td>较弱</td>
+                            <td>无</td>
+                        </tr>
+                        <tr>
+                            <td>本地部署</td>
+                            <td class="highlight-cell">完全开源，支持本地部署</td>
+                            <td>不支持</td>
+                            <td>不支持</td>
+                            <td>部分支持</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Details Section -->
+    <section class="section tech-details" id="deployment">
+        <div class="container">
+            <h2 class="section-title fade-in">AutoGLM AI三种部署模式：满足不同场景需求</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-laptop"></div>
+                    <div class="faq-category">本地部署模式</div>
+                    <h3>模型+执行：完全本地化方案</h3>
+                    <ul>
+                        <li><strong>完整本地化</strong>：屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备</li>
+                        <li><strong>最高隐私性</strong>：所有数据处理都在本地进行，隐私性最高，适合敏感数据处理</li>
+                        <li><strong>离线可用</strong>：无需网络连接即可正常运行，确保业务连续性</li>
+                        <li><strong>硬件要求</strong>：需要本地具备足够的计算资源（推荐RTX 3080/4090或同等级显卡）</li>
+                        <li><strong>适用场景</strong>：金融、医疗、政府等对数据安全要求极高的行业</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cloud"></div>
+                    <div class="faq-category">云端部署模式</div>
+                    <h3>模型+执行：云端一体化方案</h3>
+                    <ul>
+                        <li><strong>云端一体化</strong>：屏幕内容从操作环境传输到云端模型，模型分析后指令返回操作环境执行</li>
+                        <li><strong>开发者责任</strong>：需要自行确保传输过程和云端处理的安全性</li>
+                        <li><strong>弹性扩展</strong>：可根据需求动态扩展资源，无需担心硬件限制</li>
+                        <li><strong>网络依赖</strong>：需要稳定的网络连接，适合网络环境良好的场景</li>
+                        <li><strong>适用场景</strong>：中小企业、快速原型验证、临时性项目</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-exchange-alt"></div>
+                    <div class="faq-category">混合部署模式</div>
+                    <h3>本地执行+云端模型：最佳平衡方案</h3>
+                    <ul>
+                        <li><strong>混合架构</strong>：屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行</li>
+                        <li><strong>数据控制</strong>：屏幕数据在本地处理，只有分析请求传输到云端，数据泄露风险较低</li>
+                        <li><strong>成本优化</strong>：结合本地执行的安全性和云端模型的高效性</li>
+                        <li><strong>灵活配置</strong>：可根据安全要求灵活调整哪些数据本地处理，哪些使用云端模型</li>
+                        <li><strong>适用场景</strong>：大多数企业的平衡选择，在保证安全性的同时降低硬件投入</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-microchip"></div>
+                    <div class="faq-category">硬件配置详解</div>
+                    <h3>AutoGLM AI智能硬件适配：从消费级到企业级</h3>
+                    <ul>
+                        <li><strong>内存架构优化</strong>：基于GLM-Z1-9B模型的内存需求特点，推荐16GB DDR4/DDR5 RAM获得最佳性能，最低8GB即可基本运行，支持内存优化技术减少内存占用</li>
+                        <li><strong>显卡兼容性</strong>：支持NVIDIA RTX 30系列、40系列等消费级显卡，RTX 3080/4090可获得接近专业级的性能表现，同时兼容A100、H100等专业计算卡，24GB显存支持大并发处理</li>
+                        <li><strong>CPU性能要求</strong>：推荐Intel Core i7-12700K或AMD Ryzen 7 5800X以上处理器，具备足够的多核性能支撑并发请求处理，支持AVX指令集优化计算效率</li>
+                        <li><strong>存储系统配置</strong>：至少50GB NVMe SSD用于模型存储和高速读取，推荐500GB以上企业级SSD，支持RAID配置确保数据安全，模型文件采用压缩存储减少磁盘占用</li>
+                        <li><strong>网络基础设施</strong>：千兆以太网接口，支持内部高速数据传输，可选配10GbE网卡应对大规模并发，支持负载均衡和故障转移配置</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-code-branch"></div>
+                    <div class="faq-category">开源技术栈</div>
+                    <h3>AutoGLM AI完整开源生态：从模型到训练的全链条</h3>
+                    <ul>
+                        <li><strong>模型权重开源</strong>：GLM-Z1-9B模型采用MIT协议完全开放，包含90亿参数的完整模型权重，支持二次开发和商业使用，无需授权费用</li>
+                        <li><strong>框架代码开源</strong>：核心框架采用Apache-2.0商业友好协议，包含完整的Agent推理引擎、环境包装器、评测工具集，企业可基于此进行定制化开发</li>
+                        <li><strong>训练框架开源</strong>：MobileRL移动端强化学习框架和ComputerRL桌面端框架完全开源，包含AdaGRPO算法、课程学习机制等核心技术</li>
+                        <li><strong>工具链完整</strong>：提供数据预处理工具、模型量化工具、部署脚本、监控面板等完整工具链，降低开发和部署门槛</li>
+                        <li><strong>社区生态活跃</strong>：GitHub开源项目，活跃的开发者社区，定期的技术更新和bug修复，丰富的文档和教程资源</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cogs"></div>
+                    <div class="faq-category">定制化能力</div>
+                    <h3>AutoGLM AI灵活架构：满足不同场景的深度定制需求</h3>
+                    <ul>
+                        <li><strong>模型微调支持</strong>：集成LoRA、QLoRA、AdaLoRA等参数高效微调方法，支持全参数微调和部分参数微调，针对特定领域优化模型性能</li>
+                        <li><strong>工作流可视化设计</strong>：提供拖拽式Agent流程设计器，支持条件分支、循环、异常处理等复杂逻辑，非技术人员也能轻松定制工作流程</li>
+                        <li><strong>标准化API接口</strong>：RESTful API设计，完全兼容OpenAI格式，降低迁移成本，支持WebSocket实时通信，提供Python、Java、Go等多语言SDK</li>
+                        <li><strong>插件扩展系统</strong>：支持自定义工具、技能、环境包装器开发，可集成第三方API、数据库、企业内部系统，构建完整的AI应用生态</li>
+                        <li><strong>企业级功能</strong>：支持用户管理、权限控制、审计日志、监控告警、容器化部署等企业级功能，满足大规模商业化应用需求</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Deployment Workflow Section -->
+            <div class="workflow fade-in">
+                <h3 style="text-align: center; margin-bottom: 1rem; color: var(--text-primary);">AutoGLM AI企业级部署完整流程</h3>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <h4>AutoGLM AI系统环境准备</h4>
+                        <p>为部署准备Ubuntu 20.04+、CUDA 12.0、Python 3.9+环境，确保最佳运行性能</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <h4>获取AutoGLM AI开源代码</h4>
+                        <p>从GitHub克隆完整项目仓库，获取最新版本源码</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <h4>AutoGLM AI依赖环境配置</h4>
+                        <p>安装PyTorch、Transformers、vLLM、GLM-Z1-9B等核心依赖</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <h4>AutoGLM AI模型权重下载</h4>
+                        <p>从HuggingFace下载GLM-Z1-9B完整模型，获取预训练权重</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">5</div>
+                        <h4>配置文件定制</h4>
+                        <p>根据硬件配置优化推理参数</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">6</div>
+                        <h4>启动服务验证</h4>
+                        <p>部署API服务并进行功能测试</p>
+                    </div>
+                </div>
+                <p style="text-align: center; color: var(--accent-orange); margin-top: 2rem;">
+                    完整部署周期约2-4小时，即可拥有企业级AI智能体基础设施！
+                </p>
+            </div>
+
+            <!-- Advanced Deployment Options -->
+            <div class="tech-grid" style="margin-top: 4rem;">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-docker"></div>
+                    <div class="faq-category">容器化部署</div>
+                    <h3>AutoGLM AI Docker容器化：简化部署，统一管理</h3>
+                    <ul>
+                        <li><strong>官方Docker镜像</strong>：提供预配置的Docker镜像，包含所有依赖和模型，一键启动即可使用</li>
+                        <li><strong>Kubernetes支持</strong>：原生支持K8s集群部署，支持自动扩缩容、滚动更新、健康检查等云原生特性</li>
+                        <li><strong>Docker Compose</strong>：提供docker-compose配置文件，支持多服务编排，快速搭建完整的开发测试环境</li>
+                        <li><strong>镜像分层优化</strong>：采用多阶段构建，基础镜像与模型分离，支持增量更新，减少网络传输</li>
+                        <li><strong>安全加固</strong>：基于最小权限原则构建镜像，支持漏洞扫描、安全策略配置等企业级安全要求</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-chart-line"></div>
+                    <div class="faq-category">性能优化</div>
+                    <h3>AutoGLM AI性能调优：最大化硬件利用率</h3>
+                    <ul>
+                        <li><strong>模型量化优化</strong>：支持INT4/INT8量化，在保持99%以上精度的同时，将内存占用降低75%，推理速度提升2-3倍</li>
+                        <li><strong>批处理优化</strong>：智能批处理请求，充分利用GPU并行计算能力，QPS提升5-8倍</li>
+                        <li><strong>内存池管理</strong>：预分配内存池，避免运行时内存分配开销，减少延迟波动</li>
+                        <li><strong>CPU-GPU协同</strong>：优化的数据流水线，实现CPU预处理与GPU推理的并行执行</li>
+                        <li><strong>缓存策略</strong>：多层缓存设计，模型权重缓存、推理结果缓存，显著提升响应速度</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-shield"></div>
+                    <div class="faq-category">安全防护</div>
+                    <h3>AutoGLM AI企业级安全：全方位保障数据安全</h3>
+                    <ul>
+                        <li><strong>访问控制</strong>：基于JWT的认证授权，支持RBAC权限模型，细粒度权限控制</li>
+                        <li><strong>数据加密</strong>：传输过程TLS 1.3加密，存储数据AES-256加密，密钥轮换机制</li>
+                        <li><strong>审计日志</strong>：完整的操作审计日志，支持SIEM集成，满足合规审计要求</li>
+                        <li><strong>入侵检测</strong>：实时监控异常行为，自动拦截可疑请求，支持WAF集成</li>
+                        <li><strong>隔离沙箱</strong>：容器级隔离，资源限制，防止恶意代码逃逸，保障系统安全</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cogs"></div>
+                    <div class="faq-category">监控运维</div>
+                    <h3>AutoGLM AI运维监控：7×24小时服务保障</h3>
+                    <ul>
+                        <li><strong>实时监控</strong>：Prometheus + Grafana监控栈，实时监控QPS、延迟、错误率等关键指标</li>
+                        <li><strong>告警通知</strong>：多渠道告警通知，邮件、短信、钉钉、企业微信等，支持自定义告警规则</li>
+                        <li><strong>健康检查</strong>：自动健康检查，服务异常自动重启，支持优雅降级</li>
+                        <li><strong>日志管理</strong>：ELK日志收集分析，支持全文搜索，快速定位问题</li>
+                        <li><strong>性能分析</strong>：详细的性能分析工具，识别性能瓶颈，优化资源使用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Tutorial Section -->
+    <section class="section tech-details" id="deployment-tutorial">
+        <div class="container">
+            <h2 class="section-title fade-in">AutoGLM AI部署教程：三种模式详细指南</h2>
+            
+            <div class="workflow fade-in">
+                <div class="deployment-tutorial-content">
+                    
+                    <!-- 本地部署教程 -->
+                    <div class="tutorial-section">
+                        <h4>💻 本地部署教程（模型+执行）</h4>
+                        <p style="margin-bottom: 1rem;">屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备，隐私性最高。</p>
+                        
+                        <div class="tutorial-step">
+                            <h5>步骤1：环境准备</h5>
+                            <ul>
+                                <li><strong>操作系统</strong>：Ubuntu 20.04+ / CentOS 8+ / Windows 11 with WSL2</li>
+                                <li><strong>硬件要求</strong>：RTX 3080/4090（24GB显存）或同等级显卡</li>
+                                <li><strong>内存</strong>：32GB RAM（最低16GB）</li>
+                                <li><strong>存储</strong>：100GB+ SSD空间</li>
+                            </ul>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤2：安装AutoGLM AI</h5>
+                            <div class="tutorial-code">
+                                <pre><code># 克隆代码
+git clone https://github.com/zai-org/Open-AutoGLM.git
+cd Open-AutoGLM
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 下载模型
+git lfs install
+git clone https://huggingface.co/zai-org/GLM-Z1-9B-0414 models/</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤3：配置本地运行</h5>
+                            <div class="tutorial-code">
+                                <pre><code># 配置文件 config.yaml
+model:
+  path: "./models/GLM-Z1-9B-0414"
+  device: "cuda"
+  precision: "fp16"
+
+execution:
+  mode: "local"  # 本地执行模式
+  screen_capture: "auto"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤4：启动服务</h5>
+                            <div class="tutorial-code">
+                                <pre><code># 启动AutoGLM AI本地服务
+python main.py --config config.yaml --mode local
+
+# 测试连接
+curl http://localhost:8000/health</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 云端部署教程 -->
+                    <div class="tutorial-section">
+                        <h4>☁️ 云端部署教程（模型+执行）</h4>
+                        <p style="margin-bottom: 1rem;">屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。</p>
+                        
+                        <div class="tutorial-step">
+                            <h5>步骤1：云端服务器准备</h5>
+                            <ul>
+                                <li><strong>云平台</strong>：AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series</li>
+                                <li><strong>网络配置</strong>：配置VPC、安全组、负载均衡器</li>
+                                <li><strong>SSL证书</strong>：配置HTTPS加密传输</li>
+                                <li><strong>访问控制</strong>：设置API密钥、IP白名单</li>
+                            </ul>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤2：部署云端服务</h5>
+                            <div class="tutorial-code">
+                                <pre><code># Docker部署
+docker run -d --name autoglm-cloud \
+  -p 443:8000 \
+  -v ./models:/app/models \
+  -e MODEL_PATH=/app/models \
+  -e API_KEY=your-secret-key \
+  autoglm/cloud:latest
+
+# 或Kubernetes部署
+kubectl apply -f autoglm-cloud-deployment.yaml</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤3：配置客户端连接</h5>
+                            <div class="tutorial-code">
+                                <pre><code># 客户端配置 client_config.yaml
+cloud:
+  endpoint: "https://your-autoglm.example.com"
+  api_key: "your-secret-key"
+  ssl_verify: true
+  
+security:
+  encrypt_screenshots: true
+  data_retention: "24h"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤4：安全配置</h5>
+                            <ul>
+                                <li><strong>传输加密</strong>：确保所有数据传输使用TLS 1.3</li>
+                                <li><strong>数据清理</strong>：配置自动清理屏幕截图和分析结果</li>
+                                <li><strong>访问日志</strong>：启用详细的访问和操作日志</li>
+                                <li><strong>合规认证</strong>：根据行业要求配置合规措施</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 混合部署教程 -->
+                    <div class="tutorial-section">
+                        <h4>🔄 混合部署教程（本地执行+云端模型）</h4>
+                        <p style="margin-bottom: 1rem;">屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。</p>
+                        
+                        <div class="tutorial-step">
+                            <h5>步骤1：本地环境配置</h5>
+                            <ul>
+                                <li><strong>本地机器</strong>：普通办公电脑即可，无需高端GPU</li>
+                                <li><strong>屏幕捕获</strong>：配置本地屏幕捕获服务</li>
+                                <li><strong>执行引擎</strong>：安装操作执行组件</li>
+                                <li><strong>网络连接</strong>：稳定的互联网连接</li>
+                            </ul>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤2：云端模型服务部署</h5>
+                            <div class="tutorial-code">
+                                <pre><code># 云端模型服务配置
+model_service:
+  endpoint: "https://autoglm-model.example.com"
+  model: "GLM-Z1-9B"
+  max_tokens: 4096
+  temperature: 0.7
+  
+scaling:
+  min_instances: 1
+  max_instances: 10
+  cpu_threshold: 70</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤3：混合模式配置</h5>
+                            <div class="tutorial-code">
+                                <pre><code># hybrid_config.yaml
+local:
+  screen_capture: true
+  execution_engine: "local"
+  data_processing: "local"
+  
+cloud:
+  model_inference: true
+  endpoint: "https://autoglm-model.example.com"
+  api_key: "your-api-key"
+  
+privacy:
+  encrypt_before_upload: true
+  local_cache_enabled: true
+  sensitive_data_filters: ["passwords", "tokens", "keys"]</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>步骤4：启动混合模式</h5>
+                            <div class="tutorial-code">
+                                <pre><code># 启动混合模式服务
+python main.py --config hybrid_config.yaml --mode hybrid
+
+# 验证连接
+python test_connection.py --mode hybrid</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 通用配置和故障排除 -->
+                    <div class="tutorial-section">
+                        <h4>🛠️ 通用配置与故障排除</h4>
+                        
+                        <div class="tutorial-step">
+                            <h5>部署模式选择指南</h5>
+                            <ul>
+                                <li><strong>数据敏感度</strong>：高敏感数据选择本地部署，一般数据可选云端或混合</li>
+                                <li><strong>硬件预算</strong>：有高端GPU选本地，预算有限选混合或云端</li>
+                                <li><strong>安全合规</strong>：金融、医疗、政府行业建议本地部署</li>
+                                <li><strong>扩展需求</strong>：需要弹性扩展选择云端部署</li>
+                                <li><strong>网络环境</strong>：网络不稳定选择本地，网络良好可选云端</li>
+                            </ul>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>常见故障排除</h5>
+                            <ul>
+                                <li><strong>内存不足</strong>：启用模型量化、减少batch_size、使用CPU推理</li>
+                                <li><strong>显存错误</strong>：降低precision为int4、清理GPU缓存、重启服务</li>
+                                <li><strong>网络连接问题</strong>：检查防火墙设置、配置代理、验证SSL证书</li>
+                                <li><strong>模型加载失败</strong>：检查模型文件完整性、验证文件权限、检查磁盘空间</li>
+                                <li><strong>性能优化</strong>：启用torch.compile、使用批处理、配置并行推理</li>
+                            </ul>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <h5>监控与维护</h5>
+                            <ul>
+                                <li><strong>性能监控</strong>：使用Prometheus监控GPU使用率、内存占用、响应时间</li>
+                                <li><strong>日志管理</strong>：配置日志轮转、设置日志级别、监控错误日志</li>
+                                <li><strong>备份策略</strong>：定期备份配置文件、模型权重、重要数据</li>
+                                <li><strong>安全更新</strong>：及时更新依赖包、修复安全漏洞、更新模型版本</li>
+                            </ul>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership & Ecosystem Section -->
+    <section class="section tech-details" id="ecosystem">
+        <div class="container">
+            <h2 class="section-title fade-in">技术合作伙伴与生态系统</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cloud"></div>
+                    <div class="faq-category">全球硬件合作伙伴</div>
+                    <h3>顶级硬件厂商战略合作</h3>
+                    <ul>
+                        <li><strong>三星（Samsung）</strong>：合作将GLM模型集成到Galaxy手机中，探索端侧AI</li>
+                        <li><strong>高通（Qualcomm）</strong>：优化Snapdragon芯片对GLM-Z1的支持，为本地推理铺路</li>
+                        <li><strong>英特尔/华硕</strong>：在PC端（GLM PC）展开合作，推动AI PC的落地</li>
+                        <li><strong>资本支持</strong>：获得成都高新区、上海国资等数亿美元的耐心资本投资</li>
+                        <li><strong>硬件联盟</strong>：构建从芯片到终端设备的完整AI硬件生态体系</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-code-branch"></div>
+                    <div class="faq-category">开源社区生态</div>
+                    <h3>活跃的开源开发者社区</h3>
+                    <ul>
+                        <li><strong>GitHub仓库</strong>：THUDM/MobileRL、THUDM/WebRL等核心开源项目</li>
+                        <li><strong>贡献指南</strong>：开发者可通过提交PR优化环境包装器或添加新数据集</li>
+                        <li><strong>微调工具</strong>：集成LLaMA-Factory等工具，支持高效微调</li>
+                        <li><strong>垂直领域定制</strong>：鼓励针对医疗、金融等专业领域微调模型</li>
+                        <li><strong>模型共享</strong>：社区可分享专用权重，共建模型生态</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-rocket"></div>
+                    <div class="faq-category">商业模式与市场策略</div>
+                    <h3>可持续的商业模式</h3>
+                    <ul>
+                        <li><strong>C端免费策略</strong>：基础功能完全免费，快速积累用户交互数据</li>
+                        <li><strong>B端API收费</strong>：极具破坏性的$0.086/1M Token定价策略</li>
+                        <li><strong>增值服务</strong>：企业版"云手机"服务，提供高性能云端设备</li>
+                        <li><strong>硬件集成</strong>：通过硬件预装获得授权费用和技术服务收入</li>
+                        <li><strong>主权AI输出</strong>：向中东、东南亚输出国家级AI基础设施</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-shield"></div>
+                    <div class="faq-category">安全与合规保障</div>
+                    <h3>企业级安全合规体系</h3>
+                    <ul>
+                        <li><strong>数据本地化</strong>：严格遵守《个人信息保护法》等法规</li>
+                        <li><strong>境内数据处理</strong>：主要数据在中国境内服务器完成</li>
+                        <li><strong>GDPR合规</strong>：面向海外市场的跨境数据传输合规方案</li>
+                        <li><strong>审计日志</strong>：完整的操作审计日志，支持SIEM集成</li>
+                        <li><strong>认证体系</strong>：ISO 27001、等保三级等安全认证</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Future Roadmap -->
+            <div class="workflow fade-in" style="margin-top: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 1rem; color: var(--text-primary);">未来发展路线图</h3>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <h4>短期（3-6个月）</h4>
+                        <p>云手机普及与稳定，优化延迟和并发能力</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <h4>中期（1-3年）</h4>
+                        <p>原生手机植入，系统级服务直接运行在NPU上</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <h4>长期（3年以上）</h4>
+                        <p>自我进化智能体，实现终身学习和自适应能力</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Scenarios -->
+            <div class="tech-grid" style="margin-top: 4rem;">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-chart-line"></div>
+                    <div class="faq-category">创新应用场景</div>
+                    <h3>跨应用协同魔法</h3>
+                    <ul>
+                        <li><strong>种草到拔草闭环</strong>：抖音看菜谱→盒马买菜→自动比价→购物车确认</li>
+                        <li><strong>跨端任务接力</strong>：手机发出指令→电脑生成报表→多设备同步</li>
+                        <li><strong>深度研究助理</strong>：自主规划研究→搜索PubMed→撰写万字报告</li>
+                        <li><strong>购物决策官</strong>：全网比价→评论摘要→智能推荐→最优选择</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <div class="tech-icon icon-cogs"></div>
+                    <div class="faq-category">技术创新突破</div>
+                    <h3>核心技术壁垒</h3>
+                    <ul>
+                        <li><strong>API-GUI统一范式</strong>：智能选择API调用或模拟操作的最佳方式</li>
+                        <li><strong>三驾马车RL框架</strong>：ComputerRL、MobileRL、AgentRL的完整体系</li>
+                        <li><strong>自进化课程学习</strong>：根据百万用户失败操作的自动学习机制</li>
+                        <li><strong>多模态感知系统</strong>：超越传统XML解析的纯视觉方案</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq">
+        <div class="container">
+            <h2 class="section-title fade-in">常见问题解答</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>AutoGLM AI是否完全免费？商业使用需要授权吗？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>AutoGLM AI采用Apache-2.0（代码）和MIT（模型）双开源协议，完全免费，支持商业使用，无需额外授权。您可以自由修改、分发和用于商业项目。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>本地部署需要什么样的硬件配置？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>推荐配置：RTX 3080/4090（24GB显存）、32GB RAM、100GB+ SSD。最低要求：16GB RAM、支持CUDA的显卡。如果硬件有限，可以选择混合部署模式。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>AutoGLM AI与GPT-4o等大模型相比有什么优势？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>在网页任务上，AutoGLM AI成功率55.2%，超越GPT-4o的18.2%（性能提升160%）。在移动端控制上，成功率53.6%，领先GPT-4o的31.2%。此外，AutoGLM AI支持本地部署、数据安全可控、无厂商锁定。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>如何选择合适的部署模式？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>本地部署</strong>：适合金融、医疗等高安全要求行业。<strong>云端部署</strong>：适合中小企业和快速原型验证。<strong>混合部署</strong>：平衡安全性和成本，适合大多数企业。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>AutoGLM AI支持哪些操作系统和平台？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>支持Ubuntu 20.04+、CentOS 8+、Windows 11 with WSL2。提供Docker容器化部署，支持Kubernetes集群部署，兼容主流云平台（AWS、Google Cloud、Azure）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" id="get-started">
+        <div class="container">
+            <h2 class="section-title fade-in">开始部署AutoGLM AI</h2>
+            
+            <div class="hero-buttons">
+                <button class="btn-primary" id="deploymentPlanBtn2">
+                    <i class="fas fa-rocket"></i>
+                    立即获取AutoGLM AI部署方案
+                </button>
+                <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-secondary" target="_blank">
+                    <i class="fab fa-github"></i>
+                    访问GitHub仓库
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于AutoGLM AI开源项目</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        AutoGLM AI - 首个开源本地化AI智能体框架<br>
+                        由智谱AI开源，Apache-2.0和MIT双协议
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>获取AutoGLM AI</h3>
+                    <ul>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank">AutoGLM AI GitHub仓库</a></li>
+                        <li><a href="#deployment">AutoGLM AI部署指南</a></li>
+                        <li><a href="#docs">AutoGLM AI开发者文档</a></li>
+                        <li><a href="https://huggingface.co/zai-org/GLM-Z1-9B-0414" target="_blank">GLM-Z1-9B模型下载</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>开源资源</h3>
+                    <ul>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/tree/main/MobileRL" target="_blank">MobileRL训练框架</a></li>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/tree/main/ComputerRL" target="_blank">ComputerRL框架</a></li>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/tree/main/examples" target="_blank">示例代码</a></li>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/releases" target="_blank">版本更新日志</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>开发者社区</h3>
+                    <ul>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/issues" target="_blank">GitHub Issues</a></li>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/discussions" target="_blank">技术讨论区</a></li>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM/wiki" target="_blank">Wiki文档</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>🎉 2025年12月9日重大里程碑：AutoGLM AI核心框架和GLM-Z1-9B模型完全开源！</p>
+                <p>现在您可以在自己的服务器上部署完全可控的AI智能体，无需依赖任何第三方服务</p>
+                
+                <div class="footer-badges">
+                    <div class="badge">Apache-2.0 开源协议</div>
+                    <div class="badge">MIT 模型协议</div>
+                    <div class="badge">完全开源免费</div>
+                    <div class="badge">支持商业使用</div>
+                    <div class="badge">活跃社区支持</div>
+                </div>
+                
+                <div class="hero-buttons" style="margin-top: 2rem; justify-content: center;">
+                    <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-primary" target="_blank">
+                        <i class="fab fa-github"></i>
+                        立即访问GitHub获取AutoGLM AI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Deployment Plan Modal -->
+    <div id="deploymentPlanModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">AutoGLM AI 部署方案选择</h2>
+                <p class="modal-subtitle">根据您的需求选择最适合的部署模式</p>
+            </div>
+
+            <div class="deployment-options-grid">
+                <div class="deployment-option-card">
+                    <div class="deployment-option-title">
+                        <i class="fas fa-laptop"></i>
+                        本地部署方案
+                    </div>
+                    <div class="deployment-option-desc">
+                        完全本地化运行，数据不离开您的设备，适合对安全要求极高的场景
+                    </div>
+                    <ul class="deployment-option-specs">
+                        <li>RTX 3080/4090 (24GB显存) 或同等级显卡</li>
+                        <li>32GB RAM (最低16GB)</li>
+                        <li>100GB+ SSD存储空间</li>
+                        <li>Ubuntu 20.04+ / Windows 11 with WSL2</li>
+                        <li>极致隐私保护，支持离线运行</li>
+                    </ul>
+                </div>
+
+                <div class="deployment-option-card">
+                    <div class="deployment-option-title">
+                        <i class="fas fa-cloud"></i>
+                        云端部署方案
+                    </div>
+                    <div class="deployment-option-desc">
+                        所有计算在云端完成，零本地资源占用，支持强大的并发处理能力
+                    </div>
+                    <ul class="deployment-option-specs">
+                        <li>AWS EC2 p4d.24xlarge / Google Cloud A2</li>
+                        <li>弹性扩展，无需担心硬件限制</li>
+                        <li>自动备份和容灾保护</li>
+                        <li>专业运维团队管理</li>
+                        <li>适合中小企业和快速原型验证</li>
+                    </ul>
+                </div>
+
+                <div class="deployment-option-card">
+                    <div class="deployment-option-title">
+                        <i class="fas fa-exchange-alt"></i>
+                        混合部署方案
+                    </div>
+                    <div class="deployment-option-desc">
+                        平衡安全性和效率的最佳方案，本地执行+云端模型推理
+                    </div>
+                    <ul class="deployment-option-specs">
+                        <li>普通办公电脑即可作为客户端</li>
+                        <li>云端GPU集群提供强大算力</li>
+                        <li>数据本地处理，模型云端推理</li>
+                        <li>灵活的成本控制策略</li>
+                        <li>适合大多数企业的平衡选择</li>
+                    </ul>
+                </div>
+
+                <div class="deployment-option-card">
+                    <div class="deployment-option-title">
+                        <i class="fas fa-rocket"></i>
+                        快速开始方案
+                    </div>
+                    <div class="deployment-option-desc">
+                        零配置的体验方案，立即试用AutoGLM AI的强大功能
+                    </div>
+                    <ul class="deployment-option-specs">
+                        <li>无需安装，直接在线体验</li>
+                        <li>5分钟快速上手</li>
+                        <li>免费试用所有基础功能</li>
+                        <li>完整的技术支持服务</li>
+                        <li>适合产品评估和学习研究</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-cta">
+                <a href="#deployment" class="btn-primary" id="scrollToDeployment">
+                    <i class="fas fa-book"></i>
+                    查看详细部署教程
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Add hover effect to cards
+        document.querySelectorAll('.pain-card, .tech-card, .solution-item, .tutorial-section').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let charIndex = 0;
+            
+            function typeText() {
+                if (charIndex < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, 50);
+                }
+            }
+            
+            // Start typing effect when page loads
+            setTimeout(typeText, 500);
+        }
+
+        // Add click animations to buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // FAQ Interactive Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add FAQ toggle functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const icon = item.querySelector('.faq-icon');
+                
+                if (question && icon) {
+                    question.addEventListener('click', function() {
+                        // Toggle active class
+                        item.classList.toggle('active');
+                        
+                        // Close other FAQ items
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.classList.contains('active')) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                    });
+                }
+            });
+
+            // Auto-open first FAQ item if exists
+            if (faqItems.length > 0) {
+                faqItems[0].classList.add('active');
+            }
+        });
+
+        // Deployment Plan Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const deploymentPlanModal = document.getElementById('deploymentPlanModal');
+            const deploymentPlanBtn = document.getElementById('deploymentPlanBtn');
+            const deploymentPlanBtn2 = document.getElementById('deploymentPlanBtn2');
+            const closeModal = document.getElementById('closeModal');
+            const scrollToDeployment = document.getElementById('scrollToDeployment');
+
+            // Show modal when deployment plan buttons are clicked
+            function showModal() {
+                deploymentPlanModal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            if (deploymentPlanBtn) {
+                deploymentPlanBtn.addEventListener('click', showModal);
+            }
+
+            if (deploymentPlanBtn2) {
+                deploymentPlanBtn2.addEventListener('click', showModal);
+            }
+
+            // Hide modal when close button is clicked
+            if (closeModal) {
+                closeModal.addEventListener('click', function() {
+                    deploymentPlanModal.classList.remove('show');
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                });
+            }
+
+            // Hide modal when clicking outside the modal content
+            deploymentPlanModal.addEventListener('click', function(e) {
+                if (e.target === deploymentPlanModal) {
+                    deploymentPlanModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Hide modal when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && deploymentPlanModal.classList.contains('show')) {
+                    deploymentPlanModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Handle "Scroll to Deployment" button click
+            if (scrollToDeployment) {
+                scrollToDeployment.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    deploymentPlanModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                    
+                    // Scroll to deployment section
+                    const deploymentSection = document.getElementById('deployment');
+                    if (deploymentSection) {
+                        setTimeout(() => {
+                            deploymentSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }, 300);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <style>
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Enhanced card hover effects */
+        .pain-card, .tech-card, .solution-item, .tutorial-section {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pain-card:hover, .tech-card:hover {
+            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.2);
+        }
+
+        .solution-item:hover {
+            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.15);
+        }
+
+        .tutorial-section:hover {
+            box-shadow: 0 15px 30px rgba(255, 140, 66, 0.1);
+        }
+
+        /* Enhanced code block styling */
+        .tutorial-code {
+            position: relative;
+        }
+
+        .tutorial-code::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--primary-gradient);
+        }
+
+        /* Smooth transitions for all interactive elements */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</body>
+</html>
