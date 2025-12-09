@@ -1667,11 +1667,11 @@
                     <div class="faq-category" data-zh="硬件配置详解" data-en="Hardware Configuration Details">硬件配置详解</div>
                     <h3 data-zh="AutoGLM AI智能硬件适配：从消费级到企业级" data-en="AutoGLM AI Smart Hardware Adaptation: From Consumer to Enterprise Grade">AutoGLM AI智能硬件适配：从消费级到企业级</h3>
                     <ul>
-                        <li><strong>内存架构优化</strong>：基于GLM-Z1-9B模型的内存需求特点，推荐16GB DDR4/DDR5 RAM获得最佳性能，最低8GB即可基本运行，支持内存优化技术减少内存占用</li>
-                        <li><strong>显卡兼容性</strong>：支持NVIDIA RTX 30系列、40系列等消费级显卡，RTX 3080/4090可获得接近专业级的性能表现，同时兼容A100、H100等专业计算卡，24GB显存支持大并发处理</li>
-                        <li><strong>CPU性能要求</strong>：推荐Intel Core i7-12700K或AMD Ryzen 7 5800X以上处理器，具备足够的多核性能支撑并发请求处理，支持AVX指令集优化计算效率</li>
-                        <li><strong>存储系统配置</strong>：至少50GB NVMe SSD用于模型存储和高速读取，推荐500GB以上企业级SSD，支持RAID配置确保数据安全，模型文件采用压缩存储减少磁盘占用</li>
-                        <li><strong>网络基础设施</strong>：千兆以太网接口，支持内部高速数据传输，可选配10GbE网卡应对大规模并发，支持负载均衡和故障转移配置</li>
+                        <li data-zh="<strong>内存架构优化</strong>：基于GLM-Z1-9B模型的内存需求特点，推荐16GB DDR4/DDR5 RAM获得最佳性能，最低8GB即可基本运行，支持内存优化技术减少内存占用" data-en="<strong>Memory Architecture Optimization</strong>: Based on GLM-Z1-9B model memory requirements, recommend 16GB DDR4/DDR5 RAM for optimal performance, minimum 8GB for basic operation, supports memory optimization techniques to reduce memory usage"><strong>内存架构优化</strong>：基于GLM-Z1-9B模型的内存需求特点，推荐16GB DDR4/DDR5 RAM获得最佳性能，最低8GB即可基本运行，支持内存优化技术减少内存占用</li>
+                        <li data-zh="<strong>显卡兼容性</strong>：支持NVIDIA RTX 30系列、40系列等消费级显卡，RTX 3080/4090可获得接近专业级的性能表现，同时兼容A100、H100等专业计算卡，24GB显存支持大并发处理" data-en="<strong>Graphics Card Compatibility</strong>: Supports NVIDIA RTX 30/40 series consumer-grade graphics cards, RTX 3080/4090 can achieve near-professional performance, also compatible with A100, H100 professional computing cards, 24GB VRAM supports large concurrent processing"><strong>显卡兼容性</strong>：支持NVIDIA RTX 30系列、40系列等消费级显卡，RTX 3080/4090可获得接近专业级的性能表现，同时兼容A100、H100等专业计算卡，24GB显存支持大并发处理</li>
+                        <li data-zh="<strong>CPU性能要求</strong>：推荐Intel Core i7-12700K或AMD Ryzen 7 5800X以上处理器，具备足够的多核性能支撑并发请求处理，支持AVX指令集优化计算效率" data-en="<strong>CPU Performance Requirements</strong>: Recommend Intel Core i7-12700K or AMD Ryzen 7 5800X and above processors, with sufficient multi-core performance to support concurrent request processing, supports AVX instruction set for computational efficiency optimization"><strong>CPU性能要求</strong>：推荐Intel Core i7-12700K或AMD Ryzen 7 5800X以上处理器，具备足够的多核性能支撑并发请求处理，支持AVX指令集优化计算效率</li>
+                        <li data-zh="<strong>存储系统配置</strong>：至少50GB NVMe SSD用于模型存储和高速读取，推荐500GB以上企业级SSD，支持RAID配置确保数据安全，模型文件采用压缩存储减少磁盘占用" data-en="<strong>Storage System Configuration</strong>: Minimum 50GB NVMe SSD for model storage and high-speed reading, recommend 500GB+ enterprise-grade SSD, supports RAID configuration for data security, model files use compressed storage to reduce disk usage"><strong>存储系统配置</strong>：至少50GB NVMe SSD用于模型存储和高速读取，推荐500GB以上企业级SSD，支持RAID配置确保数据安全，模型文件采用压缩存储减少磁盘占用</li>
+                        <li data-zh="<strong>网络基础设施</strong>：千兆以太网接口，支持内部高速数据传输，可选配10GbE网卡应对大规模并发，支持负载均衡和故障转移配置" data-en="<strong>Network Infrastructure</strong>: Gigabit Ethernet interface, supports high-speed internal data transmission, optional 10GbE network card for large-scale concurrency, supports load balancing and failover configuration"><strong>网络基础设施</strong>：千兆以太网接口，支持内部高速数据传输，可选配10GbE网卡应对大规模并发，支持负载均衡和故障转移配置</li>
                     </ul>
                 </div>
 
@@ -1680,11 +1680,11 @@
                     <div class="faq-category" data-zh="开源技术栈" data-en="Open Source Technology Stack">开源技术栈</div>
                     <h3 data-zh="AutoGLM AI完整开源生态：从模型到训练的全链条" data-en="AutoGLM AI Complete Open Source Ecosystem: Full Chain from Model to Training">AutoGLM AI完整开源生态：从模型到训练的全链条</h3>
                     <ul>
-                        <li><strong>模型权重开源</strong>：GLM-Z1-9B模型采用MIT协议完全开放，包含90亿参数的完整模型权重，支持二次开发和商业使用，无需授权费用</li>
-                        <li><strong>框架代码开源</strong>：核心框架采用Apache-2.0商业友好协议，包含完整的Agent推理引擎、环境包装器、评测工具集，企业可基于此进行定制化开发</li>
-                        <li><strong>训练框架开源</strong>：MobileRL移动端强化学习框架和ComputerRL桌面端框架完全开源，包含AdaGRPO算法、课程学习机制等核心技术</li>
-                        <li><strong>工具链完整</strong>：提供数据预处理工具、模型量化工具、部署脚本、监控面板等完整工具链，降低开发和部署门槛</li>
-                        <li><strong>社区生态活跃</strong>：GitHub开源项目，活跃的开发者社区，定期的技术更新和bug修复，丰富的文档和教程资源</li>
+                        <li data-zh="<strong>模型权重开源</strong>：GLM-Z1-9B模型采用MIT协议完全开放，包含90亿参数的完整模型权重，支持二次开发和商业使用，无需授权费用" data-en="<strong>Open Source Model Weights</strong>: GLM-Z1-9B model completely open under MIT protocol, includes complete 9 billion parameter model weights, supports secondary development and commercial use, no licensing fees required"><strong>模型权重开源</strong>：GLM-Z1-9B模型采用MIT协议完全开放，包含90亿参数的完整模型权重，支持二次开发和商业使用，无需授权费用</li>
+                        <li data-zh="<strong>框架代码开源</strong>：核心框架采用Apache-2.0商业友好协议，包含完整的Agent推理引擎、环境包装器、评测工具集，企业可基于此进行定制化开发" data-en="<strong>Open Source Framework Code</strong>: Core framework adopts Apache-2.0 business-friendly protocol, includes complete Agent inference engine, environment wrappers, evaluation toolsets, enterprises can customize development based on this"><strong>框架代码开源</strong>：核心框架采用Apache-2.0商业友好协议，包含完整的Agent推理引擎、环境包装器、评测工具集，企业可基于此进行定制化开发</li>
+                        <li data-zh="<strong>训练框架开源</strong>：MobileRL移动端强化学习框架和ComputerRL桌面端框架完全开源，包含AdaGRPO算法、课程学习机制等核心技术" data-en="<strong>Open Source Training Framework</strong>: MobileRL mobile reinforcement learning framework and ComputerRL desktop framework completely open source, includes AdaGRPO algorithm, curriculum learning mechanism and other core technologies"><strong>训练框架开源</strong>：MobileRL移动端强化学习框架和ComputerRL桌面端框架完全开源，包含AdaGRPO算法、课程学习机制等核心技术</li>
+                        <li data-zh="<strong>工具链完整</strong>：提供数据预处理工具、模型量化工具、部署脚本、监控面板等完整工具链，降低开发和部署门槛" data-en="<strong>Complete Toolchain</strong>: Provides complete toolchain including data preprocessing tools, model quantization tools, deployment scripts, monitoring panels, reducing development and deployment barriers"><strong>工具链完整</strong>：提供数据预处理工具、模型量化工具、部署脚本、监控面板等完整工具链，降低开发和部署门槛</li>
+                        <li data-zh="<strong>社区生态活跃</strong>：GitHub开源项目，活跃的开发者社区，定期的技术更新和bug修复，丰富的文档和教程资源" data-en="<strong>Active Community Ecosystem</strong>: GitHub open source project, active developer community, regular technical updates and bug fixes, rich documentation and tutorial resources"><strong>社区生态活跃</strong>：GitHub开源项目，活跃的开发者社区，定期的技术更新和bug修复，丰富的文档和教程资源</li>
                     </ul>
                 </div>
 
@@ -1693,11 +1693,11 @@
                     <div class="faq-category" data-zh="定制化能力" data-en="Customization Capabilities">定制化能力</div>
                     <h3 data-zh="AutoGLM AI灵活架构：满足不同场景的深度定制需求" data-en="AutoGLM AI Flexible Architecture: Meeting Deep Customization Needs for Different Scenarios">AutoGLM AI灵活架构：满足不同场景的深度定制需求</h3>
                     <ul>
-                        <li><strong>模型微调支持</strong>：集成LoRA、QLoRA、AdaLoRA等参数高效微调方法，支持全参数微调和部分参数微调，针对特定领域优化模型性能</li>
-                        <li><strong>工作流可视化设计</strong>：提供拖拽式Agent流程设计器，支持条件分支、循环、异常处理等复杂逻辑，非技术人员也能轻松定制工作流程</li>
-                        <li><strong>标准化API接口</strong>：RESTful API设计，完全兼容OpenAI格式，降低迁移成本，支持WebSocket实时通信，提供Python、Java、Go等多语言SDK</li>
-                        <li><strong>插件扩展系统</strong>：支持自定义工具、技能、环境包装器开发，可集成第三方API、数据库、企业内部系统，构建完整的AI应用生态</li>
-                        <li><strong>企业级功能</strong>：支持用户管理、权限控制、审计日志、监控告警、容器化部署等企业级功能，满足大规模商业化应用需求</li>
+                        <li data-zh="<strong>模型微调支持</strong>：集成LoRA、QLoRA、AdaLoRA等参数高效微调方法，支持全参数微调和部分参数微调，针对特定领域优化模型性能" data-en="<strong>Model Fine-tuning Support</strong>: Integrates parameter-efficient fine-tuning methods like LoRA, QLoRA, AdaLoRA, supports full parameter and partial parameter fine-tuning, optimizes model performance for specific domains"><strong>模型微调支持</strong>：集成LoRA、QLoRA、AdaLoRA等参数高效微调方法，支持全参数微调和部分参数微调，针对特定领域优化模型性能</li>
+                        <li data-zh="<strong>工作流可视化设计</strong>：提供拖拽式Agent流程设计器，支持条件分支、循环、异常处理等复杂逻辑，非技术人员也能轻松定制工作流程" data-en="<strong>Visual Workflow Design</strong>: Provides drag-and-drop Agent process designer, supports complex logic like conditional branches, loops, exception handling, non-technical personnel can easily customize workflows"><strong>工作流可视化设计</strong>：提供拖拽式Agent流程设计器，支持条件分支、循环、异常处理等复杂逻辑，非技术人员也能轻松定制工作流程</li>
+                        <li data-zh="<strong>标准化API接口</strong>：RESTful API设计，完全兼容OpenAI格式，降低迁移成本，支持WebSocket实时通信，提供Python、Java、Go等多语言SDK" data-en="<strong>Standardized API Interface</strong>: RESTful API design, fully compatible with OpenAI format, reduces migration costs, supports WebSocket real-time communication, provides multi-language SDKs for Python, Java, Go, etc."><strong>标准化API接口</strong>：RESTful API设计，完全兼容OpenAI格式，降低迁移成本，支持WebSocket实时通信，提供Python、Java、Go等多语言SDK</li>
+                        <li data-zh="<strong>插件扩展系统</strong>：支持自定义工具、技能、环境包装器开发，可集成第三方API、数据库、企业内部系统，构建完整的AI应用生态" data-en="<strong>Plugin Extension System</strong>: Supports custom tool, skill, environment wrapper development, can integrate third-party APIs, databases, enterprise internal systems, build complete AI application ecosystem"><strong>插件扩展系统</strong>：支持自定义工具、技能、环境包装器开发，可集成第三方API、数据库、企业内部系统，构建完整的AI应用生态</li>
+                        <li data-zh="<strong>企业级功能</strong>：支持用户管理、权限控制、审计日志、监控告警、容器化部署等企业级功能，满足大规模商业化应用需求" data-en="<strong>Enterprise Features</strong>: Supports enterprise-level features like user management, access control, audit logs, monitoring alerts, containerized deployment, meeting large-scale commercial application needs"><strong>企业级功能</strong>：支持用户管理、权限控制、审计日志、监控告警、容器化部署等企业级功能，满足大规模商业化应用需求</li>
                     </ul>
                 </div>
             </div>
@@ -1709,27 +1709,27 @@
                     <div class="workflow-step">
                         <div class="step-number">1</div>
                         <h4 data-zh="AutoGLM AI系统环境准备" data-en="AutoGLM AI System Environment Preparation">AutoGLM AI系统环境准备</h4>
-                        <p>为部署准备Ubuntu 20.04+、CUDA 12.0、Python 3.9+环境，确保最佳运行性能</p>
+                        <p data-zh="为部署准备Ubuntu 20.04+、CUDA 12.0、Python 3.9+环境，确保最佳运行性能" data-en="Prepare Ubuntu 20.04+, CUDA 12.0, Python 3.9+ environment for deployment to ensure optimal performance">为部署准备Ubuntu 20.04+、CUDA 12.0、Python 3.9+环境，确保最佳运行性能</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">2</div>
                         <h4 data-zh="获取AutoGLM AI开源代码" data-en="Get AutoGLM AI Open Source Code">获取AutoGLM AI开源代码</h4>
-                        <p>从GitHub克隆完整项目仓库，获取最新版本源码</p>
+                        <p data-zh="从GitHub克隆完整项目仓库，获取最新版本源码" data-en="Clone complete project repository from GitHub to get latest version source code">从GitHub克隆完整项目仓库，获取最新版本源码</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">3</div>
                         <h4 data-zh="AutoGLM AI依赖环境配置" data-en="AutoGLM AI Dependency Environment Configuration">AutoGLM AI依赖环境配置</h4>
-                        <p>安装PyTorch、Transformers、vLLM、GLM-Z1-9B等核心依赖</p>
+                        <p data-zh="安装PyTorch、Transformers、vLLM、GLM-Z1-9B等核心依赖" data-en="Install core dependencies including PyTorch, Transformers, vLLM, GLM-Z1-9B">安装PyTorch、Transformers、vLLM、GLM-Z1-9B等核心依赖</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">4</div>
                         <h4 data-zh="AutoGLM AI模型权重下载" data-en="AutoGLM AI Model Weight Download">AutoGLM AI模型权重下载</h4>
-                        <p>从HuggingFace下载GLM-Z1-9B完整模型，获取预训练权重</p>
+                        <p data-zh="从HuggingFace下载GLM-Z1-9B完整模型，获取预训练权重" data-en="Download complete GLM-Z1-9B model from HuggingFace to get pre-trained weights">从HuggingFace下载GLM-Z1-9B完整模型，获取预训练权重</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">5</div>
                         <h4 data-zh="配置文件定制" data-en="Configuration File Customization">配置文件定制</h4>
-                        <p>根据硬件配置优化推理参数</p>
+                        <p data-zh="根据硬件配置优化推理参数" data-en="Optimize inference parameters according to hardware configuration">根据硬件配置优化推理参数</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">6</div>
@@ -1762,11 +1762,11 @@
                     <div class="faq-category" data-zh="性能优化" data-en="Performance Optimization">性能优化</div>
                     <h3 data-zh="AutoGLM AI性能调优：最大化硬件利用率" data-en="AutoGLM AI Performance Tuning: Maximize Hardware Utilization">AutoGLM AI性能调优：最大化硬件利用率</h3>
                     <ul>
-                        <li><strong>模型量化优化</strong>：支持INT4/INT8量化，在保持99%以上精度的同时，将内存占用降低75%，推理速度提升2-3倍</li>
-                        <li><strong>批处理优化</strong>：智能批处理请求，充分利用GPU并行计算能力，QPS提升5-8倍</li>
-                        <li><strong>内存池管理</strong>：预分配内存池，避免运行时内存分配开销，减少延迟波动</li>
-                        <li><strong>CPU-GPU协同</strong>：优化的数据流水线，实现CPU预处理与GPU推理的并行执行</li>
-                        <li><strong>缓存策略</strong>：多层缓存设计，模型权重缓存、推理结果缓存，显著提升响应速度</li>
+                        <li data-zh="<strong>模型量化优化</strong>：支持INT4/INT8量化，在保持99%以上精度的同时，将内存占用降低75%，推理速度提升2-3倍" data-en="<strong>Model Quantization Optimization</strong>: Supports INT4/INT8 quantization, reduces memory usage by 75% while maintaining 99%+ accuracy, improves inference speed by 2-3x"><strong>模型量化优化</strong>：支持INT4/INT8量化，在保持99%以上精度的同时，将内存占用降低75%，推理速度提升2-3倍</li>
+                        <li data-zh="<strong>批处理优化</strong>：智能批处理请求，充分利用GPU并行计算能力，QPS提升5-8倍" data-en="<strong>Batch Processing Optimization</strong>: Intelligent batch processing requests, fully utilizes GPU parallel computing capabilities, improves QPS by 5-8x"><strong>批处理优化</strong>：智能批处理请求，充分利用GPU并行计算能力，QPS提升5-8倍</li>
+                        <li data-zh="<strong>内存池管理</strong>：预分配内存池，避免运行时内存分配开销，减少延迟波动" data-en="<strong>Memory Pool Management</strong>: Pre-allocated memory pool avoids runtime memory allocation overhead, reduces latency fluctuations"><strong>内存池管理</strong>：预分配内存池，避免运行时内存分配开销，减少延迟波动</li>
+                        <li data-zh="<strong>CPU-GPU协同</strong>：优化的数据流水线，实现CPU预处理与GPU推理的并行执行" data-en="<strong>CPU-GPU Collaboration</strong>: Optimized data pipeline achieves parallel execution of CPU preprocessing and GPU inference"><strong>CPU-GPU协同</strong>：优化的数据流水线，实现CPU预处理与GPU推理的并行执行</li>
+                        <li data-zh="<strong>缓存策略</strong>：多层缓存设计，模型权重缓存、推理结果缓存，显著提升响应速度" data-en="<strong>Caching Strategy</strong>: Multi-layer cache design, model weight caching, inference result caching, significantly improves response speed"><strong>缓存策略</strong>：多层缓存设计，模型权重缓存、推理结果缓存，显著提升响应速度</li>
                     </ul>
                 </div>
 
@@ -1812,15 +1812,15 @@
                     <!-- 本地部署教程 -->
                     <div class="tutorial-section">
                         <h4 data-zh="💻 本地部署教程（模型+执行）" data-en="💻 Local Deployment Tutorial (Model + Execution)">💻 本地部署教程（模型+执行）</h4>
-                        <p style="margin-bottom: 1rem;">屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备，隐私性最高。</p>
+                        <p style="margin-bottom: 1rem;" data-zh="屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备，隐私性最高。" data-en="Screen capture, model analysis, and operation execution are all completed locally on the device, data does not leave the device, highest privacy.">屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备，隐私性最高。</p>
                         
                         <div class="tutorial-step">
                             <h5 data-zh="步骤1：环境准备" data-en="Step 1: Environment Preparation">步骤1：环境准备</h5>
                             <ul>
-                                <li><strong>操作系统</strong>：Ubuntu 20.04+ / CentOS 8+ / Windows 11 with WSL2</li>
-                                <li><strong>硬件要求</strong>：RTX 3080/4090（24GB显存）或同等级显卡</li>
-                                <li><strong>内存</strong>：32GB RAM（最低16GB）</li>
-                                <li><strong>存储</strong>：100GB+ SSD空间</li>
+                                <li data-zh="<strong>操作系统</strong>：Ubuntu 20.04+ / CentOS 8+ / Windows 11 with WSL2" data-en="<strong>Operating System</strong>: Ubuntu 20.04+ / CentOS 8+ / Windows 11 with WSL2"><strong>操作系统</strong>：Ubuntu 20.04+ / CentOS 8+ / Windows 11 with WSL2</li>
+                                <li data-zh="<strong>硬件要求</strong>：RTX 3080/4090（24GB显存）或同等级显卡" data-en="<strong>Hardware Requirements</strong>: RTX 3080/4090 (24GB VRAM) or equivalent graphics card"><strong>硬件要求</strong>：RTX 3080/4090（24GB显存）或同等级显卡</li>
+                                <li data-zh="<strong>内存</strong>：32GB RAM（最低16GB）" data-en="<strong>Memory</strong>: 32GB RAM (minimum 16GB)"><strong>内存</strong>：32GB RAM（最低16GB）</li>
+                                <li data-zh="<strong>存储</strong>：100GB+ SSD空间" data-en="<strong>Storage</strong>: 100GB+ SSD space"><strong>存储</strong>：100GB+ SSD空间</li>
                             </ul>
                         </div>
 
@@ -1870,15 +1870,15 @@ curl http://localhost:8000/health</code></pre>
                     <!-- 云端部署教程 -->
                     <div class="tutorial-section">
                         <h4 data-zh="☁️ 云端部署教程（模型+执行）" data-en="☁️ Cloud Deployment Tutorial (Model + Execution)">☁️ 云端部署教程（模型+执行）</h4>
-                        <p style="margin-bottom: 1rem;">屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。</p>
+                        <p style="margin-bottom: 1rem;" data-zh="屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。" data-en="Screen content is transmitted to cloud models, analysis results return instructions to the operating environment for execution. Developers need to ensure transmission and cloud processing security.">屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。</p>
                         
                         <div class="tutorial-step">
                             <h5>步骤1：云端服务器准备</h5>
                             <ul>
-                                <li><strong>云平台</strong>：AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series</li>
-                                <li><strong>网络配置</strong>：配置VPC、安全组、负载均衡器</li>
-                                <li><strong>SSL证书</strong>：配置HTTPS加密传输</li>
-                                <li><strong>访问控制</strong>：设置API密钥、IP白名单</li>
+                                <li data-zh="<strong>云平台</strong>：AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series" data-en="<strong>Cloud Platform</strong>: AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series"><strong>云平台</strong>：AWS EC2 p4d.24xlarge / Google Cloud A2 / Azure ND series</li>
+                                <li data-zh="<strong>网络配置</strong>：配置VPC、安全组、负载均衡器" data-en="<strong>Network Configuration</strong>: Configure VPC, security groups, load balancers"><strong>网络配置</strong>：配置VPC、安全组、负载均衡器</li>
+                                <li data-zh="<strong>SSL证书</strong>：配置HTTPS加密传输" data-en="<strong>SSL Certificate</strong>: Configure HTTPS encrypted transmission"><strong>SSL证书</strong>：配置HTTPS加密传输</li>
+                                <li data-zh="<strong>访问控制</strong>：设置API密钥、IP白名单" data-en="<strong>Access Control</strong>: Set API keys, IP whitelist"><strong>访问控制</strong>：设置API密钥、IP白名单</li>
                             </ul>
                         </div>
 
@@ -1916,10 +1916,10 @@ security:
                         <div class="tutorial-step">
                             <h5>步骤4：安全配置</h5>
                             <ul>
-                                <li><strong>传输加密</strong>：确保所有数据传输使用TLS 1.3</li>
-                                <li><strong>数据清理</strong>：配置自动清理屏幕截图和分析结果</li>
-                                <li><strong>访问日志</strong>：启用详细的访问和操作日志</li>
-                                <li><strong>合规认证</strong>：根据行业要求配置合规措施</li>
+                                <li data-zh="<strong>传输加密</strong>：确保所有数据传输使用TLS 1.3" data-en="<strong>Transmission Encryption</strong>: Ensure all data transmission uses TLS 1.3"><strong>传输加密</strong>：确保所有数据传输使用TLS 1.3</li>
+                                <li data-zh="<strong>数据清理</strong>：配置自动清理屏幕截图和分析结果" data-en="<strong>Data Cleanup</strong>: Configure automatic cleanup of screenshots and analysis results"><strong>数据清理</strong>：配置自动清理屏幕截图和分析结果</li>
+                                <li data-zh="<strong>访问日志</strong>：启用详细的访问和操作日志" data-en="<strong>Access Logs</strong>: Enable detailed access and operation logs"><strong>访问日志</strong>：启用详细的访问和操作日志</li>
+                                <li data-zh="<strong>合规认证</strong>：根据行业要求配置合规措施" data-en="<strong>Compliance Certification</strong>: Configure compliance measures according to industry requirements"><strong>合规认证</strong>：根据行业要求配置合规措施</li>
                             </ul>
                         </div>
                     </div>
@@ -1927,15 +1927,15 @@ security:
                     <!-- 混合部署教程 -->
                     <div class="tutorial-section">
                         <h4 data-zh="🔄 混合部署教程（本地执行+云端模型）" data-en="🔄 Hybrid Deployment Tutorial (Local Execution + Cloud Model)">🔄 混合部署教程（本地执行+云端模型）</h4>
-                        <p style="margin-bottom: 1rem;">屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。</p>
+                        <p style="margin-bottom: 1rem;" data-zh="屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。" data-en="Screen content is captured locally, transmitted to cloud models for analysis, analysis results return for local execution. The best solution balancing security and efficiency.">屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。</p>
                         
                         <div class="tutorial-step">
                             <h5>步骤1：本地环境配置</h5>
                             <ul>
-                                <li><strong>本地机器</strong>：普通办公电脑即可，无需高端GPU</li>
-                                <li><strong>屏幕捕获</strong>：配置本地屏幕捕获服务</li>
-                                <li><strong>执行引擎</strong>：安装操作执行组件</li>
-                                <li><strong>网络连接</strong>：稳定的互联网连接</li>
+                                <li data-zh="<strong>本地机器</strong>：普通办公电脑即可，无需高端GPU" data-en="<strong>Local Machine</strong>: Regular office computer is sufficient, no high-end GPU needed"><strong>本地机器</strong>：普通办公电脑即可，无需高端GPU</li>
+                                <li data-zh="<strong>屏幕捕获</strong>：配置本地屏幕捕获服务" data-en="<strong>Screen Capture</strong>: Configure local screen capture service"><strong>屏幕捕获</strong>：配置本地屏幕捕获服务</li>
+                                <li data-zh="<strong>执行引擎</strong>：安装操作执行组件" data-en="<strong>Execution Engine</strong>: Install operation execution components"><strong>执行引擎</strong>：安装操作执行组件</li>
+                                <li data-zh="<strong>网络连接</strong>：稳定的互联网连接" data-en="<strong>Network Connection</strong>: Stable internet connection"><strong>网络连接</strong>：稳定的互联网连接</li>
                             </ul>
                         </div>
 
@@ -1994,7 +1994,7 @@ python test_connection.py --mode hybrid</code></pre>
                         <h4 data-zh="🛠️ 通用配置与故障排除" data-en="🛠️ General Configuration and Troubleshooting">🛠️ 通用配置与故障排除</h4>
                         
                         <div class="tutorial-step">
-                            <h5>部署模式选择指南</h5>
+                            <h5 data-zh="部署模式选择指南" data-en="Deployment Mode Selection Guide">部署模式选择指南</h5>
                             <ul>
                                 <li data-zh="<strong>数据敏感度</strong>：高敏感数据选择本地部署，一般数据可选云端或混合" data-en="<strong>Data Sensitivity</strong>: Highly sensitive data choose local deployment, general data can choose cloud or hybrid"><strong>数据敏感度</strong>：高敏感数据选择本地部署，一般数据可选云端或混合</li>
                                 <li data-zh="<strong>硬件预算</strong>：有高端GPU选本地，预算有限选混合或云端" data-en="<strong>Hardware Budget</strong>: Have high-end GPU choose local, limited budget choose hybrid or cloud"><strong>硬件预算</strong>：有高端GPU选本地，预算有限选混合或云端</li>
@@ -2005,23 +2005,23 @@ python test_connection.py --mode hybrid</code></pre>
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>常见故障排除</h5>
+                            <h5 data-zh="常见故障排除" data-en="Common Troubleshooting">常见故障排除</h5>
                             <ul>
-                                <li><strong>内存不足</strong>：启用模型量化、减少batch_size、使用CPU推理</li>
-                                <li><strong>显存错误</strong>：降低precision为int4、清理GPU缓存、重启服务</li>
-                                <li><strong>网络连接问题</strong>：检查防火墙设置、配置代理、验证SSL证书</li>
-                                <li><strong>模型加载失败</strong>：检查模型文件完整性、验证文件权限、检查磁盘空间</li>
-                                <li><strong>性能优化</strong>：启用torch.compile、使用批处理、配置并行推理</li>
+                                <li data-zh="<strong>内存不足</strong>：启用模型量化、减少batch_size、使用CPU推理" data-en="<strong>Insufficient Memory</strong>: Enable model quantization, reduce batch_size, use CPU inference"><strong>内存不足</strong>：启用模型量化、减少batch_size、使用CPU推理</li>
+                                <li data-zh="<strong>显存错误</strong>：降低precision为int4、清理GPU缓存、重启服务" data-en="<strong>VRAM Error</strong>: Lower precision to int4, clear GPU cache, restart service"><strong>显存错误</strong>：降低precision为int4、清理GPU缓存、重启服务</li>
+                                <li data-zh="<strong>网络连接问题</strong>：检查防火墙设置、配置代理、验证SSL证书" data-en="<strong>Network Connection Issues</strong>: Check firewall settings, configure proxy, verify SSL certificates"><strong>网络连接问题</strong>：检查防火墙设置、配置代理、验证SSL证书</li>
+                                <li data-zh="<strong>模型加载失败</strong>：检查模型文件完整性、验证文件权限、检查磁盘空间" data-en="<strong>Model Loading Failure</strong>: Check model file integrity, verify file permissions, check disk space"><strong>模型加载失败</strong>：检查模型文件完整性、验证文件权限、检查磁盘空间</li>
+                                <li data-zh="<strong>性能优化</strong>：启用torch.compile、使用批处理、配置并行推理" data-en="<strong>Performance Optimization</strong>: Enable torch.compile, use batch processing, configure parallel inference"><strong>性能优化</strong>：启用torch.compile、使用批处理、配置并行推理</li>
                             </ul>
                         </div>
 
                         <div class="tutorial-step">
-                            <h5>监控与维护</h5>
+                            <h5 data-zh="监控与维护" data-en="Monitoring and Maintenance">监控与维护</h5>
                             <ul>
-                                <li><strong>性能监控</strong>：使用Prometheus监控GPU使用率、内存占用、响应时间</li>
-                                <li><strong>日志管理</strong>：配置日志轮转、设置日志级别、监控错误日志</li>
-                                <li><strong>备份策略</strong>：定期备份配置文件、模型权重、重要数据</li>
-                                <li><strong>安全更新</strong>：及时更新依赖包、修复安全漏洞、更新模型版本</li>
+                                <li data-zh="<strong>性能监控</strong>：使用Prometheus监控GPU使用率、内存占用、响应时间" data-en="<strong>Performance Monitoring</strong>: Use Prometheus to monitor GPU usage, memory consumption, response time"><strong>性能监控</strong>：使用Prometheus监控GPU使用率、内存占用、响应时间</li>
+                                <li data-zh="<strong>日志管理</strong>：配置日志轮转、设置日志级别、监控错误日志" data-en="<strong>Log Management</strong>: Configure log rotation, set log levels, monitor error logs"><strong>日志管理</strong>：配置日志轮转、设置日志级别、监控错误日志</li>
+                                <li data-zh="<strong>备份策略</strong>：定期备份配置文件、模型权重、重要数据" data-en="<strong>Backup Strategy</strong>: Regularly backup configuration files, model weights, important data"><strong>备份策略</strong>：定期备份配置文件、模型权重、重要数据</li>
+                                <li data-zh="<strong>安全更新</strong>：及时更新依赖包、修复安全漏洞、更新模型版本" data-en="<strong>Security Updates</strong>: Update dependency packages promptly, fix security vulnerabilities, update model versions"><strong>安全更新</strong>：及时更新依赖包、修复安全漏洞、更新模型版本</li>
                             </ul>
                         </div>
                     </div>
@@ -2041,11 +2041,11 @@ python test_connection.py --mode hybrid</code></pre>
                     <div class="faq-category" data-zh="全球硬件合作伙伴" data-en="Global Hardware Partners">全球硬件合作伙伴</div>
                     <h3 data-zh="顶级硬件厂商战略合作" data-en="Top Hardware Vendor Strategic Cooperation">顶级硬件厂商战略合作</h3>
                     <ul>
-                        <li><strong>三星（Samsung）</strong>：合作将GLM模型集成到Galaxy手机中，探索端侧AI</li>
-                        <li><strong>高通（Qualcomm）</strong>：优化Snapdragon芯片对GLM-Z1的支持，为本地推理铺路</li>
-                        <li><strong>英特尔/华硕</strong>：在PC端（GLM PC）展开合作，推动AI PC的落地</li>
-                        <li><strong>资本支持</strong>：获得成都高新区、上海国资等数亿美元的耐心资本投资</li>
-                        <li><strong>硬件联盟</strong>：构建从芯片到终端设备的完整AI硬件生态体系</li>
+                        <li data-zh="<strong>三星（Samsung）</strong>：合作将GLM模型集成到Galaxy手机中，探索端侧AI" data-en="<strong>Samsung</strong>: Cooperate to integrate GLM models into Galaxy phones, exploring on-device AI"><strong>三星（Samsung）</strong>：合作将GLM模型集成到Galaxy手机中，探索端侧AI</li>
+                        <li data-zh="<strong>高通（Qualcomm）</strong>：优化Snapdragon芯片对GLM-Z1的支持，为本地推理铺路" data-en="<strong>Qualcomm</strong>: Optimize Snapdragon chip support for GLM-Z1, paving the way for local inference"><strong>高通（Qualcomm）</strong>：优化Snapdragon芯片对GLM-Z1的支持，为本地推理铺路</li>
+                        <li data-zh="<strong>英特尔/华硕</strong>：在PC端（GLM PC）展开合作，推动AI PC的落地" data-en="<strong>Intel/ASUS</strong>: Cooperate on PC side (GLM PC), promoting AI PC implementation"><strong>英特尔/华硕</strong>：在PC端（GLM PC）展开合作，推动AI PC的落地</li>
+                        <li data-zh="<strong>资本支持</strong>：获得成都高新区、上海国资等数亿美元的耐心资本投资" data-en="<strong>Capital Support</strong>: Received hundreds of millions of dollars in patient capital investment from Chengdu High-tech Zone, Shanghai State-owned Assets, etc."><strong>资本支持</strong>：获得成都高新区、上海国资等数亿美元的耐心资本投资</li>
+                        <li data-zh="<strong>硬件联盟</strong>：构建从芯片到终端设备的完整AI硬件生态体系" data-en="<strong>Hardware Alliance</strong>: Build a complete AI hardware ecosystem from chips to terminal devices"><strong>硬件联盟</strong>：构建从芯片到终端设备的完整AI硬件生态体系</li>
                     </ul>
                 </div>
 
@@ -2054,11 +2054,11 @@ python test_connection.py --mode hybrid</code></pre>
                     <div class="faq-category" data-zh="开源社区生态" data-en="Open Source Community Ecosystem">开源社区生态</div>
                     <h3 data-zh="活跃的开源开发者社区" data-en="Active Open Source Developer Community">活跃的开源开发者社区</h3>
                     <ul>
-                        <li><strong>GitHub仓库</strong>：THUDM/MobileRL、THUDM/WebRL等核心开源项目</li>
-                        <li><strong>贡献指南</strong>：开发者可通过提交PR优化环境包装器或添加新数据集</li>
-                        <li><strong>微调工具</strong>：集成LLaMA-Factory等工具，支持高效微调</li>
-                        <li><strong>垂直领域定制</strong>：鼓励针对医疗、金融等专业领域微调模型</li>
-                        <li><strong>模型共享</strong>：社区可分享专用权重，共建模型生态</li>
+                        <li data-zh="<strong>GitHub仓库</strong>：THUDM/MobileRL、THUDM/WebRL等核心开源项目" data-en="<strong>GitHub Repositories</strong>: THUDM/MobileRL, THUDM/WebRL and other core open source projects"><strong>GitHub仓库</strong>：THUDM/MobileRL、THUDM/WebRL等核心开源项目</li>
+                        <li data-zh="<strong>贡献指南</strong>：开发者可通过提交PR优化环境包装器或添加新数据集" data-en="<strong>Contribution Guidelines</strong>: Developers can optimize environment wrappers or add new datasets by submitting PRs"><strong>贡献指南</strong>：开发者可通过提交PR优化环境包装器或添加新数据集</li>
+                        <li data-zh="<strong>微调工具</strong>：集成LLaMA-Factory等工具，支持高效微调" data-en="<strong>Fine-tuning Tools</strong>: Integrate tools like LLaMA-Factory to support efficient fine-tuning"><strong>微调工具</strong>：集成LLaMA-Factory等工具，支持高效微调</li>
+                        <li data-zh="<strong>垂直领域定制</strong>：鼓励针对医疗、金融等专业领域微调模型" data-en="<strong>Vertical Domain Customization</strong>: Encourage model fine-tuning for professional fields like healthcare, finance, etc."><strong>垂直领域定制</strong>：鼓励针对医疗、金融等专业领域微调模型</li>
+                        <li data-zh="<strong>模型共享</strong>：社区可分享专用权重，共建模型生态" data-en="<strong>Model Sharing</strong>: Community can share specialized weights, building model ecosystem together"><strong>模型共享</strong>：社区可分享专用权重，共建模型生态</li>
                     </ul>
                 </div>
 
@@ -2067,11 +2067,11 @@ python test_connection.py --mode hybrid</code></pre>
                     <div class="faq-category" data-zh="商业模式与市场策略" data-en="Business Model and Market Strategy">商业模式与市场策略</div>
                     <h3 data-zh="可持续的商业模式" data-en="Sustainable Business Model">可持续的商业模式</h3>
                     <ul>
-                        <li><strong>C端免费策略</strong>：基础功能完全免费，快速积累用户交互数据</li>
-                        <li><strong>B端API收费</strong>：极具破坏性的$0.086/1M Token定价策略</li>
-                        <li><strong>增值服务</strong>：企业版"云手机"服务，提供高性能云端设备</li>
-                        <li><strong>硬件集成</strong>：通过硬件预装获得授权费用和技术服务收入</li>
-                        <li><strong>主权AI输出</strong>：向中东、东南亚输出国家级AI基础设施</li>
+                        <li data-zh="<strong>C端免费策略</strong>：基础功能完全免费，快速积累用户交互数据" data-en="<strong>Consumer-end Free Strategy</strong>: Basic functions completely free, rapidly accumulate user interaction data"><strong>C端免费策略</strong>：基础功能完全免费，快速积累用户交互数据</li>
+                        <li data-zh="<strong>B端API收费</strong>：极具破坏性的$0.086/1M Token定价策略" data-en="<strong>Business-end API Charging</strong>: Disruptive pricing strategy of $0.086/1M Token"><strong>B端API收费</strong>：极具破坏性的$0.086/1M Token定价策略</li>
+                        <li data-zh="<strong>增值服务</strong>：企业版\"云手机\"服务，提供高性能云端设备" data-en="<strong>Value-added Services</strong>: Enterprise version \"cloud phone\" service, providing high-performance cloud devices"><strong>增值服务</strong>：企业版\"云手机\"服务，提供高性能云端设备</li>
+                        <li data-zh="<strong>硬件集成</strong>：通过硬件预装获得授权费用和技术服务收入" data-en="<strong>Hardware Integration</strong>: Obtain licensing fees and technical service revenue through hardware pre-installation"><strong>硬件集成</strong>：通过硬件预装获得授权费用和技术服务收入</li>
+                        <li data-zh="<strong>主权AI输出</strong>：向中东、东南亚输出国家级AI基础设施" data-en="<strong>Sovereign AI Export</strong>: Export national-level AI infrastructure to Middle East and Southeast Asia"><strong>主权AI输出</strong>：向中东、东南亚输出国家级AI基础设施</li>
                     </ul>
                 </div>
 
@@ -2080,11 +2080,11 @@ python test_connection.py --mode hybrid</code></pre>
                     <div class="faq-category" data-zh="安全与合规保障" data-en="Security and Compliance Guarantee">安全与合规保障</div>
                     <h3 data-zh="企业级安全合规体系" data-en="Enterprise Security and Compliance System">企业级安全合规体系</h3>
                     <ul>
-                        <li><strong>数据本地化</strong>：严格遵守《个人信息保护法》等法规</li>
-                        <li><strong>境内数据处理</strong>：主要数据在中国境内服务器完成</li>
-                        <li><strong>GDPR合规</strong>：面向海外市场的跨境数据传输合规方案</li>
-                        <li><strong>审计日志</strong>：完整的操作审计日志，支持SIEM集成</li>
-                        <li><strong>认证体系</strong>：ISO 27001、等保三级等安全认证</li>
+                        <li data-zh="<strong>数据本地化</strong>：严格遵守《个人信息保护法》等法规" data-en="<strong>Data Localization</strong>: Strictly comply with regulations such as Personal Information Protection Law"><strong>数据本地化</strong>：严格遵守《个人信息保护法》等法规</li>
+                        <li data-zh="<strong>境内数据处理</strong>：主要数据在中国境内服务器完成" data-en="<strong>Domestic Data Processing</strong>: Main data processing completed on servers within China"><strong>境内数据处理</strong>：主要数据在中国境内服务器完成</li>
+                        <li data-zh="<strong>GDPR合规</strong>：面向海外市场的跨境数据传输合规方案" data-en="<strong>GDPR Compliance</strong>: Cross-border data transmission compliance solutions for overseas markets"><strong>GDPR合规</strong>：面向海外市场的跨境数据传输合规方案</li>
+                        <li data-zh="<strong>审计日志</strong>：完整的操作审计日志，支持SIEM集成" data-en="<strong>Audit Logs</strong>: Complete operation audit logs, support SIEM integration"><strong>审计日志</strong>：完整的操作审计日志，支持SIEM集成</li>
+                        <li data-zh="<strong>认证体系</strong>：ISO 27001、等保三级等安全认证" data-en="<strong>Certification System</strong>: ISO 27001, MLPS Level 3 and other security certifications"><strong>认证体系</strong>：ISO 27001、等保三级等安全认证</li>
                     </ul>
                 </div>
             </div>
@@ -2095,18 +2095,18 @@ python test_connection.py --mode hybrid</code></pre>
                 <div class="workflow-steps">
                     <div class="workflow-step">
                         <div class="step-number">1</div>
-                        <h4>短期（3-6个月）</h4>
-                        <p>云手机普及与稳定，优化延迟和并发能力</p>
+                        <h4 data-zh="短期（3-6个月）" data-en="Short-term (3-6 months)">短期（3-6个月）</h4>
+                        <p data-zh="云手机普及与稳定，优化延迟和并发能力" data-en="Cloud phone popularization and stabilization, optimize latency and concurrency capabilities">云手机普及与稳定，优化延迟和并发能力</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">2</div>
-                        <h4>中期（1-3年）</h4>
-                        <p>原生手机植入，系统级服务直接运行在NPU上</p>
+                        <h4 data-zh="中期（1-3年）" data-en="Medium-term (1-3 years)">中期（1-3年）</h4>
+                        <p data-zh="原生手机植入，系统级服务直接运行在NPU上" data-en="Native phone integration, system-level services directly run on NPU">原生手机植入，系统级服务直接运行在NPU上</p>
                     </div>
                     <div class="workflow-step">
                         <div class="step-number">3</div>
-                        <h4>长期（3年以上）</h4>
-                        <p>自我进化智能体，实现终身学习和自适应能力</p>
+                        <h4 data-zh="长期（3年以上）" data-en="Long-term (3+ years)">长期（3年以上）</h4>
+                        <p data-zh="自我进化智能体，实现终身学习和自适应能力" data-en="Self-evolving intelligent agents, achieving lifelong learning and adaptive capabilities">自我进化智能体，实现终身学习和自适应能力</p>
                     </div>
                 </div>
             </div>
@@ -2118,10 +2118,10 @@ python test_connection.py --mode hybrid</code></pre>
                     <div class="faq-category" data-zh="创新应用场景" data-en="Innovative Application Scenarios">创新应用场景</div>
                     <h3 data-zh="跨应用协同魔法" data-en="Cross-Application Collaboration Magic">跨应用协同魔法</h3>
                     <ul>
-                        <li><strong>种草到拔草闭环</strong>：抖音看菜谱→盒马买菜→自动比价→购物车确认</li>
-                        <li><strong>跨端任务接力</strong>：手机发出指令→电脑生成报表→多设备同步</li>
-                        <li><strong>深度研究助理</strong>：自主规划研究→搜索PubMed→撰写万字报告</li>
-                        <li><strong>购物决策官</strong>：全网比价→评论摘要→智能推荐→最优选择</li>
+                        <li data-zh="<strong>种草到拔草闭环</strong>：抖音看菜谱→盒马买菜→自动比价→购物车确认" data-en="<strong>Discovery to Purchase Loop</strong>: Douyin view recipes → Hema buy groceries → Auto price comparison → Shopping cart confirmation"><strong>种草到拔草闭环</strong>：抖音看菜谱→盒马买菜→自动比价→购物车确认</li>
+                        <li data-zh="<strong>跨端任务接力</strong>：手机发出指令→电脑生成报表→多设备同步" data-en="<strong>Cross-device Task Relay</strong>: Phone sends instructions → Computer generates reports → Multi-device sync"><strong>跨端任务接力</strong>：手机发出指令→电脑生成报表→多设备同步</li>
+                        <li data-zh="<strong>深度研究助理</strong>：自主规划研究→搜索PubMed→撰写万字报告" data-en="<strong>Deep Research Assistant</strong>: Autonomous research planning → Search PubMed → Write 10,000-word report"><strong>深度研究助理</strong>：自主规划研究→搜索PubMed→撰写万字报告</li>
+                        <li data-zh="<strong>购物决策官</strong>：全网比价→评论摘要→智能推荐→最优选择" data-en="<strong>Shopping Decision Officer</strong>: Cross-platform price comparison → Review summary → Smart recommendation → Optimal choice"><strong>购物决策官</strong>：全网比价→评论摘要→智能推荐→最优选择</li>
                     </ul>
                 </div>
 
@@ -2148,51 +2148,51 @@ python test_connection.py --mode hybrid</code></pre>
             <div class="faq-container">
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <span>AutoGLM AI是否完全免费？商业使用需要授权吗？</span>
+                        <span data-zh="AutoGLM AI是否完全免费？商业使用需要授权吗？" data-en="Is AutoGLM AI completely free? Does commercial use require authorization?">AutoGLM AI是否完全免费？商业使用需要授权吗？</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>AutoGLM AI采用Apache-2.0（代码）和MIT（模型）双开源协议，完全免费，支持商业使用，无需额外授权。您可以自由修改、分发和用于商业项目。</p>
+                        <p data-zh="AutoGLM AI采用Apache-2.0（代码）和MIT（模型）双开源协议，完全免费，支持商业使用，无需额外授权。您可以自由修改、分发和用于商业项目。" data-en="AutoGLM AI adopts Apache-2.0 (code) and MIT (model) dual open source licenses, completely free, supports commercial use, no additional authorization required. You can freely modify, distribute and use for commercial projects.">AutoGLM AI采用Apache-2.0（代码）和MIT（模型）双开源协议，完全免费，支持商业使用，无需额外授权。您可以自由修改、分发和用于商业项目。</p>
                     </div>
                 </div>
 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <span>本地部署需要什么样的硬件配置？</span>
+                        <span data-zh="本地部署需要什么样的硬件配置？" data-en="What hardware configuration is required for local deployment?">本地部署需要什么样的硬件配置？</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>推荐配置：RTX 3080/4090（24GB显存）、32GB RAM、100GB+ SSD。最低要求：16GB RAM、支持CUDA的显卡。如果硬件有限，可以选择混合部署模式。</p>
+                        <p data-zh="推荐配置：RTX 3080/4090（24GB显存）、32GB RAM、100GB+ SSD。最低要求：16GB RAM、支持CUDA的显卡。如果硬件有限，可以选择混合部署模式。" data-en="Recommended configuration: RTX 3080/4090 (24GB VRAM), 32GB RAM, 100GB+ SSD. Minimum requirements: 16GB RAM, CUDA-enabled graphics card. If hardware is limited, you can choose hybrid deployment mode.">推荐配置：RTX 3080/4090（24GB显存）、32GB RAM、100GB+ SSD。最低要求：16GB RAM、支持CUDA的显卡。如果硬件有限，可以选择混合部署模式。</p>
                     </div>
                 </div>
 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <span>AutoGLM AI与GPT-4o等大模型相比有什么优势？</span>
+                        <span data-zh="AutoGLM AI与GPT-4o等大模型相比有什么优势？" data-en="What advantages does AutoGLM AI have compared to GPT-4o and other large models?">AutoGLM AI与GPT-4o等大模型相比有什么优势？</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>在网页任务上，AutoGLM AI成功率55.2%，超越GPT-4o的18.2%（性能提升160%）。在移动端控制上，成功率53.6%，领先GPT-4o的31.2%。此外，AutoGLM AI支持本地部署、数据安全可控、无厂商锁定。</p>
+                        <p data-zh="在网页任务上，AutoGLM AI成功率55.2%，超越GPT-4o的18.2%（性能提升160%）。在移动端控制上，成功率53.6%，领先GPT-4o的31.2%。此外，AutoGLM AI支持本地部署、数据安全可控、无厂商锁定。" data-en="In web tasks, AutoGLM AI success rate is 55.2%, surpassing GPT-4o's 18.2%, 160% performance improvement. In mobile control, success rate is 53.6%, leading GPT-4o's 31.2%. Additionally, AutoGLM AI supports local deployment, data security control, no vendor lock-in.">在网页任务上，AutoGLM AI成功率55.2%，超越GPT-4o的18.2%（性能提升160%）。在移动端控制上，成功率53.6%，领先GPT-4o的31.2%。此外，AutoGLM AI支持本地部署、数据安全可控、无厂商锁定。</p>
                     </div>
                 </div>
 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <span>如何选择合适的部署模式？</span>
+                        <span data-zh="如何选择合适的部署模式？" data-en="How to choose the right deployment mode?">如何选择合适的部署模式？</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>本地部署</strong>：适合金融、医疗等高安全要求行业。<strong>云端部署</strong>：适合中小企业和快速原型验证。<strong>混合部署</strong>：平衡安全性和成本，适合大多数企业。</p>
+                        <p data-zh="<strong>本地部署</strong>：适合金融、医疗等高安全要求行业。<strong>云端部署</strong>：适合中小企业和快速原型验证。<strong>混合部署</strong>：平衡安全性和成本，适合大多数企业。" data-en="<strong>Local Deployment</strong>: Suitable for finance, medical and other high-security requirement industries. <strong>Cloud Deployment</strong>: Suitable for SMEs and rapid prototype validation. <strong>Hybrid Deployment</strong>: Balances security and cost, suitable for most enterprises."><strong>本地部署</strong>：适合金融、医疗等高安全要求行业。<strong>云端部署</strong>：适合中小企业和快速原型验证。<strong>混合部署</strong>：平衡安全性和成本，适合大多数企业。</p>
                     </div>
                 </div>
 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <span>AutoGLM AI支持哪些操作系统和平台？</span>
+                        <span data-zh="AutoGLM AI支持哪些操作系统和平台？" data-en="What operating systems and platforms does AutoGLM AI support?">AutoGLM AI支持哪些操作系统和平台？</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>支持Ubuntu 20.04+、CentOS 8+、Windows 11 with WSL2。提供Docker容器化部署，支持Kubernetes集群部署，兼容主流云平台（AWS、Google Cloud、Azure）。</p>
+                        <p data-zh="支持Ubuntu 20.04+、CentOS 8+、Windows 11 with WSL2。提供Docker容器化部署，支持Kubernetes集群部署，兼容主流云平台（AWS、Google Cloud、Azure）。" data-en="Supports Ubuntu 20.04+, CentOS 8+, Windows 11 with WSL2. Provides Docker containerized deployment, supports Kubernetes cluster deployment, compatible with mainstream cloud platforms (AWS, Google Cloud, Azure).">支持Ubuntu 20.04+、CentOS 8+、Windows 11 with WSL2。提供Docker容器化部署，支持Kubernetes集群部署，兼容主流云平台（AWS、Google Cloud、Azure）。</p>
                     </div>
                 </div>
             </div>
@@ -2207,11 +2207,11 @@ python test_connection.py --mode hybrid</code></pre>
             <div class="hero-buttons">
                 <button class="btn-primary" id="deploymentPlanBtn2">
                     <i class="fas fa-rocket"></i>
-                    立即获取AutoGLM AI部署方案
+                    <span data-zh="立即获取AutoGLM AI部署方案" data-en="Get AutoGLM AI Deployment Plan">立即获取AutoGLM AI部署方案</span>
                 </button>
                 <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-secondary" target="_blank">
                     <i class="fab fa-github"></i>
-                    访问GitHub仓库
+                    <span data-zh="访问GitHub仓库" data-en="Visit GitHub Repository">访问GitHub仓库</span>
                 </a>
             </div>
         </div>
@@ -2223,7 +2223,7 @@ python test_connection.py --mode hybrid</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 data-zh="关于AutoGLM AI开源项目" data-en="About AutoGLM AI Open Source Project">关于AutoGLM AI开源项目</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;" data-zh="AutoGLM AI - 首个开源本地化AI智能体框架<br>                        由智谱AI开源，Apache-2.0和MIT双协议" data-en="AutoGLM AI - First open source local AI agent framework<br>                        Open sourced by Zhipu AI, Apache-2.0 and MIT dual licenses">
                         AutoGLM AI - 首个开源本地化AI智能体框架<br>
                         由智谱AI开源，Apache-2.0和MIT双协议
                     </p>
@@ -2260,21 +2260,21 @@ python test_connection.py --mode hybrid</code></pre>
             </div>
 
             <div class="footer-bottom">
-                <p>🎉 2025年12月9日重大里程碑：AutoGLM AI核心框架和GLM-Z1-9B模型完全开源！</p>
-                <p>现在您可以在自己的服务器上部署完全可控的AI智能体，无需依赖任何第三方服务</p>
+                <p data-zh="🎉 2025年12月9日重大里程碑：AutoGLM AI核心框架和GLM-Z1-9B模型完全开源！" data-en="🎉 December 9, 2025 Major Milestone: AutoGLM AI Core Framework and GLM-Z1-9B Model Completely Open-sourced!">🎉 2025年12月9日重大里程碑：AutoGLM AI核心框架和GLM-Z1-9B模型完全开源！</p>
+                <p data-zh="现在您可以在自己的服务器上部署完全可控的AI智能体，无需依赖任何第三方服务" data-en="Now you can deploy fully controllable AI agents on your own servers without relying on any third-party services">现在您可以在自己的服务器上部署完全可控的AI智能体，无需依赖任何第三方服务</p>
                 
                 <div class="footer-badges">
-                    <div class="badge">Apache-2.0 开源协议</div>
-                    <div class="badge">MIT 模型协议</div>
-                    <div class="badge">完全开源免费</div>
-                    <div class="badge">支持商业使用</div>
-                    <div class="badge">活跃社区支持</div>
+                    <div class="badge" data-zh="Apache-2.0 开源协议" data-en="Apache-2.0 Open Source License">Apache-2.0 开源协议</div>
+                    <div class="badge" data-zh="MIT 模型协议" data-en="MIT Model License">MIT 模型协议</div>
+                    <div class="badge" data-zh="完全开源免费" data-en="Completely Open Source & Free">完全开源免费</div>
+                    <div class="badge" data-zh="支持商业使用" data-en="Commercial Use Supported">支持商业使用</div>
+                    <div class="badge" data-zh="活跃社区支持" data-en="Active Community Support">活跃社区支持</div>
                 </div>
                 
                 <div class="hero-buttons" style="margin-top: 2rem; justify-content: center;">
                     <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-primary" target="_blank">
                         <i class="fab fa-github"></i>
-                        立即访问GitHub获取AutoGLM AI
+                        <span data-zh="立即访问GitHub获取AutoGLM AI" data-en="Visit GitHub Now to Get AutoGLM AI">立即访问GitHub获取AutoGLM AI</span>
                     </a>
                 </div>
             </div>
@@ -2287,18 +2287,18 @@ python test_connection.py --mode hybrid</code></pre>
             <button class="modal-close" id="closeModal">&times;</button>
             
             <div class="modal-header">
-                <h2 class="modal-title">AutoGLM AI 部署方案选择</h2>
-                <p class="modal-subtitle">根据您的需求选择最适合的部署模式</p>
+                <h2 class="modal-title" data-zh="AutoGLM AI 部署方案选择" data-en="AutoGLM AI Deployment Plan Selection">AutoGLM AI 部署方案选择</h2>
+                <p class="modal-subtitle" data-zh="根据您的需求选择最适合的部署模式" data-en="Choose the most suitable deployment mode according to your needs">根据您的需求选择最适合的部署模式</p>
             </div>
 
             <div class="deployment-options-grid">
                 <div class="deployment-option-card">
                     <div class="deployment-option-title">
                         <i class="fas fa-laptop"></i>
-                        本地部署方案
+                        <span data-zh="本地部署方案" data-en="Local Deployment Solution">本地部署方案</span>
                     </div>
                     <div class="deployment-option-desc">
-                        完全本地化运行，数据不离开您的设备，适合对安全要求极高的场景
+                        <span data-zh="完全本地化运行，数据不离开您的设备，适合对安全要求极高的场景" data-en="Completely local operation, data never leaves your device, suitable for high-security requirement scenarios">完全本地化运行，数据不离开您的设备，适合对安全要求极高的场景</span>
                     </div>
                     <ul class="deployment-option-specs">
                         <li>RTX 3080/4090 (24GB显存) 或同等级显卡</li>
@@ -2312,10 +2312,10 @@ python test_connection.py --mode hybrid</code></pre>
                 <div class="deployment-option-card">
                     <div class="deployment-option-title">
                         <i class="fas fa-cloud"></i>
-                        云端部署方案
+                        <span data-zh="云端部署方案" data-en="Cloud Deployment Solution">云端部署方案</span>
                     </div>
                     <div class="deployment-option-desc">
-                        所有计算在云端完成，零本地资源占用，支持强大的并发处理能力
+                        <span data-zh="所有计算在云端完成，零本地资源占用，支持强大的并发处理能力" data-en="All computation completed in the cloud, zero local resource usage, supports powerful concurrent processing capabilities">所有计算在云端完成，零本地资源占用，支持强大的并发处理能力</span>
                     </div>
                     <ul class="deployment-option-specs">
                         <li>AWS EC2 p4d.24xlarge / Google Cloud A2</li>
@@ -2329,10 +2329,10 @@ python test_connection.py --mode hybrid</code></pre>
                 <div class="deployment-option-card">
                     <div class="deployment-option-title">
                         <i class="fas fa-exchange-alt"></i>
-                        混合部署方案
+                        <span data-zh="混合部署方案" data-en="Hybrid Deployment Solution">混合部署方案</span>
                     </div>
                     <div class="deployment-option-desc">
-                        平衡安全性和效率的最佳方案，本地执行+云端模型推理
+                        <span data-zh="平衡安全性和效率的最佳方案，本地执行+云端模型推理" data-en="Best solution balancing security and efficiency, local execution + cloud model inference">平衡安全性和效率的最佳方案，本地执行+云端模型推理</span>
                     </div>
                     <ul class="deployment-option-specs">
                         <li>普通办公电脑即可作为客户端</li>
@@ -2346,10 +2346,10 @@ python test_connection.py --mode hybrid</code></pre>
                 <div class="deployment-option-card">
                     <div class="deployment-option-title">
                         <i class="fas fa-rocket"></i>
-                        快速开始方案
+                        <span data-zh="快速开始方案" data-en="Quick Start Solution">快速开始方案</span>
                     </div>
                     <div class="deployment-option-desc">
-                        零配置的体验方案，立即试用AutoGLM AI的强大功能
+                        <span data-zh="零配置的体验方案，立即试用AutoGLM AI的强大功能" data-en="Zero-configuration experience solution, immediately try the powerful features of AutoGLM AI">零配置的体验方案，立即试用AutoGLM AI的强大功能</span>
                     </div>
                     <ul class="deployment-option-specs">
                         <li>无需安装，直接在线体验</li>
@@ -2364,7 +2364,7 @@ python test_connection.py --mode hybrid</code></pre>
             <div class="modal-cta">
                 <a href="#deployment" class="btn-primary" id="scrollToDeployment">
                     <i class="fas fa-book"></i>
-                    查看详细部署教程
+                    <span data-zh="查看详细部署教程" data-en="View Detailed Deployment Tutorial">查看详细部署教程</span>
                 </a>
             </div>
         </div>
