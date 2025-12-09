@@ -1555,10 +1555,10 @@
                     <thead>
                         <tr>
                             <th data-zh="评测维度" data-en="Evaluation Dimension">评测维度</th>
-                            <th>AutoGLM</th>
-                            <th>GPT-4o</th>
-                            <th>Claude 3.5 Sonnet</th>
-                            <th>DeepSeek R1</th>
+                            <th data-zh="AutoGLM" data-en="AutoGLM">AutoGLM</th>
+                            <th data-zh="GPT-4o" data-en="GPT-4o">GPT-4o</th>
+                            <th data-zh="Claude 3.5 Sonnet" data-en="Claude 3.5 Sonnet">Claude 3.5 Sonnet</th>
+                            <th data-zh="DeepSeek R1" data-en="DeepSeek R1">DeepSeek R1</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1570,18 +1570,18 @@
                             <td data-zh="Reasoning Model (逻辑派)" data-en="Reasoning Model (Logic-oriented)">Reasoning Model (逻辑派)</td>
                         </tr>
                         <tr>
-                            <td>VAB-WebArena-Lite</td>
-                            <td class="highlight-cell">55.2%</td>
-                            <td>18.2%</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td data-zh="VAB-WebArena-Lite" data-en="VAB-WebArena-Lite">VAB-WebArena-Lite</td>
+                            <td class="highlight-cell" data-zh="55.2%" data-en="55.2%">55.2%</td>
+                            <td data-zh="18.2%" data-en="18.2%">18.2%</td>
+                            <td data-zh="-" data-en="-">-</td>
+                            <td data-zh="-" data-en="-">-</td>
                         </tr>
                         <tr>
-                            <td>AndroidLab</td>
-                            <td class="highlight-cell">53.6%</td>
-                            <td>31.2%</td>
-                            <td>29.0%</td>
-                            <td>-</td>
+                            <td data-zh="AndroidLab" data-en="AndroidLab">AndroidLab</td>
+                            <td class="highlight-cell" data-zh="53.6%" data-en="53.6%">53.6%</td>
+                            <td data-zh="31.2%" data-en="31.2%">31.2%</td>
+                            <td data-zh="29.0%" data-en="29.0%">29.0%</td>
+                            <td data-zh="-" data-en="-">-</td>
                         </tr>
                         <tr>
                             <td data-zh="执行效率" data-en="Execution Efficiency">执行效率</td>
@@ -2390,11 +2390,8 @@ python test_connection.py --mode hybrid</code></pre>
                 const elements = document.querySelectorAll('[data-zh][data-en]');
                 elements.forEach(element => {
                     const content = currentLang === 'zh' ? element.getAttribute('data-zh') : element.getAttribute('data-en');
-                    if (element.tagName === 'A' || element.tagName === 'BUTTON' || element.tagName === 'SPAN') {
-                        element.textContent = content;
-                    } else if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'LI' || element.tagName === 'DIV') {
-                        element.textContent = content;
-                    }
+                    // Update all element types that have language data attributes
+                    element.textContent = content;
                 });
 
                 // Update elements without data attributes but with class-based translation
