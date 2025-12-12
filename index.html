@@ -31,775 +31,27 @@
     <link rel="alternate" hreflang="zh-CN" href="https://autoglmai.net/">
     <link rel="alternate" hreflang="x-default" href="https://autoglmai.net/">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #FFB366 0%, #FF8C42 50%, #FF6B35 100%);
-            --light-gradient: linear-gradient(135deg, #FFCC99 0%, #FFB366 100%);
-            --dark-bg: #0a0a0a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --accent-orange: #FF8C42;
-            --accent-light: #FFCC99;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --success-color: #4CAF50;
-            --code-bg: rgba(0, 0, 0, 0.8);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-orange);
-        }
-
-        .language-switcher {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 0.25rem;
-        }
-
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            cursor: pointer;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .lang-btn.active {
-            background: var(--primary-gradient);
-            color: white;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-value {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .value-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            min-width: 200px;
-        }
-
-        .value-item i {
-            font-size: 2rem;
-            color: var(--accent-orange);
-            margin-bottom: 1rem;
-        }
-
-        .value-item h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary, .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 140, 66, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent-orange);
-            color: var(--accent-orange);
-        }
-
-        /* Demo Section */
-        .demo-container {
-            margin-top: 3rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .demo-video {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .demo-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
-        }
-
-        .play-btn {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .play-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Pain Points Section */
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .pain-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .pain-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .pain-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--accent-orange);
-        }
-
-        .pain-list {
-            list-style: none;
-            text-align: left;
-        }
-
-        .pain-list li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .pain-list li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent-orange);
-        }
-
-        .solution-message {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Solutions Section */
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .solution-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .solution-content {
-            padding: 2rem;
-        }
-
-        .solution-visual {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .faq-category {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        /* Stats Section */
-        .stats {
-            margin: 3rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.4;
-        }
-
-        /* Tech Details Section */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .tech-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .tech-card:hover {
-            border-color: var(--accent-orange);
-            transform: translateY(-5px);
-        }
-
-        .tech-icon {
-            font-size: 3rem;
-            color: var(--accent-orange);
-            margin-bottom: 1rem;
-        }
-
-        /* Workflow Section */
-        .workflow {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-
-        .workflow-steps {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .workflow-step {
-            flex: 1;
-            min-width: 150px;
-            text-align: center;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        /* Tutorial Section */
-        .deployment-tutorial-content {
-            display: grid;
-            gap: 3rem;
-        }
-
-        .tutorial-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 2rem;
-        }
-
-        .tutorial-step {
-            margin-bottom: 2rem;
-        }
-
-        .tutorial-step h4 {
-            color: var(--accent-orange);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .tutorial-code {
-            background: var(--code-bg);
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.875rem;
-            color: #e0e0e0;
-            overflow-x: auto;
-        }
-
-        .tutorial-code code {
-            display: block;
-            white-space: pre-wrap;
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            color: var(--text-secondary);
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 0 1rem;
-            margin-top: 5rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-orange);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--accent-orange);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .footer-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: var(--dark-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem;
-            max-width: 900px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .deployment-options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .deployment-option-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .deployment-option-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-orange);
-            font-weight: 600;
-        }
-
-        .deployment-option-desc {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .deployment-option-specs {
-            list-style: none;
-            text-align: left;
-        }
-
-        .deployment-option-specs li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 1.5rem;
-            font-size: 0.875rem;
-        }
-
-        .deployment-option-specs li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success-color);
-        }
-
-        .modal-cta {
-            text-align: center;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-value {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .solution-item {
-                grid-template-columns: 1fr;
-            }
-
-            .workflow-steps {
-                flex-direction: column;
-            }
-
-            .deployment-options-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Icons for tech cards */
-        .icon-microchip::before { content: '🔬'; }
-        .icon-code-branch::before { content: '⚙️'; }
-        .icon-chart-line::before { content: '📈'; }
-        .icon-cpu::before { content: '💻'; }
-        .icon-shield::before { content: '🛡️'; }
-        .icon-cloud::before { content: '☁️'; }
-        .icon-laptop::before { content: '💻'; }
-        .icon-exchange-alt::before { content: '🔄'; }
-        .icon-github::before { content: '🐙'; }
-        .icon-cogs::before { content: '⚙️'; }
-        .icon-docker::before { content: '🐳'; }
-        .icon-rocket::before { content: '🚀'; }
-    </style>
+    <!-- Performance Optimization: Preconnect hints -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Load only essential Font Awesome icons to reduce unused CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+    </noscript>
+    <!-- Critical CSS for above-the-fold content -->
+    <style>@font-face{font-family:'Font Awesome 6 Free';font-display:swap}@font-face{font-family:'Font Awesome 6 Brands';font-display:swap}:root{--primary-gradient:linear-gradient(135deg,#FFB366 0%,#FF8C42 50%,#FF6B35 100%);--light-gradient:linear-gradient(135deg,#FFCC99 0%,#FFB366 100%);--dark-bg:#0a0a0a;--card-bg:rgba(255,255,255,.05);--text-primary:#fff;--text-secondary:#b0b0b0;--accent-orange:#FF8C42;--accent-light:#FFCC99;--border-color:rgba(255,255,255,.1);--success-color:#4CAF50;--code-bg:rgba(0,0,0,.8)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--dark-bg);color:var(--text-primary);line-height:1.6;overflow-x:hidden}.navbar{position:fixed;top:0;width:100%;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);z-index:1000;padding:1rem 0}.nav-container{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.8rem;font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}.nav-links{display:flex;list-style:none;gap:2rem;align-items:center}.nav-links a{color:var(--text-secondary);text-decoration:none;font-weight:500;transition:color .3s ease}.nav-links a:hover{color:var(--accent-orange)}.language-switcher{display:flex;gap:.5rem;background:rgba(255,255,255,.1);border-radius:25px;padding:.25rem}.lang-btn{padding:.5rem 1rem;border:none;background:transparent;color:var(--text-secondary);cursor:pointer;border-radius:20px;transition:all .3s ease;font-weight:500}.lang-btn.active{background:var(--primary-gradient);color:#fff}.hero{padding:8rem 2rem 4rem;text-align:center;position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(255,140,66,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,107,53,.1) 0%,transparent 50%);z-index:-1}.hero-content{max-width:1200px;margin:0 auto;position:relative;z-index:1}.hero-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:1.5rem;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}.hero-subtitle{font-size:1.25rem;color:var(--text-secondary);margin-bottom:3rem;max-width:800px;margin-left:auto;margin-right:auto}.hero-value{display:flex;justify-content:center;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}.value-item{background:rgba(255,255,255,.05);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;text-align:center;min-width:200px}.value-item i{font-size:2rem;color:var(--accent-orange);margin-bottom:1rem}.value-item h4{font-size:1rem;font-weight:600;margin-bottom:.5rem}.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}.btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all .3s ease;border:none;cursor:pointer}.btn-primary{background:var(--primary-gradient);color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(255,140,66,.3)}.btn-secondary{background:transparent;color:var(--text-primary);border:2px solid var(--border-color)}.btn-secondary:hover{border-color:var(--accent-orange);color:var(--accent-orange)}.demo-container{margin-top:3rem;background:rgba(255,255,255,.02);border:1px solid var(--border-color);border-radius:16px;padding:2rem;max-width:900px;margin-left:auto;margin-right:auto}.demo-video{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:rgba(0,0,0,.5)}.demo-placeholder{display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,rgba(255,140,66,.1),rgba(255,107,53,.05))}.play-btn{width:80px;height:80px;background:var(--primary-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s ease;border:none;color:#fff;font-size:2rem}.play-btn:hover{transform:scale(1.1)}.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.fade-in.visible{opacity:1;transform:translateY(0)}@media (max-width:768px){.nav-links{display:none}.hero-value{flex-direction:column;gap:1rem}.hero-buttons{flex-direction:column;align-items:center}}</style>
+    
+    <!-- Non-critical CSS will be loaded asynchronously -->
+    <link rel="preload" href="styles/non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/non-critical.css"></noscript>
+    
+    <!-- Performance optimization: DNS prefetch for future navigation -->
+    <link rel="dns-prefetch" href="//github.com">
 </head>
 <body>
     <!-- Navigation -->
@@ -823,8 +75,10 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Main Content -->
+    <main role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
         <div class="hero-content fade-in">
             <h1 class="hero-title" data-zh="AutoGLM AI - 一键解锁 AI 手机！简单易用，安全放心" data-en="AutoGLM AI - Unlock Your AI Phone! Easy to Use, Safe & Secure">AutoGLM AI - 一键解锁 AI 手机！简单易用，安全放心</h1>
             <p class="hero-subtitle" data-zh="智谱AI开源的革命性AI智能体框架，支持本地化私有部署，数据完全可控。基于GLM-Z1-9B轻量级模型，让您的手机拥有强大的AI能力，简单操作即可完成复杂任务" data-en="Revolutionary open-source AI agent framework by Zhipu AI, supporting local private deployment with complete data control. Based on GLM-Z1-9B lightweight model, giving your phone powerful AI capabilities to complete complex tasks with simple operations">智谱AI开源的革命性AI智能体框架，支持本地化私有部署，数据完全可控。基于GLM-Z1-9B轻量级模型，让您的手机拥有强大的AI能力，简单操作即可完成复杂任务</p>
@@ -832,19 +86,19 @@
             <div class="hero-value">
                 <div class="value-item">
                     <i class="fas fa-lock"></i>
-                    <h4 data-zh="AutoGLM AI完全开源免费" data-en="AutoGLM AI Completely Open Source & Free">AutoGLM AI完全开源免费</h4>
+                    <h3 data-zh="AutoGLM AI完全开源免费" data-en="AutoGLM AI Completely Open Source & Free">AutoGLM AI完全开源免费</h3>
                 </div>
                 <div class="value-item">
                     <i class="fas fa-shield-alt"></i>
-                    <h4 data-zh="AutoGLM AI本地部署数据安全" data-en="AutoGLM AI Local Deployment Data Security">AutoGLM AI本地部署数据安全</h4>
+                    <h3 data-zh="AutoGLM AI本地部署数据安全" data-en="AutoGLM AI Local Deployment Data Security">AutoGLM AI本地部署数据安全</h3>
                 </div>
                 <div class="value-item">
                     <i class="fas fa-user-lock"></i>
-                    <h4 data-zh="AutoGLM AI私有化自主可控" data-en="AutoGLM AI Private & Self-Controlled">AutoGLM AI私有化自主可控</h4>
+                    <h3 data-zh="AutoGLM AI私有化自主可控" data-en="AutoGLM AI Private & Self-Controlled">AutoGLM AI私有化自主可控</h3>
                 </div>
                 <div class="value-item">
                     <i class="fas fa-code"></i>
-                    <h4 data-zh="AutoGLM AI开发者友好定制" data-en="AutoGLM AI Developer-Friendly Customization">AutoGLM AI开发者友好定制</h4>
+                    <h3 data-zh="AutoGLM AI开发者友好定制" data-en="AutoGLM AI Developer-Friendly Customization">AutoGLM AI开发者友好定制</h3>
                 </div>
             </div>
 
@@ -862,8 +116,8 @@
             <div class="demo-container" id="demo">
                 <div class="demo-video">
                     <div class="demo-placeholder">
-                        <button class="play-btn">
-                            <i class="fas fa-play"></i>
+                        <button class="play-btn" aria-label="播放演示视频" data-aria-label-en="Play demo video">
+                            <i class="fas fa-play" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
@@ -884,32 +138,32 @@
                 <div class="pain-card fade-in">
                     <div class="pain-icon">🔒</div>
                     <h3 data-zh="云端AI服务数据安全担忧" data-en="Cloud AI Service Data Security Concerns">云端AI服务数据安全担忧</h3>
-                    <div class="pain-list">
+                    <ul class="pain-list">
                         <li data-zh="担心敏感数据泄露到第三方服务器" data-en="Worry about sensitive data leaking to third-party servers">担心敏感数据泄露到第三方服务器</li>
                         <li data-zh="无法控制数据流向和存储位置" data-en="Unable to control data flow and storage locations">无法控制数据流向和存储位置</li>
                         <li data-zh="企业合规要求严格，无法使用公有云AI" data-en="Strict enterprise compliance requirements prevent using public cloud AI">企业合规要求严格，无法使用公有云AI</li>
-                    </div>
+                    </ul>
                 </div>
 
                 <div class="pain-card fade-in">
                     <div class="pain-icon">💰</div>
                     <h3 data-zh="AI服务成本高昂不可控" data-en="High and Uncontrollable AI Service Costs">AI服务成本高昂不可控</h3>
-                    <div class="pain-list">
+                    <ul class="pain-list">
                         <li data-zh="按token计费，大规模应用成本暴增" data-en="Token-based billing leads to soaring costs for large-scale applications">按token计费，大规模应用成本暴增</li>
                         <li data-zh="厂商锁定，迁移成本高" data-en="Vendor lock-in with high migration costs">厂商锁定，迁移成本高</li>
                         <li data-zh="缺乏定价透明度，难以预算规划" data-en="Lack of pricing transparency makes budgeting difficult">缺乏定价透明度，难以预算规划</li>
-                    </div>
+                    </ul>
                 </div>
 
                 <div class="pain-card fade-in">
                     <div class="pain-icon">⚙️</div>
                     <h3 data-zh="定制化需求难以满足" data-en="Customization Needs Difficult to Meet">定制化需求难以满足</h3>
-                    <div class="pain-list">
+                    <ul class="pain-list">
                         <li data-zh="标准API功能有限，无法深度定制" data-en="Standard API functionality limited, deep customization not possible">标准API功能有限，无法深度定制</li>
                         <li data-zh="无法集成到现有系统和工作流" data-en="Cannot integrate into existing systems and workflows">无法集成到现有系统和工作流</li>
                         <li data-zh="缺乏模型微调和优化能力" data-en="Lack of model fine-tuning and optimization capabilities">缺乏模型微调和优化能力</li>
                         <li data-zh="特定领域知识无法有效融入" data-en="Unable to effectively integrate domain-specific knowledge">特定领域知识无法有效融入</li>
-                    </div>
+                    </ul>
                 </div>
             </div>
 
@@ -1793,6 +1047,7 @@ autoglm backup --path ~/autoglm-backup</code>
             </div>
         </div>
     </footer>
+    </main>
 
     <!-- Deployment Modal -->
     <div class="modal" id="deploymentModal">
