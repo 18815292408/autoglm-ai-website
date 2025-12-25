@@ -36,7 +36,7 @@ Disallow: /sitemap.xml.bak
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://autoglm.com/sitemap.xml
+Sitemap: https://autoglmai.net/sitemap.xml
 
 # Allow specific bots with special privileges
 User-agent: Googlebot
