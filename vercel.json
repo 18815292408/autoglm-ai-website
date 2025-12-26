@@ -12,17 +12,6 @@
       "has": [
         {
           "type": "host",
-          "value": "www.autoglmai.net"
-        }
-      ],
-      "destination": "https://autoglmai.net/:path*",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
           "value": "autoglm.com"
         }
       ],
