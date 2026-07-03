@@ -474,3 +474,4 @@
 .icon-cogs::before { content: '⚙️'; }
 .icon-docker::before { content: '🐳'; }
 .icon-rocket::before { content: '🚀'; }
+.icon-palette::before { content: '🎨'; }
