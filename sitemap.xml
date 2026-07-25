@@ -5,31 +5,30 @@
 
     <!-- Main AutoGLM AI Homepage (English) -->
     <url>
-        <loc>https://autoglmai.net/</loc>
-        <lastmod>2026-07-04</lastmod>
+        <loc>https://www.autoglmai.net/</loc>
+        <lastmod>2026-07-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://autoglmai.net/" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://autoglmai.net/index-bilingual.html" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://autoglmai.net/" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.autoglmai.net/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.autoglmai.net/" />
     </url>
 
     <url>
-        <loc>https://autoglmai.net/guides/open-source-autoglm-phone-9b.html</loc>
+        <loc>https://www.autoglmai.net/guides/open-source-autoglm-phone-9b.html</loc>
         <lastmod>2026-07-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://autoglmai.net/guides/autoglm-security-prompt-injection.html</loc>
+        <loc>https://www.autoglmai.net/guides/autoglm-security-prompt-injection.html</loc>
         <lastmod>2026-07-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://autoglmai.net/guides/autoglm-phone-9b-vs-multilingual.html</loc>
+        <loc>https://www.autoglmai.net/guides/autoglm-phone-9b-vs-multilingual.html</loc>
         <lastmod>2026-07-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

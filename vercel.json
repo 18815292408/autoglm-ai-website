@@ -9,8 +9,19 @@
   "redirects": [
     {
       "source": "/index-bilingual.html",
-      "destination": "/",
+      "destination": "https://www.autoglmai.net/",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "autoglmai.net"
+        }
+      ],
+      "destination": "https://www.autoglmai.net/:path*",
+      "statusCode": 301
     },
     {
       "source": "/:path*",
@@ -20,7 +31,7 @@
           "value": "autoglm.com"
         }
       ],
-      "destination": "https://autoglmai.net/:path*",
+      "destination": "https://www.autoglmai.net/:path*",
       "statusCode": 301
     },
     {
@@ -31,7 +42,7 @@
           "value": "www.autoglm.com"
         }
       ],
-      "destination": "https://autoglmai.net/:path*",
+      "destination": "https://www.autoglmai.net/:path*",
       "statusCode": 301
     }
   ],

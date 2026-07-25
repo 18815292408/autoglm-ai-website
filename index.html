@@ -1,1471 +1,199 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">AutoGLM Open Source Guide | Phone Agent Deployment and Safety</title>
-    <meta name="description" id="pageDescription" content="Independent AutoGLM resource hub with practical deployment, model-selection, and safety guidance for the open-source phone agent framework.">
-    <meta name="keywords" content="AutoGLM, AutoGLM AI, AutoGLM open source, AutoGLM function calling, AutoGLM desktop automation, AutoGLM document processing, AutoGLM API, AutoGLM GitHub, Zhipu AI, local AI agent, private AI deployment, AutoGLM tutorial, AutoGLM mobile assistant, AutoGLM automation tools, AutoGLM hybrid deployment, AutoGLM technical architecture, AutoGLM deployment guide, AutoGLM performance, AutoGLM applications, AutoGLM enterprise solutions, AutoGLM screen understanding, AutoGLM task execution, AutoGLM API integration, GLM-Z1-9B, MobileRL, AutoGLM Docker, AutoGLM Kubernetes, AutoGLM open source project, AutoGLM lightweight model, function calling AI, desktop automation AI, document processing AI">
-    <meta name="author" content="AutoGLM AI Guides">
+    <title>AutoGLM: Open-Source Phone Agent Framework</title>
+    <meta name="description" content="AutoGLM is an open-source phone agent framework for observable Android and HarmonyOS automation. Explore deployment, model selection, and safe device control.">
     <meta name="robots" content="index, follow">
-    
-    <!-- Google Analytics Verification - Force Rebuild -->
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T91JX02FZD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-T91JX02FZD');
-    </script>
-    
-    <!-- Open Graph / Facebook -->
+    <meta name="author" content="AutoGLM AI Guides">
+    <meta name="theme-color" content="#104750">
+    <link rel="canonical" href="https://www.autoglmai.net/">
+    <link rel="alternate" hreflang="en" href="https://www.autoglmai.net/">
+    <link rel="alternate" hreflang="x-default" href="https://www.autoglmai.net/">
+    <link rel="icon" type="image/svg+xml" href="/images/autoglm-phone-agent-workflow.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://github.com">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://autoglmai.net/">
-    <meta property="og:title" content="AutoGLM Open Source | Free Local AI Agent | Function Calling & Desktop Automation">
-    <meta property="og:description" content="Independent AutoGLM resource hub with deployment, model-selection, and safety guidance for the open-source phone agent framework.">
-    <meta property="og:image" content="https://autoglmai.net/images/autoglm-open-source-og.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://autoglmai.net/">
-    <meta property="twitter:title" content="AutoGLM Open Source | Free Local AI Agent | Function Calling & Desktop Automation">
-    <meta property="twitter:description" content="Independent AutoGLM resource hub with deployment, model-selection, and safety guidance for the open-source phone agent framework.">
-    <meta property="twitter:image" content="https://autoglmai.net/images/autoglm-open-source-twitter.jpg">
-    
-    <!-- Schema.org Structured Data -->
+    <meta property="og:url" content="https://www.autoglmai.net/">
+    <meta property="og:title" content="AutoGLM: Open-Source Phone Agent Framework">
+    <meta property="og:description" content="Explore practical deployment, model selection, and safer device control for the open-source AutoGLM phone agent framework.">
+    <meta property="og:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="760">
+    <meta property="og:image:alt" content="AutoGLM phone agent workflow with an observed device action and an approval checkpoint">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AutoGLM: Open-Source Phone Agent Framework">
+    <meta name="twitter:description" content="Practical AutoGLM deployment, model selection, and safer device control guidance.">
+    <meta name="twitter:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "AutoGLM",
-      "operatingSystem": "Windows, Linux, macOS, Android",
-      "applicationCategory": "BusinessApplication, DeveloperApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "Independent resource hub for the AutoGLM open-source phone agent framework.",
-      "author": {
-        "@type": "Organization",
-        "name": "AutoGLM AI Guides"
-      },
-      "featureList": "Function Calling, Desktop Automation, Document Processing, Mobile Control, API Integration",
-      "softwareVersion": "1.0",
+      "description": "An open-source phone agent framework for observable Android and HarmonyOS device automation.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Android, HarmonyOS, Linux, macOS, Windows",
       "downloadUrl": "https://github.com/zai-org/Open-AutoGLM",
-      "license": "https://github.com/zai-org/Open-AutoGLM/blob/main/LICENSE"
+      "license": "https://github.com/zai-org/Open-AutoGLM/blob/main/LICENSE",
+      "author": {"@type": "Organization", "name": "Z.ai"},
+      "publisher": {"@type": "Organization", "name": "AutoGLM AI Guides"}
     }
     </script>
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="application-name" content="AutoGLM">
-    <meta name="apple-mobile-web-app-title" content="AutoGLM">
-    <meta name="theme-color" content="#FF8C42">
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF8C42'/%3E%3Cstop offset='100%25' style='stop-color:%23FF6B35'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Ctext x='50' y='65' font-family='Arial, sans-serif' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
-    
-    <!-- SEO Optimization -->
-    <link rel="canonical" href="https://autoglmai.net/">
-    <link rel="alternate" hreflang="en" href="https://autoglmai.net/">
-    <link rel="alternate" hreflang="zh-CN" href="https://autoglmai.net/">
-    <link rel="alternate" hreflang="x-default" href="https://autoglmai.net/">
-    
-    <!-- Performance Optimization: Preconnect hints -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Load only essential Font Awesome icons to reduce unused CSS -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
-    </noscript>
-    <!-- Critical CSS for above-the-fold content -->
-    <style>@font-face{font-family:'Font Awesome 6 Free';font-display:swap}@font-face{font-family:'Font Awesome 6 Brands';font-display:swap}:root{--primary-gradient:linear-gradient(135deg,#FFB366 0%,#FF8C42 50%,#FF6B35 100%);--light-gradient:linear-gradient(135deg,#FFCC99 0%,#FFB366 100%);--dark-bg:#0a0a0a;--card-bg:rgba(255,255,255,.05);--text-primary:#fff;--text-secondary:#b0b0b0;--accent-orange:#FF8C42;--accent-light:#FFCC99;--border-color:rgba(255,255,255,.1);--success-color:#4CAF50;--code-bg:rgba(0,0,0,.8)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--dark-bg);color:var(--text-primary);line-height:1.6;overflow-x:hidden}.navbar{position:fixed;top:0;width:100%;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);z-index:1000;padding:1rem 0}.nav-container{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.8rem;font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}.nav-links{display:flex;list-style:none;gap:2rem;align-items:center}.nav-links a{color:var(--text-secondary);text-decoration:none;font-weight:500;transition:color .3s ease}.nav-links a:hover{color:var(--accent-orange)}.language-switcher{display:flex;gap:.5rem;background:rgba(255,255,255,.1);border-radius:25px;padding:.25rem}.lang-btn{padding:.5rem 1rem;border:none;background:transparent;color:var(--text-secondary);cursor:pointer;border-radius:20px;transition:all .3s ease;font-weight:500}.lang-btn.active{background:var(--primary-gradient);color:#fff}.hero{padding:9rem 2rem 4rem;text-align:left;position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(255,140,66,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,107,53,.1) 0%,transparent 50%);z-index:-1}.hero-content{max-width:1300px;margin:0 auto;position:relative;z-index:1}.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;align-items:center}.hero-left{display:flex;flex-direction:column;gap:1rem}.hero-eyebrow{font-size:.95rem;color:var(--accent-light);letter-spacing:.02em;text-transform:uppercase;font-weight:700}.hero-title{font-size:clamp(2.6rem,5vw,4rem);font-weight:900;margin-bottom:.75rem;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}.hero-subtitle{font-size:1.1rem;color:var(--text-secondary);margin-bottom:1rem;max-width:820px}.hero-meta{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0 1.5rem}.meta-chip{padding:.65rem 1rem;border:1px solid var(--border-color);border-radius:999px;background:rgba(255,255,255,.04);font-size:.95rem;color:var(--text-primary)}.hero-buttons{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:flex-start}.btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:700;transition:all .3s ease;border:none;cursor:pointer}.btn-primary{background:var(--primary-gradient);color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(255,140,66,.3)}.btn-secondary{background:transparent;color:var(--text-primary);border:2px solid var(--border-color)}.btn-secondary:hover{border-color:var(--accent-orange);color:var(--accent-orange)}.hero-keywords{font-size:.95rem;color:var(--text-secondary);margin-top:.5rem}.quickstart-card{background:rgba(255,255,255,.04);border:1px solid var(--border-color);border-radius:16px;padding:1.5rem;box-shadow:0 12px 30px rgba(0,0,0,.25);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:1rem}.quickstart-header{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1.05rem}.quickstart-badge{padding:.35rem .75rem;border-radius:12px;background:rgba(255,140,66,.15);color:var(--accent-orange);font-size:.9rem;border:1px solid rgba(255,140,66,.25)}.quickstart-step{display:flex;flex-direction:column;gap:.45rem}.step-title{font-weight:700;font-size:1rem;color:var(--text-primary)}.code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:.92rem;line-height:1.45;white-space:pre-wrap;word-break:break-word}.quickstart-note{font-size:.9rem;color:var(--text-secondary)}.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.fade-in.visible{opacity:1;transform:translateY(0)}@media (max-width:768px){.nav-links{display:none}.hero{padding:7rem 1.25rem 3rem;min-height:auto}.hero-buttons{flex-direction:column;align-items:flex-start}.quickstart-card{padding:1.25rem}}</style>
-    
-    <link rel="stylesheet" href="styles/non-critical.css">
-    <link rel="stylesheet" href="styles/home-redesign.css">
-    
-    <!-- Performance optimization: DNS prefetch for future navigation -->
-    <link rel="dns-prefetch" href="//github.com">
+    <link rel="stylesheet" href="/styles/home-redesign.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">AutoGLM AI</a>
-            <ul class="nav-links">
-                <li><a href="#features">Capabilities</a></li>
-                <li><a href="#deep-tech">Architecture</a></li>
-                <li><a href="#deployment-tutorial">Deployment</a></li>
-                <li><a href="guides/open-source-autoglm-phone-9b.html">Guides</a></li>
-            </ul>
+    <header class="site-header">
+        <div class="shell nav-wrap">
+            <a class="brand" href="/" aria-label="AutoGLM AI Guides home"><span class="brand-mark" aria-hidden="true"></span>AutoGLM <small>AI Guides</small></a>
+            <nav aria-label="Primary navigation">
+                <a href="#overview">Overview</a>
+                <a href="#deployment">Deployment</a>
+                <a href="#resources">Guides</a>
+                <a class="nav-project" href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project <span aria-hidden="true">↗</span></a>
+            </nav>
         </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main role="main">
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="home-hero">
-                <div class="home-hero-copy">
-                    <div class="hero-eyebrow">Open phone agent framework</div>
-                    <h1 class="hero-title">Build a phone agent you can inspect.</h1>
-                    <p class="hero-subtitle">AutoGLM turns a natural-language task into observable Android or HarmonyOS actions. Run it on your own test device, connect your preferred model endpoint, and keep a person in the loop for sensitive steps.</p>
-                    <div class="hero-buttons">
-                        <a class="btn-primary" href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Open the project</a>
-                        <a class="btn-secondary" href="guides/open-source-autoglm-phone-9b.html"><i class="fas fa-book-open"></i> Read the deployment guide</a>
+    </header>
+    <main>
+        <section class="hero" aria-labelledby="page-title">
+            <div class="shell hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Independent developer resource</p>
+                    <h1 id="page-title">AutoGLM: Open-Source Phone Agent Framework</h1>
+                    <p class="lede">AutoGLM turns a plain-language task into observable Android or HarmonyOS device actions. It is a developer framework for testing, supervising, and improving phone automation, not a promise of unattended access to every app.</p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="/guides/open-source-autoglm-phone-9b.html">Read the deployment guide <span aria-hidden="true">→</span></a>
+                        <a class="button secondary" href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">View AutoGLM on GitHub <span aria-hidden="true">↗</span></a>
                     </div>
-                    <div class="hero-notes"><span>Android via ADB</span><span>HarmonyOS via HDC</span><span>Human approval for sensitive actions</span></div>
-                    <div class="hero-utility" aria-label="AutoGLM framework overview">
-                        <div class="utility-item"><strong>01 / PERCEIVE</strong>Interpret the active screen.</div>
-                        <div class="utility-item"><strong>02 / PLAN</strong>Choose the next bounded action.</div>
-                        <div class="utility-item"><strong>03 / VERIFY</strong>Review outcomes before proceeding.</div>
-                    </div>
+                    <ul class="hero-notes" aria-label="AutoGLM highlights">
+                        <li>Screen-aware actions</li>
+                        <li>ADB and HDC device control</li>
+                        <li>Human approval for sensitive steps</li>
+                    </ul>
                 </div>
-                <figure class="agent-preview">
-                    <div class="preview-bar"><span>DEVICE / TEST-ANDROID</span><span class="preview-status">OBSERVABLE RUN</span></div>
-                    <div class="device-screen" aria-label="English Android developer options preview">
-                        <div class="device-title">Developer options</div>
-                        <div class="device-row"><div><strong>USB debugging</strong><span>Allow ADB access for this test device</span></div><span class="toggle-on" aria-hidden="true"></span></div>
-                        <div class="device-row"><div><strong>Wireless debugging</strong><span>Off outside the trusted network</span></div><span class="toggle-off" aria-hidden="true"></span></div>
-                        <div class="device-row"><div><strong>Install via USB</strong><span>Requires confirmation</span></div><span class="toggle-on" aria-hidden="true"></span></div>
-                    </div>
-                    <figcaption class="action-trace"><strong>task</strong> Open Settings and review device permissions <span>-></span> wait for approval</figcaption>
+                <figure class="workflow-figure">
+                    <img src="/images/autoglm-phone-agent-workflow.png" width="1200" height="760" alt="AutoGLM phone agent workflow showing a planned Android device action and a human approval checkpoint">
+                    <figcaption>Illustration of an observable AutoGLM task loop: inspect, plan, act, and verify.</figcaption>
                 </figure>
-            </div>
-            <div class="hero-content fade-in">
-                <div class="hero-grid">
-                    <div class="hero-left">
-                        <div class="hero-eyebrow" data-zh="🔥 官方开源 · 完全免费 · 超越GPT-4o性能160%" data-en="🔥 Official Open Source · Completely Free · Outperforms GPT-4o by 160%">🔥 官方开源 · 完全免费 · 超越GPT-4o性能160%</div>
-                        <h1 class="hero-title" data-zh="🚀 AutoGLM：5分钟在本地跑起你的AI智能体" data-en="🚀 AutoGLM: Run Your AI Agent Locally in 5 Minutes">🚀 AutoGLM：5分钟在本地跑起你的AI智能体</h1>
-                        <p class="hero-subtitle" data-zh="📱 自动刷抖音 🛒 智能购物助手 💼 办公自动化 - 完全免费，数据不离开设备，一键安装使用"
-                            data-en="📱 Auto-scroll TikTok 🛒 Smart Shopping Assistant 💼 Office Automation - Completely free, data stays on device, one-click install">
-                            📱 自动刷抖音 🛒 智能购物助手 💼 办公自动化 - 完全免费，数据不离开设备，一键安装使用
-                        </p>
-
-                        <!-- 关键用户意图优化 -->
-                        <div class="user-intent-section" style="background: rgba(255,140,66,0.1); border: 1px solid rgba(255,140,66,0.3); border-radius: 12px; padding: 1rem; margin: 1rem 0;">
-                            <div style="font-weight: bold; margin-bottom: 0.5rem; color: #FF8C42;" data-zh="🎯 您正在搜索？" data-en="🎯 What are you searching for?">🎯 您正在搜索？</div>
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                <span class="intent-tag" style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem;" data-zh="open auto glm 开源" data-en="open auto glm open source">open auto glm 开源</span>
-                                <span class="intent-tag" style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem;" data-zh="autoglm 免费下载" data-en="autoglm free download">autoglm 免费下载</span>
-                                <span class="intent-tag" style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem;" data-zh="本地AI智能体" data-en="local AI agent">本地AI智能体</span>
-                                <span class="intent-tag" style="background: rgba(255,255,255,0.1); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem;" data-zh="手机自动化工具" data-en="phone automation tool">手机自动化工具</span>
-                                <span class="intent-tag" style="background: rgba(255,140,66,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem; color: var(--accent-orange); font-weight: 600;" data-zh="function calling" data-en="function calling">function calling</span>
-                                <span class="intent-tag" style="background: rgba(255,140,66,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem; color: var(--accent-orange); font-weight: 600;" data-zh="desktop automation" data-en="desktop automation">desktop automation</span>
-                                <span class="intent-tag" style="background: rgba(255,140,66,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem; color: var(--accent-orange); font-weight: 600;" data-zh="document processing" data-en="document processing">document processing</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-meta">
-                            <div class="meta-chip" data-zh="✅ 完全免费" data-en="✅ Completely Free">✅ 完全免费</div>
-                            <div class="meta-chip" data-zh="🔒 数据私有" data-en="🔒 Private Data">🔒 数据私有</div>
-                            <div class="meta-chip" data-zh="⚡ 5分钟上手" data-en="⚡ 5-min Setup">⚡ 5分钟上手</div>
-                            <div class="meta-chip" data-zh="📱 手机+电脑" data-en="📱 Phone + PC">📱 手机+电脑</div>
-                        </div>
-
-                        <div class="hero-buttons">
-                            <button class="btn-primary" onclick="window.location.href='https://github.com/zai-org/Open-AutoGLM'" style="font-size: 1.1rem; padding: 1.2rem 2rem;">
-                                <i class="fas fa-download"></i>
-                                <span data-zh="🚀 立即免费下载" data-en="🚀 Download Free Now">🚀 立即免费下载</span>
-                            </button>
-                            <button class="btn-secondary" onclick="showDeploymentModal()" style="font-size: 1.1rem; padding: 1.2rem 2rem;">
-                                <i class="fas fa-play-circle"></i>
-                                <span data-zh="⚡ 在线演示体验" data-en="⚡ Try Live Demo">⚡ 在线演示体验</span>
-                            </button>
-                        </div>
-
-                        <div class="trust-indicators" style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                                <div style="text-align: center;">
-                                    <div style="font-size: 1.2rem; font-weight: bold; color: #4CAF50;">55.2%</div>
-                                    <div style="font-size: 0.8rem; color: var(--text-secondary);" data-zh="网页任务成功率" data-en="Web Task Success Rate">网页任务成功率</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 1.2rem; font-weight: bold; color: #4CAF50;">53.6%</div>
-                                    <div style="font-size: 0.8rem; color: var(--text-secondary);" data-zh="手机控制成功率" data-en="Phone Control Success Rate">手机控制成功率</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 1.2rem; font-weight: bold; color: #FF8C42;">160%</div>
-                                    <div style="font-size: 0.8rem; color: var(--text-secondary);" data-zh="超越GPT-4o" data-en="Better than GPT-4o">超越GPT-4o</div>
-                                </div>
-                                <div style="text-align: center;">
-                                    <div style="font-size: 1.2rem; font-weight: bold; color: #4CAF50;">100%</div>
-                                    <div style="font-size: 0.8rem; color: var(--text-secondary);" data-zh="开源免费" data-en="Open Source & Free">开源免费</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="hero-right" aria-label="AutoGLM Use Cases">
-                        <div class="quickstart-card">
-                            <div class="quickstart-header">
-                                <span data-zh="🎯 AutoGLM能为您做什么？" data-en="🎯 What can AutoGLM do for you?">🎯 AutoGLM能为您做什么？</span>
-                                <span class="quickstart-badge" data-zh="真实场景应用" data-en="Real-world Applications">真实场景应用</span>
-                            </div>
-
-                            <!-- 针对长尾关键词的内容优化 -->
-                            <div class="use-cases-grid" style="display: grid; gap: 1rem; margin-bottom: 1rem;">
-                                <div class="use-case-item" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border-left: 3px solid #FF8C42;">
-                                    <div style="font-weight: bold; margin-bottom: 0.5rem; color: #FF8C42;">
-                                        📱 <span data-zh="手机自动化" data-en="Phone Automation">手机自动化</span>
-                                    </div>
-                                    <div style="font-size: 0.9rem; color: var(--text-secondary);" data-zh="自动刷短视频、智能回复消息、批量处理任务" data-en="Auto-scroll short videos, smart reply to messages, batch process tasks">
-                                        自动刷短视频、智能回复消息、批量处理任务
-                                    </div>
-                                </div>
-
-                                <div class="use-case-item" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border-left: 3px solid #4CAF50;">
-                                    <div style="font-weight: bold; margin-bottom: 0.5rem; color: #4CAF50;">
-                                        🌐 <span data-zh="网页智能助手" data-en="Web Smart Assistant">网页智能助手</span>
-                                    </div>
-                                    <div style="font-size: 0.9rem; color: var(--text-secondary);" data-zh="自动填写表单、比价购物、信息抓取整理" data-en="Auto-fill forms, price comparison shopping, data extraction and organization">
-                                        自动填写表单、比价购物、信息抓取整理
-                                    </div>
-                                </div>
-
-                                <div class="use-case-item" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border-left: 3px solid #2196F3;">
-                                    <div style="font-weight: bold; margin-bottom: 0.5rem; color: #2196F3;">
-                                        💼 <span data-zh="办公效率提升" data-en="Office Efficiency">办公效率提升</span>
-                                    </div>
-                                    <div style="font-size: 0.9rem; color: var(--text-secondary);" data-zh="邮件自动处理、会议安排、报告生成" data-en="Auto email processing, meeting scheduling, report generation">
-                                        邮件自动处理、会议安排、报告生成
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 快速开始步骤简化 -->
-                            <div class="quickstart-step">
-                                <div class="step-title" data-zh="1️⃣ 克隆项目（2分钟）" data-en="1️⃣ Clone Project (2 min)">1️⃣ 克隆项目（2分钟）</div>
-                                <div class="code-block">git clone https://github.com/zai-org/Open-AutoGLM.git<br>cd Open-AutoGLM</div>
-                            </div>
-
-                            <div class="quickstart-step">
-                                <div class="step-title" data-zh="2️⃣ 安装依赖（1分钟）" data-en="2️⃣ Install Dependencies (1 min)">2️⃣ 安装依赖（1分钟）</div>
-                                <div class="code-block">pip install -r requirements.txt</div>
-                            </div>
-
-                            <div class="quickstart-step">
-                                <div class="step-title" data-zh="3️⃣ 启动使用（2分钟）" data-en="3️⃣ Start Using (2 min)">3️⃣ 启动使用（2分钟）</div>
-                                <div class="code-block">python -m autoglm.serve</div>
-                            </div>
-
-                            <!-- 针对不同用户群体的引导 -->
-                            <div class="user-guide-section" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                                <div style="font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
-                                    <div data-zh="💡 根据您的需求选择：" data-en="💡 Choose based on your needs:">💡 根据您的需求选择：</div>
-                                    <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-                                        <span style="background: rgba(255,140,66,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;" data-zh="开发者" data-en="Developers">开发者</span>
-                                        <span style="background: rgba(76,175,80,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;" data-zh="普通用户" data-en="Regular Users">普通用户</span>
-                                        <span style="background: rgba(33,150,243,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;" data-zh="企业用户" data-en="Enterprise Users">企业用户</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Pain Points Section -->
-    <section class="section pain-points" id="features">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="先控制环境，再让智能体执行任务" data-en="Control the environment before you automate it.">先控制环境，再让智能体执行任务</h2>
-            
-            <div class="pain-grid">
-                <div class="pain-card fade-in">
-                    <div class="pain-icon">🔒</div>
-                    <h3 data-zh="云端AI服务数据安全担忧" data-en="Cloud AI Service Data Security Concerns">云端AI服务数据安全担忧</h3>
-                    <ul class="pain-list">
-                        <li data-zh="担心敏感数据泄露到第三方服务器" data-en="Worry about sensitive data leaking to third-party servers">担心敏感数据泄露到第三方服务器</li>
-                        <li data-zh="无法控制数据流向和存储位置" data-en="Unable to control data flow and storage locations">无法控制数据流向和存储位置</li>
-                        <li data-zh="企业合规要求严格，无法使用公有云AI" data-en="Strict enterprise compliance requirements prevent using public cloud AI">企业合规要求严格，无法使用公有云AI</li>
-                    </ul>
-                </div>
-
-                <div class="pain-card fade-in">
-                    <div class="pain-icon">💰</div>
-                    <h3 data-zh="AI服务成本高昂不可控" data-en="High and Uncontrollable AI Service Costs">AI服务成本高昂不可控</h3>
-                    <ul class="pain-list">
-                        <li data-zh="按token计费，大规模应用成本暴增" data-en="Token-based billing leads to soaring costs for large-scale applications">按token计费，大规模应用成本暴增</li>
-                        <li data-zh="厂商锁定，迁移成本高" data-en="Vendor lock-in with high migration costs">厂商锁定，迁移成本高</li>
-                        <li data-zh="缺乏定价透明度，难以预算规划" data-en="Lack of pricing transparency makes budgeting difficult">缺乏定价透明度，难以预算规划</li>
-                    </ul>
-                </div>
-
-                <div class="pain-card fade-in">
-                    <div class="pain-icon">⚙️</div>
-                    <h3 data-zh="定制化需求难以满足" data-en="Customization Needs Difficult to Meet">定制化需求难以满足</h3>
-                    <ul class="pain-list">
-                        <li data-zh="标准API功能有限，无法深度定制" data-en="Standard API functionality limited, deep customization not possible">标准API功能有限，无法深度定制</li>
-                        <li data-zh="无法集成到现有系统和工作流" data-en="Cannot integrate into existing systems and workflows">无法集成到现有系统和工作流</li>
-                        <li data-zh="缺乏模型微调和优化能力" data-en="Lack of model fine-tuning and optimization capabilities">缺乏模型微调和优化能力</li>
-                        <li data-zh="特定领域知识无法有效融入" data-en="Unable to effectively integrate domain-specific knowledge">特定领域知识无法有效融入</li>
-                    </ul>
-                </div>
+        <section class="section" id="overview">
+            <div class="shell section-intro">
+                <p class="eyebrow">The practical model</p>
+                <h2>What AutoGLM does</h2>
+                <p>AutoGLM is built around a simple requirement: every device action should be understandable to the person operating the system. A phone agent receives a task, reads the active screen, decides on a next action, performs that action through the connected device tooling, and checks the result. That loop gives developers a concrete place to inspect failures instead of treating the agent as a black box.</p>
+                <p>For a developer, the value is not simply that a task can be completed. It is that the task can be reproduced against a known device state, revised when an interface changes, and stopped before a sensitive transition. AutoGLM is therefore best approached as an engineering component for supervised mobile workflows. Start with the visible state, the permitted actions, and the evidence an operator needs after each run.</p>
             </div>
-
-            <div class="solution-message" data-zh="这些问题，AutoGLM AI能一次性解决！选择本地部署，自主可控。" data-en="AutoGLM AI solves all these problems at once! Choose local deployment for autonomy and control.">这些问题，AutoGLM AI能一次性解决！选择本地部署，自主可控。</div>
-        </div>
-    </section>
-
-    <!-- Solutions Section -->
-    <section class="section solutions" id="solutions">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="围绕可观察设备操作构建的框架" data-en="A framework built around observable device actions.">围绕可观察设备操作构建的框架</h2>
-            
-            <div class="solution-grid">
-                <div class="solution-item fade-in">
-                    <div class="solution-content">
-                        <div class="faq-category" data-zh="解决方案 1" data-en="Solution 1">解决方案 1</div>
-                        <h3 data-zh="完全本地化部署" data-en="Complete Local Deployment">完全本地化部署</h3>
-                        <p data-zh="AutoGLM AI支持完全本地化部署，所有计算都在您的设备上完成，数据不离开您的控制范围。采用GLM-Z1-9B轻量级模型，在普通硬件上即可高效运行。" data-en="AutoGLM AI supports complete local deployment, all computations are completed on your device, data never leaves your control scope. Using GLM-Z1-9B lightweight model, it can run efficiently on ordinary hardware.">AutoGLM AI支持完全本地化部署，所有计算都在您的设备上完成，数据不离开您的控制范围。采用GLM-Z1-9B轻量级模型，在普通硬件上即可高效运行。</p>
-                    </div>
-                    <div class="solution-visual">
-                        <i class="fas fa-server" style="font-size: 4rem; color: var(--accent-orange);"></i>
-                    </div>
-                </div>
-
-                <div class="solution-item fade-in">
-                    <div class="solution-content">
-                        <div class="faq-category" data-zh="解决方案 2" data-en="Solution 2">解决方案 2</div>
-                        <h3 data-zh="开源免费无厂商锁定" data-en="Open Source Free, No Vendor Lock-in">开源免费无厂商锁定</h3>
-                        <p data-zh="AutoGLM AI采用Apache-2.0和MIT双开源协议，完全免费，支持商业使用。您可以自由修改、分发和集成到自己的项目中，无需担心厂商锁定或隐藏费用。" data-en="AutoGLM AI adopts Apache-2.0 and MIT dual open source licenses, completely free, supporting commercial use. You can freely modify, distribute and integrate into your own projects without worrying about vendor lock-in or hidden fees.">AutoGLM AI采用Apache-2.0和MIT双开源协议，完全免费，支持商业使用。您可以自由修改、分发和集成到自己的项目中，无需担心厂商锁定或隐藏费用。</p>
-                    </div>
-                    <div class="solution-visual">
-                        <i class="fab fa-github" style="font-size: 4rem; color: var(--accent-orange);"></i>
-                    </div>
-                </div>
-
-                <div class="solution-item fade-in">
-                    <div class="solution-content">
-                        <div class="faq-category" data-zh="解决方案 3" data-en="Solution 3">解决方案 3</div>
-                        <h3 data-zh="开发者友好高度定制" data-en="Developer-Friendly, Highly Customizable">开发者友好高度定制</h3>
-                        <p data-zh="AutoGLM AI提供完整的开发工具链和API，支持模型微调、插件开发和系统集成。开发者可以根据特定需求定制智能体行为，集成到现有工作流中。" data-en="AutoGLM AI provides complete development toolchain and APIs, supporting model fine-tuning, plugin development and system integration. Developers can customize agent behavior according to specific needs and integrate into existing workflows.">AutoGLM AI提供完整的开发工具链和API，支持模型微调、插件开发和系统集成。开发者可以根据特定需求定制智能体行为，集成到现有工作流中。</p>
-                    </div>
-                    <div class="solution-visual">
-                        <i class="fas fa-code" style="font-size: 4rem; color: var(--accent-orange);"></i>
-                    </div>
-                </div>
+            <div class="shell capability-grid">
+                <article>
+                    <span class="card-index">01</span>
+                    <h3>Observe the interface</h3>
+                    <p>AutoGLM uses the current screen as task context. This makes it suited to workflows where the next step depends on visible controls, status messages, or a change caused by the prior action.</p>
+                </article>
+                <article>
+                    <span class="card-index">02</span>
+                    <h3>Plan one action at a time</h3>
+                    <p>The agent can break a request into a sequence of device operations. Keep tasks bounded so a developer can evaluate each transition and define a useful stop condition.</p>
+                </article>
+                <article>
+                    <span class="card-index">03</span>
+                    <h3>Control the connected phone</h3>
+                    <p>Android workflows use ADB, while HarmonyOS workflows use HDC. Both paths need authorized device access and should begin on a test device or emulator.</p>
+                </article>
+                <article>
+                    <span class="card-index">04</span>
+                    <h3>Keep people at the boundary</h3>
+                    <p>Authentication, payments, account changes, messages, and data submission are decision points. Design the workflow so an operator can review or take over before those actions happen.</p>
+                </article>
             </div>
+        </section>
 
-            <!-- Performance Stats -->
-            <div class="stats fade-in">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">55.2%</div>
-                        <div class="stat-label" data-zh="VAB-WebArena-Lite网页任务成功率<br>（超越GPT-4o的18.2%，性能提升160%）" data-en="VAB-WebArena-Lite Web Task Success Rate<br>（Exceeds GPT-4o by 18.2%, 160% performance improvement）">VAB-WebArena-Lite网页任务成功率<br>（超越GPT-4o的18.2%，性能提升160%）</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">53.6%</div>
-                        <div class="stat-label" data-zh="AndroidLab移动端控制成功率<br>（领先GPT-4o的31.2%）" data-en="AndroidLab Mobile Control Success Rate<br>（Leads GPT-4o by 31.2%）">AndroidLab移动端控制成功率<br>（领先GPT-4o的31.2%）</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">89.7%</div>
-                        <div class="stat-label" data-zh="国产App通用任务成功率<br>（微信、美团、淘宝等深度优化）" data-en="Domestic App General Task Success Rate<br>（Deep optimization for WeChat, Meituan, Taobao etc.）">国产App通用任务成功率<br>（微信、美团、淘宝等深度优化）</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">96.2%</div>
-                        <div class="stat-label" data-zh="OpenTable订餐场景成功率<br>（标准化流程表现极佳）" data-en="OpenTable Dining Scene Success Rate<br>（Excellent performance in standardized processes）">OpenTable订餐场景成功率<br>（标准化流程表现极佳）</div>
-                    </div>
+        <section class="section section-tint" id="deployment">
+            <div class="shell split-layout">
+                <div>
+                    <p class="eyebrow">From task to device</p>
+                    <h2>How an AutoGLM workflow fits together</h2>
+                    <p>An AutoGLM deployment has four moving parts: a supported device, a control connection, a model endpoint, and an operator-defined task. The open project documents Android Debug Bridge for Android and HarmonyOS Device Connector for HarmonyOS. The model reads the interface and proposes actions; the device tools apply them.</p>
+                    <p>Keep those responsibilities separate while testing. The device connection should establish what the agent is permitted to touch. The model endpoint should be selected for the language and screens in the target workflow. The task definition should identify the application, desired result, and a condition that ends the run. This separation makes an AutoGLM failure easier to diagnose and reduces the temptation to grant broad device access just to make a demonstration work.</p>
+                    <p>Start with a harmless workflow such as opening an app, navigating to a public screen, or searching for a known phrase. Use the resulting screenshots and logs to validate the agent's understanding before attempting any workflow that changes data. This staged approach produces useful debugging evidence and makes it easier to identify whether a failure came from the model, device state, or task instructions.</p>
                 </div>
+                <ol class="workflow-list">
+                    <li><span>1</span><div><strong>Connect</strong><p>Authorize the test phone with ADB or HDC and confirm that the host can see it.</p></div></li>
+                    <li><span>2</span><div><strong>Serve a model</strong><p>Provide an OpenAI-compatible model endpoint using the project-supported setup.</p></div></li>
+                    <li><span>3</span><div><strong>Run a bounded task</strong><p>Write one objective, the allowed applications, and a clear stop condition.</p></div></li>
+                    <li><span>4</span><div><strong>Review the trace</strong><p>Inspect the screen state and action history before widening the task scope.</p></div></li>
+                </ol>
             </div>
-        </div>
-    </section>
+            <div class="shell note"><strong>Deployment note:</strong> this site summarizes the framework. Follow the <a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">official AutoGLM repository</a> for current installation commands, dependency versions, and license terms.</div>
+        </section>
 
-    <!-- Tech Architecture Section -->
-    <section class="section tech-details" id="deep-tech">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="构成可观察手机智能体的组件" data-en="The components behind an observable phone agent.">构成可观察手机智能体的组件</h2>
-            
-            <div class="tech-grid">
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-microchip"></div>
-                    <div class="faq-category" data-zh="GLM-Z1核心模型" data-en="GLM-Z1 Core Model">GLM-Z1核心模型</div>
-                    <h3 data-zh="90亿参数设计" data-en="9B Parameter Design">90亿参数设计</h3>
-                    <p data-zh="GLM-Z1-9B采用90亿参数架构，在数学推理和通用任务上媲美更大规模模型" data-en="GLM-Z1-9B uses 9 billion parameter architecture, comparable to larger models in mathematical reasoning and general tasks">GLM-Z1-9B采用90亿参数架构，在数学推理和通用任务上媲美更大规模模型</p>
-                    <p data-zh="131k上下文窗口：集成YaRN技术，支持131,072个Token的长上下文处理能力" data-en="131K Context Window: Integrated with YaRN technology, supports long context processing with 131,072 tokens">131k上下文窗口：集成YaRN技术，支持131,072个Token的长上下文处理能力</p>
-                    <p data-zh="15T Token训练：采用与千亿级GLM-4相同的高质量数据管线进行训练" data-en="15T Token Training: Trained with the same high-quality data pipeline as 100B-level GLM-4">15T Token训练：采用与千亿级GLM-4相同的高质量数据管线进行训练</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-code-branch"></div>
-                    <div class="faq-category" data-zh="解耦中间界面架构" data-en="Decoupled Intermediate Interface Architecture">解耦中间界面架构</div>
-                    <h3 data-zh="分层解耦设计" data-en="Layered Decoupled Design">分层解耦设计</h3>
-                    <p data-zh="AutoGLM AI采用创新的解耦架构，将感知、决策、执行三个层次清晰分离，大大提高了系统的可维护性和可扩展性" data-en="AutoGLM AI adopts innovative decoupled architecture, clearly separating perception, decision, and execution layers, greatly improving system maintainability and scalability">AutoGLM AI采用创新的解耦架构，将感知、决策、执行三个层次清晰分离，大大提高了系统的可维护性和可扩展性</p>
-                    <p data-zh="模块化设计：各组件可独立升级和替换，支持快速迭代和功能扩展" data-en="Modular design: Components can be independently upgraded and replaced, supporting rapid iteration and feature expansion">模块化设计：各组件可独立升级和替换，支持快速迭代和功能扩展</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-chart-line"></div>
-                    <div class="faq-category" data-zh="MobileRL强化学习框架" data-en="MobileRL Reinforcement Learning Framework">MobileRL强化学习框架</div>
-                    <h3 data-zh="自适应学习机制" data-en="Adaptive Learning Mechanism">自适应学习机制</h3>
-                    <p data-zh="基于MobileRL框架，AutoGLM AI能够通过与环境的交互不断优化决策策略，适应不同的应用场景" data-en="Based on MobileRL framework, AutoGLM AI continuously optimizes decision strategies through environment interaction, adapting to different application scenarios">基于MobileRL框架，AutoGLM AI能够通过与环境的交互不断优化决策策略，适应不同的应用场景</p>
-                    <p data-zh="多任务学习：同时学习多个相关任务，提高泛化能力和迁移学习效果" data-en="Multi-task learning: Simultaneously learn multiple related tasks, improving generalization and transfer learning effects">多任务学习：同时学习多个相关任务，提高泛化能力和迁移学习效果</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cpu"></div>
-                    <div class="faq-category" data-zh="多模态交互机制" data-en="Multimodal Interaction Mechanism">多模态交互机制</div>
-                    <h3 data-zh="多模态融合理解" data-en="Multimodal Fusion Understanding">多模态融合理解</h3>
-                    <p data-zh="AutoGLM AI支持文本、图像、音频等多种模态的输入理解，能够准确识别屏幕内容、理解用户意图" data-en="AutoGLM AI supports multimodal input understanding including text, image, audio, accurately recognizing screen content and understanding user intent">AutoGLM AI支持文本、图像、音频等多种模态的输入理解，能够准确识别屏幕内容、理解用户意图</p>
-                    <p data-zh="视觉-语言联合建模：采用先进的视觉语言模型技术，实现精准的屏幕理解" data-en="Vision-Language Joint Modeling: Uses advanced visual language model technology for precise screen understanding">视觉-语言联合建模：采用先进的视觉语言模型技术，实现精准的屏幕理解</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-shield"></div>
-                    <div class="faq-category" data-zh="GLM-Z1-Rumination沉思模型" data-en="GLM-Z1-Rumination Contemplation Model">GLM-Z1-Rumination沉思模型</div>
-                    <h3 data-zh="深度思考与反思" data-en="Deep Thinking and Reflection">深度思考与反思</h3>
-                    <p data-zh="基于Rumination技术，AutoGLM AI具备深度思考和自我反思能力，能够分析操作结果并优化后续策略" data-en="Based on Rumination technology, AutoGLM AI has deep thinking and self-reflection capabilities, able to analyze operation results and optimize subsequent strategies">基于Rumination技术，AutoGLM AI具备深度思考和自我反思能力，能够分析操作结果并优化后续策略</p>
-                    <p data-zh="错误检测与纠正：自动识别操作错误，智能调整策略，提高任务成功率" data-en="Error Detection and Correction: Automatically identifies operation errors, intelligently adjusts strategies, improving task success rate">错误检测与纠正：自动识别操作错误，智能调整策略，提高任务成功率</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cloud"></div>
-                    <div class="faq-category" data-zh="ComputerRL桌面端框架" data-en="ComputerRL Desktop Framework">ComputerRL桌面端框架</div>
-                    <h3 data-zh="全平台兼容性" data-en="Full Platform Compatibility">全平台兼容性</h3>
-                    <p data-zh="基于ComputerRL框架，AutoGLM AI支持移动端和桌面端的统一控制，实现跨平台的自动化操作" data-en="Based on ComputerRL framework, AutoGLM AI supports unified control of mobile and desktop platforms, achieving cross-platform automation">基于ComputerRL框架，AutoGLM AI支持移动端和桌面端的统一控制，实现跨平台的自动化操作</p>
-                    <p data-zh="跨应用协同：支持不同应用之间的数据传递和操作协同，实现复杂的多步骤任务" data-en="Cross-application synergy: Supports data transfer and operation coordination between different applications, achieving complex multi-step tasks">跨应用协同：支持不同应用之间的数据传递和操作协同，实现复杂的多步骤任务</p>
-                </div>
+        <section class="section" id="models">
+            <div class="shell section-intro narrow">
+                <p class="eyebrow">Model selection</p>
+                <h2>Choose the model for the interface you need to control</h2>
+                <p>Model selection is a practical compatibility decision, not a benchmark contest. The base AutoGLM-Phone-9B model is documented for Chinese-language mobile interfaces. The multilingual variant is intended for English and other non-Chinese interface content. Test both the language of the task and the language of the target app before committing to a workflow.</p>
+                <p>Use a short set of representative screens rather than a single happy-path test. Include an empty state, an error state, a screen with similar controls, and any confirmation prompt the workflow may encounter. Record whether the model can describe the important visual difference before allowing it to act. This is more useful than relying on an aggregate score when you are deciding whether an AutoGLM setup suits one specific interface.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Performance Section -->
-    <section class="section" id="enhanced-performance">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="AutoGLM AI深度性能评测：AutoGLM AI与竞品对比分析" data-en="AutoGLM AI Deep Performance Evaluation: AutoGLM AI vs Competitive Analysis">AutoGLM AI深度性能评测：AutoGLM AI与竞品对比分析</h2>
-            
-            <div class="stats fade-in">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">55.2%</div>
-                        <div class="stat-label" data-zh="VAB-WebArena-Lite<br>首次成功率" data-en="VAB-WebArena-Lite<br>First Attempt Success Rate">VAB-WebArena-Lite<br>首次成功率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">59.1%</div>
-                        <div class="stat-label" data-zh="VAB-WebArena-Lite<br>二次尝试成功率" data-en="VAB-WebArena-Lite<br>Second Attempt Success Rate">VAB-WebArena-Lite<br>二次尝试成功率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">53.6%</div>
-                        <div class="stat-label" data-zh="AndroidLab<br>移动端控制成功率" data-en="AndroidLab<br>Mobile Control Success Rate">AndroidLab<br>移动端控制成功率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">89.7%</div>
-                        <div class="stat-label" data-zh="国产App通用任务<br>成功率" data-en="Domestic App General Tasks<br>Success Rate">国产App通用任务<br>成功率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">96.2%</div>
-                        <div class="stat-label" data-zh="OpenTable订餐<br>场景成功率" data-en="OpenTable Dining<br>Scene Success Rate">OpenTable订餐<br>场景成功率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">80.2%</div>
-                        <div class="stat-label" data-zh="AndroidWorld<br>基准测试成功率" data-en="AndroidWorld<br>Benchmark Test Success Rate">AndroidWorld<br>基准测试成功率</div>
-                    </div>
-                </div>
+            <div class="shell comparison" role="region" aria-label="AutoGLM model comparison" tabindex="0">
+                <table>
+                    <thead><tr><th>Option</th><th>Use it when</th><th>What to validate</th></tr></thead>
+                    <tbody>
+                        <tr><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B</a></td><td>The target interface and task prompts are primarily Chinese.</td><td>Screen text interpretation, task phrasing, and the required device connection.</td></tr>
+                        <tr><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual</a></td><td>The workflow includes English or other non-Chinese interface text.</td><td>Representative screens, desired output language, and the same safety boundaries.</td></tr>
+                    </tbody>
+                </table>
             </div>
+            <div class="shell inline-link"><a href="/guides/autoglm-phone-9b-vs-multilingual.html">Read the AutoGLM-Phone-9B vs. Multilingual guide <span aria-hidden="true">→</span></a></div>
+        </section>
 
-            <div class="tech-grid" style="margin-top: 4rem;">
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-chart-line"></div>
-                    <div class="faq-category" data-zh="响应速度与资源占用" data-en="Response Speed and Resource Usage">响应速度与资源占用</div>
-                    <h3 data-zh="高效性能表现" data-en="High-Efficiency Performance">高效性能表现</h3>
-                    <p data-zh="相比云端服务，AutoGLM AI平均响应时间提升300%，大幅减少操作延迟" data-en="Compared to cloud services, AutoGLM AI average response time improves by 300%, significantly reducing operation latency">相比云端服务，AutoGLM AI平均响应时间提升300%，大幅减少操作延迟</p>
-                    <p data-zh="内存占用优化：采用先进的模型压缩技术，内存占用降低40%，适合移动端部署" data-en="Memory usage optimization: Uses advanced model compression technology, memory usage reduced by 40%, suitable for mobile deployment">内存占用优化：采用先进的模型压缩技术，内存占用降低40%，适合移动端部署</p>
+        <section class="section section-dark" id="safety">
+            <div class="shell safety-grid">
+                <div>
+                    <p class="eyebrow">Safer operation</p>
+                    <h2>Deploy AutoGLM with clear boundaries</h2>
+                <p>Phone automation can act through interfaces that affect real accounts and real data. Treat the connected device as a controlled environment. Limit debugging access to trusted hosts, use a dedicated test account when possible, and make data-changing actions opt-in. A successful demonstration on one screen does not establish that the next screen is safe to automate.</p>
+                <p>Operational safety also improves quality. A precise allowlist, clear task scope, and well-defined approval checkpoints give the operator a way to understand an unexpected action before it becomes an incident. For teams evaluating AutoGLM, these controls should be part of the initial prototype rather than a final production hardening step.</p>
+                    <p>Prompt injection is especially relevant when a task can encounter untrusted text in a browser, message, or document. Keep the task narrow, do not expose credentials to the agent, and require approval before any action that sends information, modifies settings, spends money, or crosses an account boundary.</p>
                 </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-github"></div>
-                    <div class="faq-category" data-zh="成本优势分析" data-en="Cost Advantage Analysis">成本优势分析</div>
-                    <h3 data-zh="显著成本降低" data-en="Significant Cost Reduction">显著成本降低</h3>
-                    <p data-zh="本地部署模式下，长期成本降低80%，无需持续的API调用费用" data-en="In local deployment mode, long-term costs reduced by 80%, no need for continuous API call fees">本地部署模式下，长期成本降低80%，无需持续的API调用费用</p>
-                    <p data-zh="硬件成本回收：6-8个月即可通过节省的云服务费用收回硬件投资成本" data-en="Hardware cost recovery: Hardware investment cost can be recovered in 6-8 months through saved cloud service fees">硬件成本回收：6-8个月即可通过节省的云服务费用收回硬件投资成本</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Deployment Section -->
-    <section class="section tech-details" id="deployment">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="选择适合任务的部署边界" data-en="Choose a deployment boundary that fits the task.">选择适合任务的部署边界</h2>
-            
-            <div class="tech-grid">
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-laptop"></div>
-                    <div class="faq-category" data-zh="本地部署模式" data-en="Local Deployment Mode">本地部署模式</div>
-                    <h3 data-zh="完全私有化运行" data-en="Complete Private Operation">完全私有化运行</h3>
-                    <p data-zh="所有计算均在本地设备完成，数据不离开您的控制范围，适合对安全要求极高的金融、医疗等行业" data-en="All computations completed on local device, data never leaves your control scope, suitable for high-security requirement industries like finance, medical">所有计算均在本地设备完成，数据不离开您的控制范围，适合对安全要求极高的金融、医疗等行业</p>
-                    <p data-zh="硬件要求：Intel i5+ / AMD Ryzen 5+ 处理器，16GB+ 内存，支持CUDA的GPU可选" data-en="Hardware requirements: Intel i5+ / AMD Ryzen 5+ processor, 16GB+ memory, CUDA-enabled GPU optional">硬件要求：Intel i5+ / AMD Ryzen 5+ 处理器，16GB+ 内存，支持CUDA的GPU可选</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cloud"></div>
-                    <div class="faq-category" data-zh="云端部署模式" data-en="Cloud Deployment Mode">云端部署模式</div>
-                    <h3 data-zh="零本地资源占用" data-en="Zero Local Resource Usage">零本地资源占用</h3>
-                    <p data-zh="所有计算在云端完成，客户端仅需轻量级代理，支持强大的并发处理能力" data-en="All computation completed in cloud, client only requires lightweight proxy, supports powerful concurrent processing capabilities">所有计算在云端完成，客户端仅需轻量级代理，支持强大的并发处理能力</p>
-                    <p data-zh="云服务器要求：4 vCPU+，8GB+ 内存，Ubuntu 20.04+，支持Docker和Kubernetes" data-en="Cloud server requirements: 4 vCPU+, 8GB+ memory, Ubuntu 20.04+, supports Docker and Kubernetes">云服务器要求：4 vCPU+，8GB+ 内存，Ubuntu 20.04+，支持Docker和Kubernetes</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-exchange-alt"></div>
-                    <div class="faq-category" data-zh="混合部署模式" data-en="Hybrid Deployment Mode">混合部署模式</div>
-                    <h3 data-zh="安全与效率平衡" data-en="Security & Efficiency Balance">安全与效率平衡</h3>
-                    <p data-zh="数据本地处理，模型云端推理，兼顾安全性和计算效率的最佳方案" data-en="Local data processing, cloud model inference, best solution balancing security and computational efficiency">数据本地处理，模型云端推理，兼顾安全性和计算效率的最佳方案</p>
-                    <p data-zh="混合架构：边缘设备负责屏幕捕获和基础处理，云端负责复杂推理和决策" data-en="Hybrid architecture: Edge devices handle screen capture and basic processing, cloud handles complex inference and decision-making">混合架构：边缘设备负责屏幕捕获和基础处理，云端负责复杂推理和决策</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-microchip"></div>
-                    <div class="faq-category" data-zh="硬件配置详解" data-en="Hardware Configuration Details">硬件配置详解</div>
-                    <h3 data-zh="推荐硬件配置" data-en="Recommended Hardware Configuration">推荐硬件配置</h3>
-                    <p data-zh="入门级：Intel i5-12400F + RTX 3060，适合个人开发和小规模应用" data-en="Entry-level: Intel i5-12400F + RTX 3060, suitable for personal development and small-scale applications">入门级：Intel i5-12400F + RTX 3060，适合个人开发和小规模应用</p>
-                    <p data-zh="专业级：Intel i7-13700K + RTX 4070，支持中等规模并发和复杂任务" data-en="Professional: Intel i7-13700K + RTX 4070, supports medium-scale concurrency and complex tasks">专业级：Intel i7-13700K + RTX 4070，支持中等规模并发和复杂任务</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-code-branch"></div>
-                    <div class="faq-category" data-zh="开源技术栈" data-en="Open Source Technology Stack">开源技术栈</div>
-                    <h3 data-zh="完整开源生态" data-en="Complete Open Source Ecosystem">完整开源生态</h3>
-                    <p data-zh="基于PyTorch深度学习框架，支持Transformers、Accelerate等主流工具" data-en="Based on PyTorch deep learning framework, supports mainstream tools like Transformers, Accelerate">基于PyTorch深度学习框架，支持Transformers、Accelerate等主流工具</p>
-                    <p data-zh="容器化部署：提供Docker镜像，支持Kubernetes集群编排，简化部署和运维" data-en="Containerized deployment: Provides Docker images, supports Kubernetes cluster orchestration, simplifying deployment and operations">容器化部署：提供Docker镜像，支持Kubernetes集群编排，简化部署和运维</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cogs"></div>
-                    <div class="faq-category" data-zh="定制化能力" data-en="Customization Capabilities">定制化能力</div>
-                    <h3 data-zh="灵活定制选项" data-en="Flexible Customization Options">灵活定制选项</h3>
-                    <p data-zh="支持模型微调：提供LoRA、QLoRA等多种微调技术，适应特定领域需求" data-en="Supports model fine-tuning: Provides various fine-tuning techniques like LoRA, QLoRA, adapting to domain-specific needs">支持模型微调：提供LoRA、QLoRA等多种微调技术，适应特定领域需求</p>
-                    <p data-zh="插件开发：开放API接口，支持自定义插件开发，扩展智能体功能" data-en="Plugin development: Open API interfaces, supports custom plugin development, extending agent capabilities">插件开发：开放API接口，支持自定义插件开发，扩展智能体功能</p>
-                </div>
-            </div>
-
-            <!-- Deployment Workflow -->
-            <div class="workflow fade-in">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--accent-orange);" data-zh="AutoGLM AI部署流程" data-en="AutoGLM AI Deployment Process">AutoGLM AI部署流程</h3>
-                <div class="workflow-steps">
-                    <div class="workflow-step">
-                        <div class="step-number">1</div>
-                        <h4 data-zh="环境准备" data-en="Environment Setup">环境准备</h4>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">2</div>
-                        <h4 data-zh="模型下载" data-en="Model Download">模型下载</h4>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">3</div>
-                        <h4 data-zh="配置设置" data-en="Configuration">配置设置</h4>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">4</div>
-                        <h4 data-zh="服务启动" data-en="Service Launch">服务启动</h4>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">5</div>
-                        <h4 data-zh="功能测试" data-en="Function Testing">功能测试</h4>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">6</div>
-                        <h4 data-zh="生产部署" data-en="Production Deploy">生产部署</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Advanced Deployment Options -->
-            <div class="tech-grid" style="margin-top: 4rem;">
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-docker"></div>
-                    <div class="faq-category" data-zh="容器化部署" data-en="Containerized Deployment">容器化部署</div>
-                    <h3 data-zh="Docker & Kubernetes" data-en="Docker & Kubernetes">Docker & Kubernetes</h3>
-                    <p data-zh="一键Docker部署：提供预配置的Docker镜像，包含完整的运行环境" data-en="One-click Docker deployment: Provides pre-configured Docker images with complete runtime environment">一键Docker部署：提供预配置的Docker镜像，包含完整的运行环境</p>
-                    <p data-zh="K8s集群支持：支持Helm Charts，简化集群部署和扩缩容操作" data-en="K8s cluster support: Supports Helm Charts, simplifying cluster deployment and scaling operations">K8s集群支持：支持Helm Charts，简化集群部署和扩缩容操作</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-chart-line"></div>
-                    <div class="faq-category" data-zh="性能优化" data-en="Performance Optimization">性能优化</div>
-                    <h3 data-zh="量化与加速" data-en="Quantization & Acceleration">量化与加速</h3>
-                    <p data-zh="模型量化：支持INT8/INT4量化，显著降低内存占用，提升推理速度" data-en="Model quantization: Supports INT8/INT4 quantization, significantly reducing memory usage and improving inference speed">模型量化：支持INT8/INT4量化，显著降低内存占用，提升推理速度</p>
-                    <p data-zh="GPU加速：兼容CUDA、OpenCL等加速技术，充分利用硬件性能" data-en="GPU acceleration: Compatible with CUDA, OpenCL and other acceleration technologies, fully utilizing hardware performance">GPU加速：兼容CUDA、OpenCL等加速技术，充分利用硬件性能</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-shield"></div>
-                    <div class="faq-category" data-zh="安全防护" data-en="Security Protection">安全防护</div>
-                    <h3 data-zh="企业级安全" data-en="Enterprise-level Security">企业级安全</h3>
-                    <p data-zh="数据加密：支持端到端加密，保护敏感数据在传输和存储过程中的安全" data-en="Data encryption: Supports end-to-end encryption, protecting sensitive data security during transmission and storage">数据加密：支持端到端加密，保护敏感数据在传输和存储过程中的安全</p>
-                    <p data-zh="访问控制：细粒度权限管理，支持LDAP、OAuth2等企业认证系统" data-en="Access control: Fine-grained permission management, supports LDAP, OAuth2 and other enterprise authentication systems">访问控制：细粒度权限管理，支持LDAP、OAuth2等企业认证系统</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cogs"></div>
-                    <div class="faq-category" data-zh="监控运维" data-en="Monitoring & Operations">监控运维</div>
-                    <h3 data-zh="智能运维" data-en="Intelligent Operations">智能运维</h3>
-                    <p data-zh="实时监控：提供详细的性能指标监控，支持Prometheus、Grafana集成" data-en="Real-time monitoring: Provides detailed performance metric monitoring, supports Prometheus, Grafana integration">实时监控：提供详细的性能指标监控，支持Prometheus、Grafana集成</p>
-                    <p data-zh="自动告警：异常检测和自动告警机制，及时发现和解决系统问题" data-en="Automatic alerts: Anomaly detection and automatic alert mechanisms, timely discovery and resolution of system issues">自动告警：异常检测和自动告警机制，及时发现和解决系统问题</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Deployment Tutorial Section -->
-    <section class="section tech-details" id="deployment-tutorial">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="从受控设备和可逆任务开始" data-en="Start with a bounded device and a reversible task.">从受控设备和可逆任务开始</h2>
-            
-            <div class="workflow fade-in">
-                <div class="deployment-tutorial-content">
-                    <!-- Local Deployment Tutorial -->
-                    <div class="tutorial-section">
-                        <h3 data-zh="💻 AutoGLM AI本地部署教程（模型+执行）" data-en="💻 AutoGLM AI Local Deployment Tutorial (Model + Execution)">💻 AutoGLM AI本地部署教程（模型+执行）</h3>
-                        <p data-zh="屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备，隐私性最高。" data-en="Screen capture, model analysis, and operation execution are all completed locally on the device, data does not leave the device, highest privacy.">屏幕捕获、模型分析、操作执行均在本地设备完成，数据不离开设备，隐私性最高。</p>
-                        
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤1：环境准备" data-en="Step 1: Environment Preparation">步骤1：环境准备</h4>
-                            <div class="tutorial-code">
-                                <code># Python环境
-conda create -n autoglm python=3.9
-conda activate autoglm
-
-# 安装PyTorch (CUDA版本)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-# 安装AutoGLM AI
-git clone https://github.com/zai-org/Open-AutoGLM.git
-cd Open-AutoGLM
-pip install -e .</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤2：安装AutoGLM AI" data-en="Step 2: Install AutoGLM AI">步骤2：安装AutoGLM AI</h4>
-                            <div class="tutorial-code">
-                                <code># 下载模型权重
-python -m autoglm.download --model glm-z1-9b
-
-# 安装依赖包
-pip install -r requirements.txt
-
-# 安装Android ADB工具
-# Windows: 从官网下载
-# macOS: brew install android-platform-tools
-# Linux: sudo apt install android-tools-adb</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤3：配置本地运行" data-en="Step 3: Configure Local Operation">步骤3：配置本地运行</h4>
-                            <div class="tutorial-code">
-                                <code># 创建配置文件
-mkdir -p ~/.autoglm
-cat > ~/.autoglm/config.yaml << EOF
-model:
-  name: "glm-z1-9b"
-  path: "./models/glm-z1-9b"
-  device: "cuda"  # 或 "cpu"
-  
-android:
-  adb_path: "/usr/local/bin/adb"
-  device_id: "auto"  # 自动检测设备
-  
-inference:
-  batch_size: 1
-  max_length: 2048
-EOF</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤4：启动服务" data-en="Step 4: Start Service">步骤4：启动服务</h4>
-                            <div class="tutorial-code">
-                                <code># 启动AutoGLM AI服务
-python -m autoglm.serve --config ~/.autoglm/config.yaml
-
-# 或使用命令行界面
-python -m autoglm.cli --device-id <your_android_device_id></code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cloud Deployment Tutorial -->
-                    <div class="tutorial-section">
-                        <h3 data-zh="☁️ AutoGLM AI云端部署教程（模型+执行）" data-en="☁️ AutoGLM AI Cloud Deployment Tutorial (Model + Execution)">☁️ AutoGLM AI云端部署教程（模型+执行）</h3>
-                        <p data-zh="屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。" data-en="Screen content is transmitted to cloud model, analysis returns instructions to operation environment for execution. Developers must ensure transmission and cloud processing security.">屏幕内容传输到云端模型，分析后指令返回操作环境执行。开发者需确保传输和云端处理安全性。</p>
-                        
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤1：云端服务器准备" data-en="Step 1: Cloud Server Preparation">步骤1：云端服务器准备</h4>
-                            <div class="tutorial-code">
-                                <code># 创建云服务器实例 (推荐配置)
-# - CPU: 8 vCPU以上
-# - 内存: 32GB以上  
-# - GPU: NVIDIA Tesla V100/A100
-# - 存储: 200GB SSD
-# - 操作系统: Ubuntu 20.04 LTS
-
-# 连接服务器
-ssh root@your-server-ip
-
-# 安装Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-
-# 安装NVIDIA Docker支持
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤2：部署云端服务" data-en="Step 2: Deploy Cloud Service">步骤2：部署云端服务</h4>
-                            <div class="tutorial-code">
-                                <code># 拉取AutoGLM AI镜像
-docker pull autoglm/autoglm-cloud:latest
-
-# 创建数据目录
-mkdir -p /data/autoglm/{models,logs,config}
-
-# 启动服务
-docker run -d --name autoglm-server \
-  --gpus all \
-  -p 8080:8080 \
-  -v /data/autoglm/models:/app/models \
-  -v /data/autoglm/logs:/app/logs \
-  -v /data/autoglm/config:/app/config \
-  autoglm/autoglm-cloud:latest
-
-# 查看服务状态
-docker logs autoglm-server</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤3：配置客户端连接" data-en="Step 3: Configure Client Connection">步骤3：配置客户端连接</h4>
-                            <div class="tutorial-code">
-                                <code># 在客户端设备上安装SDK
-pip install autoglm-client
-
-# 创建客户端配置
-cat > ~/.autoglm/client.yaml << EOF
-server:
-  host: "your-server-ip"
-  port: 8080
-  use_ssl: true
-  api_key: "your-api-key"
-
-security:
-  encrypt_data: true
-  ssl_verify: true
-EOF
-
-# 测试连接
-python -c "
-import autoglm_client
-client = autoglm_client.Client('~/.autoglm/client.yaml')
-print(client.health_check())
-"</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤4：安全配置" data-en="Step 4: Security Configuration">步骤4：安全配置</h4>
-                            <div class="tutorial-code">
-                                <code># 配置Nginx反向代理和SSL
-apt install nginx
-
-# /etc/nginx/sites-available/autoglm
-server {
-    listen 443 ssl;
-    server_name your-domain.com;
-    
-    ssl_certificate /path/to/cert.pem;
-    ssl_certificate_key /path/to/key.pem;
-    
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-
-# 启用并重启Nginx
-ln -s /etc/nginx/sites-available/autoglm /etc/nginx/sites-enabled/
-nginx -t && systemctl restart nginx</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hybrid Deployment Tutorial -->
-                    <div class="tutorial-section">
-                        <h3 data-zh="🔄 AutoGLM AI混合部署教程（本地执行+云端模型）" data-en="🔄 AutoGLM AI Hybrid Deployment Tutorial (Local Execution + Cloud Model)">🔄 AutoGLM AI混合部署教程（本地执行+云端模型）</h3>
-                        <p data-zh="屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。" data-en="Screen content is captured locally, transmitted to cloud model for analysis, analysis results return to local for execution. Best solution balancing security and efficiency.">屏幕内容在本地捕获，传输到云端模型分析，分析结果返回本地执行。平衡安全性和效率的最佳方案。</p>
-                        
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤1：本地环境配置" data-en="Step 1: Local Environment Configuration">步骤1：本地环境配置</h4>
-                            <div class="tutorial-code">
-                                <code># 安装客户端组件
-pip install autoglm-hybrid-client
-
-# 配置本地执行环境
-cat > ~/.autoglm/hybrid.yaml << EOF
-local:
-  capture_service: true
-  execution_service: true
-  data_encryption: true
-  
-cloud:
-  model_endpoint: "https://your-cloud-server.com/api/v1/inference"
-  api_key: "your-cloud-api-key"
-  
-security:
-  encrypt_transmission: true
-  compression: true
-EOF</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤2：云端模型服务部署" data-en="Step 2: Cloud Model Service Deployment">步骤2：云端模型服务部署</h4>
-                            <div class="tutorial-code">
-                                <code># 部署云端推理服务
-docker run -d --name autoglm-inference \
-  --gpus all \
-  -p 9000:9000 \
-  -v /data/models:/models \
-  autoglm/inference-server:latest \
-  --model-path /models/glm-z1-9b \
-  --host 0.0.0.0 \
-  --port 9000
-
-# 配置API网关
-docker run -d --name api-gateway \
-  -p 8080:8080 \
-  --link autoglm-inference:inference \
-  autoglm/api-gateway:latest</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤3：混合模式配置" data-en="Step 3: Hybrid Mode Configuration">步骤3：混合模式配置</h4>
-                            <div class="tutorial-code">
-                                <code># 配置混合模式启动脚本
-cat > start_hybrid.sh << 'EOF'
-#!/bin/bash
-
-# 启动本地捕获服务
-autoglm-capture --config ~/.autoglm/hybrid.yaml &
-
-# 启动本地执行服务  
-autoglm-executor --config ~/.autoglm/hybrid.yaml &
-
-# 等待服务启动
-sleep 5
-
-# 启动混合模式协调器
-autoglm-hybrid-coordinator --config ~/.autoglm/hybrid.yaml
-
-EOF
-
-chmod +x start_hybrid.sh</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="步骤4：启动混合模式" data-en="Step 4: Start Hybrid Mode">步骤4：启动混合模式</h4>
-                            <div class="tutorial-code">
-                                <code># 启动混合部署
-./start_hybrid.sh
-
-# 验证混合模式状态
-curl -X GET http://localhost:8080/health
-
-# 测试混合功能
-python -m autoglm.hybrid.test \
-  --config ~/.autoglm/hybrid.yaml \
-  --test-case screenshot_analysis</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Troubleshooting Section -->
-                    <div class="tutorial-section">
-                        <h3 data-zh="🛠️ AutoGLM AI通用配置与故障排除" data-en="🛠️ AutoGLM AI General Configuration & Troubleshooting">🛠️ AutoGLM AI通用配置与故障排除</h3>
-                        
-                        <div class="tutorial-step">
-                            <h4 data-zh="AutoGLM AI部署模式选择指南" data-en="AutoGLM AI Deployment Mode Selection Guide">AutoGLM AI部署模式选择指南</h4>
-                            <div class="tutorial-code">
-                                <code># 使用部署模式选择工具
-python -m autoglm.deploy.advisor
-
-# 交互式配置向导
-python -m autoglm.deploy.wizard
-
-# 硬件兼容性检测
-python -m autoglm.deploy.check-hardware</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="AutoGLM AI常见故障排除" data-en="AutoGLM AI Common Troubleshooting">AutoGLM AI常见故障排除</h4>
-                            <div class="tutorial-code">
-                                <code># 查看系统诊断信息
-autoglm diagnose
-
-# 检查日志文件
-tail -f ~/.autoglm/logs/autoglm.log
-
-# 性能分析
-autoglm profile --duration 60
-
-# 重置配置
-autoglm config reset --backup</code>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-step">
-                            <h4 data-zh="AutoGLM AI监控与维护" data-en="AutoGLM AI Monitoring & Maintenance">AutoGLM AI监控与维护</h4>
-                            <div class="tutorial-code">
-                                <code># 启动监控仪表板
-autoglm monitor start
-
-# 查看系统状态
-autoglm status
-
-# 更新模型
-autoglm update --model glm-z1-9b
-
-# 备份配置和数据
-autoglm backup --path ~/autoglm-backup</code>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ecosystem Section -->
-    <section class="section tech-details" id="ecosystem">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="AutoGLM AI技术合作伙伴与AutoGLM AI生态系统" data-en="AutoGLM AI Technology Partners & AutoGLM AI Ecosystem">AutoGLM AI技术合作伙伴与AutoGLM AI生态系统</h2>
-            
-            <div class="tech-grid">
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cloud"></div>
-                    <div class="faq-category" data-zh="全球硬件合作伙伴" data-en="Global Hardware Partners">全球硬件合作伙伴</div>
-                    <h3 data-zh="顶级硬件厂商战略合作" data-en="Top Hardware Vendor Strategic Cooperation">顶级硬件厂商战略合作</h3>
-                    <p data-zh="三星（Samsung）：合作将GLM模型集成到Galaxy手机中，探索端侧AI" data-en="Samsung: Cooperate to integrate GLM model into Galaxy phones, explore edge AI">三星（Samsung）：合作将GLM模型集成到Galaxy手机中，探索端侧AI</p>
-                    <p data-zh="高通（Qualcomm）：优化Snapdragon芯片对GLM-Z1的支持，为本地推理铺路" data-en="Qualcomm: Optimize Snapdragon chip support for GLM-Z1, pave the way for local inference">高通（Qualcomm）：优化Snapdragon芯片对GLM-Z1的支持，为本地推理铺路</p>
-                    <p data-zh="英特尔/华硕：在PC端（GLM PC）展开合作，推动AI PC的落地" data-en="Intel/ASUS: Cooperate on PC (GLM PC), promote AI PC implementation">英特尔/华硕：在PC端（GLM PC）展开合作，推动AI PC的落地</p>
-                    <p data-zh="资本支持：获得成都高新区、上海国资等数亿美元的耐心资本投资" data-en="Capital Support: Received hundreds of millions of dollars in patient capital investment from Chengdu High-tech Zone, Shanghai state-owned assets, etc.">资本支持：获得成都高新区、上海国资等数亿美元的耐心资本投资</p>
-                    <p data-zh="硬件联盟：构建从芯片到终端设备的完整AI硬件生态体系" data-en="Hardware Alliance: Build complete AI hardware ecosystem from chips to terminal devices">硬件联盟：构建从芯片到终端设备的完整AI硬件生态体系</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-code-branch"></div>
-                    <div class="faq-category" data-zh="开源社区生态" data-en="Open Source Community Ecosystem">开源社区生态</div>
-                    <h3 data-zh="活跃的开源开发者社区" data-en="Active Open Source Developer Community">活跃的开源开发者社区</h3>
-                    <p data-zh="GitHub仓库：THUDM/MobileRL、THUDM/WebRL等核心开源项目" data-en="GitHub Repositories: THUDM/MobileRL, THUDM/WebRL and other core open source projects">GitHub仓库：THUDM/MobileRL、THUDM/WebRL等核心开源项目</p>
-                    <p data-zh="贡献指南：开发者可通过提交PR优化环境包装器或添加新数据集" data-en="Contribution Guidelines: Developers can optimize environment wrappers or add new datasets by submitting PRs">贡献指南：开发者可通过提交PR优化环境包装器或添加新数据集</p>
-                    <p data-zh="微调工具：集成LLaMA-Factory等工具，支持高效微调" data-en="Fine-tuning Tools: Integrated with tools like LLaMA-Factory, supports efficient fine-tuning">微调工具：集成LLaMA-Factory等工具，支持高效微调</p>
-                    <p data-zh="垂直领域定制：鼓励针对医疗、金融等专业领域微调模型" data-en="Vertical Domain Customization: Encourage fine-tuning models for professional fields like medical, financial">垂直领域定制：鼓励针对医疗、金融等专业领域微调模型</p>
-                    <p data-zh="模型共享：社区可分享专用权重，共建模型生态" data-en="Model Sharing: Community can share specialized weights, jointly build model ecosystem">模型共享：社区可分享专用权重，共建模型生态</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-rocket"></div>
-                    <div class="faq-category" data-zh="商业模式与市场策略" data-en="Business Model and Market Strategy">商业模式与市场策略</div>
-                    <h3 data-zh="可持续的商业模式" data-en="Sustainable Business Model">可持续的商业模式</h3>
-                    <p data-zh="C端免费策略：基础功能完全免费，快速积累用户交互数据" data-en="C-end Free Strategy: Basic features completely free, quickly accumulate user interaction data">C端免费策略：基础功能完全免费，快速积累用户交互数据</p>
-                    <p data-zh="B端API收费：极具破坏性的$0.086/1M Token定价策略" data-en="B-end API Charging: Extremely disruptive $0.086/1M Token pricing strategy">B端API收费：极具破坏性的$0.086/1M Token定价策略</p>
-                    <p data-zh="增值服务：企业版"云手机"服务，提供高性能云端设备" data-en="Value-added Services: Enterprise "cloud phone" service, providing high-performance cloud devices">增值服务：企业版"云手机"服务，提供高性能云端设备</p>
-                    <p data-zh="硬件集成：通过硬件预装获得授权费用和技术服务收入" data-en="Hardware Integration: Obtain licensing fees and technical service revenue through hardware pre-installation">硬件集成：通过硬件预装获得授权费用和技术服务收入</p>
-                    <p data-zh="主权AI输出：向中东、东南亚输出国家级AI基础设施" data-en="Sovereign AI Output: Export national-level AI infrastructure to Middle East, Southeast Asia">主权AI输出：向中东、东南亚输出国家级AI基础设施</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-shield"></div>
-                    <div class="faq-category" data-zh="安全与合规保障" data-en="Security and Compliance Guarantee">安全与合规保障</div>
-                    <h3 data-zh="企业级安全合规体系" data-en="Enterprise-level Security Compliance System">企业级安全合规体系</h3>
-                    <p data-zh="数据本地化：严格遵守《个人信息保护法》等法规" data-en="Data Localization: Strictly comply with Personal Information Protection Law and other regulations">数据本地化：严格遵守《个人信息保护法》等法规</p>
-                    <p data-zh="境内数据处理：主要数据在中国境内服务器完成" data-en="Domestic Data Processing: Main data processing completed on servers within China">境内数据处理：主要数据在中国境内服务器完成</p>
-                    <p data-zh="GDPR合规：面向海外市场的跨境数据传输合规方案" data-en="GDPR Compliance: Cross-border data transmission compliance solution for overseas markets">GDPR合规：面向海外市场的跨境数据传输合规方案</p>
-                    <p data-zh="审计日志：完整的操作审计日志，支持SIEM集成" data-en="Audit Logs: Complete operation audit logs, support SIEM integration">审计日志：完整的操作审计日志，支持SIEM集成</p>
-                    <p data-zh="认证体系：ISO 27001、等保三级等安全认证" data-en="Certification System: ISO 27001, MLPS Level 3 and other security certifications">认证体系：ISO 27001、等保三级等安全认证</p>
-                </div>
-            </div>
-
-            <!-- Future Development Roadmap -->
-            <div class="workflow fade-in" style="margin-top: 4rem;">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--accent-orange);" data-zh="AutoGLM AI未来发展路线图" data-en="AutoGLM AI Future Development Roadmap">AutoGLM AI未来发展路线图</h3>
-                <div class="workflow-steps">
-                    <div class="workflow-step">
-                        <div class="step-number">1</div>
-                        <h4 data-zh="短期（3-6个月）" data-en="Short-term (3-6 months)">短期（3-6个月）</h4>
-                        <p data-zh="云手机普及与稳定，优化延迟和并发能力" data-en="Cloud phone popularization and stabilization, optimize latency and concurrency capabilities">云手机普及与稳定，优化延迟和并发能力</p>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">2</div>
-                        <h4 data-zh="中期（1-3年）" data-en="Medium-term (1-3 years)">中期（1-3年）</h4>
-                        <p data-zh="原生手机植入，系统级服务直接运行在NPU上" data-en="Native phone integration, system-level services directly run on NPU">原生手机植入，系统级服务直接运行在NPU上</p>
-                    </div>
-                    <div class="workflow-step">
-                        <div class="step-number">3</div>
-                        <h4 data-zh="长期（3年以上）" data-en="Long-term (3+ years)">长期（3年以上）</h4>
-                        <p data-zh="自我进化智能体，实现终身学习和自适应能力" data-en="Self-evolving intelligent agents, achieving lifelong learning and adaptive capabilities">自我进化智能体，实现终身学习和自适应能力</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Innovation Scenarios -->
-            <div class="tech-grid" style="margin-top: 4rem;">
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-chart-line"></div>
-                    <div class="faq-category" data-zh="创新应用场景" data-en="Innovative Application Scenarios">创新应用场景</div>
-                    <h3 data-zh="跨应用协同魔法" data-en="Cross-application Synergy Magic">跨应用协同魔法</h3>
-                    <p data-zh="种草到拔草闭环：抖音看菜谱→盒马买菜→自动比价→购物车确认" data-en="Planting to Uprooting Closed Loop: Douyin watch recipe → Hema buy groceries → automatic price comparison → shopping cart confirmation">种草到拔草闭环：抖音看菜谱→盒马买菜→自动比价→购物车确认</p>
-                    <p data-zh="深度研究助理：自主规划研究→搜索PubMed→撰写万字报告" data-en="Deep Research Assistant: Autonomous research planning → PubMed search → write 10,000-word report">深度研究助理：自主规划研究→搜索PubMed→撰写万字报告</p>
-                    <p data-zh="智能工作流：自动处理邮件→安排会议→生成会议纪要→分配任务" data-en="Intelligent Workflow: Automatic email processing → schedule meetings → generate meeting minutes → assign tasks">智能工作流：自动处理邮件→安排会议→生成会议纪要→分配任务</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-cogs"></div>
-                    <div class="faq-category" data-zh="技术创新突破" data-en="Technical Innovation Breakthroughs">技术创新突破</div>
-                    <h3 data-zh="核心技术突破" data-en="Core Technology Breakthroughs">核心技术突破</h3>
-                    <p data-zh="多模态理解：支持文本、图像、语音的联合理解和交互" data-en="Multimodal Understanding: Supports joint understanding and interaction of text, image, voice">多模态理解：支持文本、图像、语音的联合理解和交互</p>
-                    <p data-zh="终身学习：智能体能够持续学习新知识和适应环境变化" data-en="Lifelong Learning: Agents can continuously learn new knowledge and adapt to environmental changes">终身学习：智能体能够持续学习新知识和适应环境变化</p>
-                    <p data-zh="安全可控：确保智能体行为符合用户意图和价值观要求" data-en="Safe and Controllable: Ensure agent behavior aligns with user intentions and value requirements">安全可控：确保智能体行为符合用户意图和价值观要求</p>
-                </div>
-
-                <div class="tech-card fade-in">
-                    <div class="tech-icon icon-palette"></div>
-                    <div class="faq-category" data-zh="AI 个性化工具栈" data-en="AI Personalization Stack">AI 个性化工具栈</div>
-                    <h3 data-zh="AutoGLM + AI 个性化工具协同" data-en="AutoGLM + AI Personalization Tools Synergy">AutoGLM + AI 个性化工具协同</h3>
-                    <p data-zh="AutoGLM 通过 ComputerRL 控制桌面时，光标由系统 cursor 决定。想要让 AI 工作流视觉品牌化，可以配合一个 AI 鼠标光标生成器，3 句话生成完整 Windows 鼠标光标主题（含 10 个状态：箭头、文本选择、手型、十字、忙指示等），pixel-perfect 边缘 + 正确 hotspot，可直接 install 到 Windows 鼠标方案选择器。" data-en="When AutoGLM controls the desktop via ComputerRL, cursors follow the system cursor. To brand your AI workflow visually, pair it with an AI cursor generator — a single text prompt creates a full Windows cursor theme (10 states: arrow, text select, hand, crosshair, busy indicator, etc.), with pixel-perfect edges and correct hotspot, installable via Windows Mouse Properties.">AutoGLM 通过 ComputerRL 控制桌面时，光标由系统 cursor 决定。想要让 AI 工作流视觉品牌化，可以配合一个 AI 鼠标光标生成器，3 句话生成完整 Windows 鼠标光标主题（含 10 个状态：箭头、文本选择、手型、十字、忙指示等），pixel-perfect 边缘 + 正确 hotspot，可直接 install 到 Windows 鼠标方案选择器。</p>
-                    <p style="margin-top: 0.75rem;"><a href="https://cursorhero.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-orange); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">→ Cursorhero</a><span data-zh=" — 推荐工具：用文字描述想要的鼠标光标样式，AI 自动生成全套 Windows cursor 主题。" data-en=" — Recommended tool: describe the cursor style you want in plain language, and AI generates a complete Windows cursor theme."> — 推荐工具：用文字描述想要的鼠标光标样式，AI 自动生成全套 Windows cursor 主题。</span></p>
-                    <p data-zh="两种工具的协同效果：AutoGLM 负责「让 AI 替你操作」，Cursorhero 负责「让 AI 操作时有你的视觉风格」。前者搞定生产力，后者搞定品牌感 —— 这是 AI Agent 时代真正的 desktop personalization。" data-en="The synergy: AutoGLM handles 'AI operates for you', Cursorhero handles 'AI operates in your visual style'. Productivity meets brand identity — this is desktop personalization for the AI Agent era.">两种工具的协同效果：AutoGLM 负责「让 AI 替你操作」，Cursorhero 负责「让 AI 操作时有你的视觉风格」。前者搞定生产力，后者搞定品牌感 —— 这是 AI Agent 时代真正的 desktop personalization。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section faq" id="faq">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="AutoGLM AI常见问题解答：AutoGLM AI使用指南" data-en="AutoGLM AI Frequently Asked Questions: AutoGLM AI Usage Guide">AutoGLM AI常见问题解答：AutoGLM AI使用指南</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span data-zh="AutoGLM AI是否完全免费？商业使用需要授权吗？" data-en="Is AutoGLM AI completely free? Does commercial use require authorization?">AutoGLM AI是否完全免费？商业使用需要授权吗？</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-zh="AutoGLM AI采用Apache-2.0（代码）和MIT（模型）双开源协议，完全免费，支持商业使用，无需额外授权。您可以自由修改、分发和用于商业项目。" data-en="AutoGLM AI adopts Apache-2.0 (code) and MIT (model) dual open source protocols, completely free, supports commercial use, no additional authorization required. You can freely modify, distribute and use for commercial projects.">AutoGLM AI采用Apache-2.0（代码）和MIT（模型）双开源协议，完全免费，支持商业使用，无需额外授权。您可以自由修改、分发和用于商业项目。</p>
-                    </div>
-                </div>
-
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span data-zh="AutoGLM AI与GPT-4o等大模型相比有什么优势？" data-en="What advantages does AutoGLM AI have compared to GPT-4o and other large models?">AutoGLM AI与GPT-4o等大模型相比有什么优势？</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-zh="在网页任务上，AutoGLM AI成功率55.2%，超越GPT-4o的18.2%，性能提升160%。在移动端控制上，成功率53.6%，领先GPT-4o的31.2%。此外，AutoGLM AI支持本地部署、数据安全可控、无厂商锁定。" data-en="In web tasks, AutoGLM AI success rate is 55.2%, surpassing GPT-4o's 18.2%, 160% performance improvement. In mobile control, success rate is 53.6%, leading GPT-4o's 31.2%. Additionally, AutoGLM AI supports local deployment, data security control, no vendor lock-in.">在网页任务上，AutoGLM AI成功率55.2%，超越GPT-4o的18.2%，性能提升160%。在移动端控制上，成功率53.6%，领先GPT-4o的31.2%。此外，AutoGLM AI支持本地部署、数据安全可控、无厂商锁定。</p>
-                    </div>
-                </div>
-
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span data-zh="如何选择合适的部署模式？" data-en="How to choose the right deployment mode?">如何选择合适的部署模式？</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-zh="<strong>本地部署</strong>：适合金融、医疗等高安全要求行业。<strong>云端部署</strong>：适合中小企业和快速原型验证。<strong>混合部署</strong>：平衡安全性和成本，适合大多数企业。" data-en="<strong>Local Deployment</strong>: Suitable for finance, medical and other high-security requirement industries. <strong>Cloud Deployment</strong>: Suitable for SMEs and rapid prototype validation. <strong>Hybrid Deployment</strong>: Balances security and cost, suitable for most enterprises."><strong>本地部署</strong>：适合金融、医疗等高安全要求行业。<strong>云端部署</strong>：适合中小企业和快速原型验证。<strong>混合部署</strong>：平衡安全性和成本，适合大多数企业。</p>
-                    </div>
-                </div>
-
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span data-zh="AutoGLM AI支持哪些操作系统和平台？" data-en="What operating systems and platforms does AutoGLM AI support?">AutoGLM AI支持哪些操作系统和平台？</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-zh="支持Ubuntu 20.04+、CentOS 8+、Windows 11 with WSL2。提供Docker容器化部署，支持Kubernetes集群部署，兼容主流云平台（AWS、Google Cloud、Azure）。" data-en="Supports Ubuntu 20.04+, CentOS 8+, Windows 11 with WSL2. Provides Docker containerized deployment, supports Kubernetes cluster deployment, compatible with mainstream cloud platforms (AWS, Google Cloud, Azure).">支持Ubuntu 20.04+、CentOS 8+、Windows 11 with WSL2。提供Docker容器化部署，支持Kubernetes集群部署，兼容主流云平台（AWS、Google Cloud、Azure）。</p>
-                    </div>
-                </div>
-
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span data-zh="如何获得技术支持和社区帮助？" data-en="How to get technical support and community help?">如何获得技术支持和社区帮助？</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-zh="可以通过GitHub Issues报告问题，加入Discord社区获得实时帮助，查看官方文档和教程，或参与开源社区贡献。企业用户可选择付费技术支持服务。" data-en="You can report issues through GitHub Issues, join the Discord community for real-time help, check official documentation and tutorials, or participate in open source community contributions. Enterprise users can choose paid technical support services.">可以通过GitHub Issues报告问题，加入Discord社区获得实时帮助，查看官方文档和教程，或参与开源社区贡献。企业用户可选择付费技术支持服务。</p>
-                    </div>
-                </div>
-
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span data-zh="AutoGLM 操作桌面时，鼠标光标能定制吗？" data-en="When AutoGLM controls the desktop, can I customize the mouse cursor?">AutoGLM 操作桌面时，鼠标光标能定制吗？</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-zh="可以。AutoGLM 通过 ComputerRL 框架控制桌面时，光标会跟随系统 cursor 设定。如果您希望 AI 操作电脑时有自己专属风格的鼠标光标，可以先用 AI 鼠标光标生成器生成完整光标主题，再装到 Windows 鼠标方案里 —— AutoGLM 操作时就会显示您定制的 cursor。" data-en="Yes. When AutoGLM controls the desktop via the ComputerRL framework, the cursor follows your system cursor settings. If you want AI to operate the computer with a custom-styled cursor, you can first generate a complete cursor theme using an AI cursor generator, then install it via Windows Mouse Properties — AutoGLM will display your custom cursor during operations.">可以。AutoGLM 通过 ComputerRL 框架控制桌面时，光标会跟随系统 cursor 设定。如果您希望 AI 操作电脑时有自己专属风格的鼠标光标，可以先用 AI 鼠标光标生成器生成完整光标主题，再装到 Windows 鼠标方案里 —— AutoGLM 操作时就会显示您定制的 cursor。</p>
-                        <p style="margin-top: 0.5rem;"><a href="https://cursorhero.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-orange); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">→ Cursorhero</a><span data-zh="：用文字描述想要的 cursor 样式，AI 生成完整 Windows 鼠标光标主题，一键 install 到系统。" data-en=": describe the cursor style in plain language, AI generates a complete Windows cursor theme, one-click install to the system.">：用文字描述想要的 cursor 样式，AI 生成完整 Windows 鼠标光标主题，一键 install 到系统。</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Get Started Section -->
-    <section class="section" id="get-started">
-        <div class="container">
-            <h2 class="section-title fade-in" data-zh="开始部署AutoGLM AI" data-en="Start Deploying AutoGLM AI">开始部署AutoGLM AI</h2>
-            
-            <div class="hero-buttons" style="justify-content: center;">
-                <button class="btn-primary" onclick="showDeploymentModal()">
-                    <i class="fas fa-rocket"></i>
-                    <span data-zh="立即开始部署" data-en="Start Deployment Now">立即开始部署</span>
-                </button>
-                <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-secondary" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                    <span data-zh="访问GitHub仓库" data-en="Visit GitHub Repository">访问GitHub仓库</span>
-                </a>
-                <a href="#deployment-tutorial" class="btn-secondary">
-                    <i class="fas fa-book"></i>
-                    <span data-zh="查看详细教程" data-en="View Detailed Tutorial">查看详细教程</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 data-zh="AutoGLM AI产品" data-en="AutoGLM AI Products">AutoGLM AI产品</h3>
+                <aside class="checklist" aria-label="Safety checklist">
+                    <h3>Before a production-like test</h3>
                     <ul>
-                        <li><a href="#features" data-zh="核心功能" data-en="Core Features">核心功能</a></li>
-                        <li><a href="#deep-tech" data-zh="技术架构" data-en="Tech Architecture">技术架构</a></li>
-                        <li><a href="#enhanced-performance" data-zh="性能数据" data-en="Performance">性能数据</a></li>
-                        <li><a href="#deployment" data-zh="部署方案" data-en="Deployment">部署方案</a></li>
+                        <li>Use a test device, emulator, or separate user profile.</li>
+                        <li>Allow only the apps and accounts required for the task.</li>
+                        <li>Define what the agent must never submit or disclose.</li>
+                        <li>Capture enough evidence for an operator to review the run.</li>
+                        <li>Place a human checkpoint before irreversible actions.</li>
                     </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 data-zh="AutoGLM AI资源" data-en="AutoGLM AI Resources">AutoGLM AI资源</h3>
-                    <ul>
-                        <li><a href="#deployment-tutorial" data-zh="部署教程" data-en="Deployment Tutorial">部署教程</a></li>
-                        <li><a href="https://github.com/zai-org/Open-AutoGLM" data-zh="GitHub仓库" data-en="GitHub Repository" target="_blank" rel="noopener noreferrer">GitHub仓库</a></li>
-                        <li><a href="guides/open-source-autoglm-phone-9b.html" data-zh="开源部署指南" data-en="Open-Source Deployment Guide">Open-Source Deployment Guide</a></li>
-                        <li><a href="guides/autoglm-security-prompt-injection.html" data-zh="安全运行指南" data-en="Security Guide">Security Guide</a></li>
-                        <li><a href="guides/autoglm-phone-9b-vs-multilingual.html" data-zh="模型版本对比" data-en="Model Comparison">Model Comparison</a></li>
-                        <li><a href="#faq" data-zh="常见问题" data-en="FAQ">常见问题</a></li>
-                        <li><a href="#ecosystem" data-zh="生态系统" data-en="Ecosystem">生态系统</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 data-zh="AutoGLM AI社区" data-en="AutoGLM AI Community">AutoGLM AI社区</h3>
-                    <ul>
-                        <li><a href="#" data-zh="Discord社区" data-en="Discord Community">Discord社区</a></li>
-                        <li><a href="#" data-zh="技术论坛" data-en="Technical Forum">技术论坛</a></li>
-                        <li><a href="#" data-zh="贡献指南" data-en="Contribution Guide">贡献指南</a></li>
-                        <li><a href="#" data-zh="开发者文档" data-en="Developer Documentation">开发者文档</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 data-zh="AutoGLM AI关于" data-en="AutoGLM AI About">AutoGLM AI关于</h3>
-                    <ul>
-                        <li><a href="#" data-zh="智谱AI" data-en="Zhipu AI">智谱AI</a></li>
-                        <li><a href="#" data-zh="开源协议" data-en="Open Source License">开源协议</a></li>
-                        <li><a href="#" data-zh="隐私政策" data-en="Privacy Policy">隐私政策</a></li>
-                        <li><a href="#" data-zh="联系我们" data-en="Contact Us">联系我们</a></li>
-                    </ul>
-                </div>
+                    <a href="/guides/autoglm-security-prompt-injection.html">Read the AutoGLM security guide <span aria-hidden="true">→</span></a>
+                </aside>
             </div>
+        </section>
 
-            <div class="footer-bottom">
-                <div class="footer-badges">
-                    <div class="badge" data-zh="Apache-2.0 开源协议" data-en="Apache-2.0 Open Source License">Apache-2.0 开源协议</div>
-                    <div class="badge" data-zh="MIT 模型协议" data-en="MIT Model License">MIT 模型协议</div>
-                    <div class="badge" data-zh="完全开源免费" data-en="Completely Open Source & Free">完全开源免费</div>
-                    <div class="badge" data-zh="支持商业使用" data-en="Commercial Use Supported">支持商业使用</div>
-                    <div class="badge" data-zh="活跃社区支持" data-en="Active Community Support">活跃社区支持</div>
-                </div>
-
-                <div class="footer-links" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <h4 style="text-align: center; margin-bottom: 1rem; color: var(--accent-orange);" data-zh="AI 工具与合作伙伴" data-en="AI Tools & Partners">AI 工具与合作伙伴</h4>
-                    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; align-items: center;">
-                        <a href="https://cursorhero.com/" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: none; transition: color 0.3s; font-size: 0.95rem; font-weight: 600;" data-zh="Cursorhero — AI 鼠标光标生成器" data-en="Cursorhero — AI Cursor Generator">Cursorhero — AI 鼠标光标生成器</a>
-                        <a href="https://www.engagement-photos.net/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 0.9rem;" data-zh="Engagement Photos" data-en="Engagement Photos">Engagement Photos</a>
-                    </div>
-                </div>
-
-                <div class="hero-buttons" style="margin-top: 2rem; justify-content: center;">
-                    <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-primary" target="_blank">
-                        <i class="fas fa-rocket"></i>
-                        <span data-zh="立即开始使用AutoGLM AI" data-en="Start Using AutoGLM AI Now">立即开始使用AutoGLM AI</span>
-                    </a>
-                </div>
-
-                <p style="margin-top: 2rem; text-align: center; opacity: 0.7;">
-                    <span data-zh="独立 AutoGLM 资源网站，非 Z.ai 官方网站。" data-en="Independent AutoGLM resource site. Not an official Z.ai property.">Independent AutoGLM resource site. Not an official Z.ai property.</span>
-                </p>
+        <section class="section" id="resources">
+            <div class="shell section-intro narrow">
+                <p class="eyebrow">Continue learning</p>
+                <h2>AutoGLM resources for the next decision</h2>
+                <p>Use these focused guides when you need implementation detail. Each page links to its primary source so you can distinguish this independent overview from the official project documentation.</p>
             </div>
-        </div>
-    </footer>
+            <div class="shell resource-grid">
+                <a class="resource" href="/guides/open-source-autoglm-phone-9b.html"><span>Deployment</span><h3>AutoGLM-Phone-9B open-source deployment guide</h3><p>Requirements, device connections, local serving, and a safe first run.</p><b>Read guide →</b></a>
+                <a class="resource" href="/guides/autoglm-security-prompt-injection.html"><span>Security</span><h3>AutoGLM security and prompt injection guidance</h3><p>Threat boundaries, sensitive actions, and operator controls.</p><b>Read guide →</b></a>
+                <a class="resource" href="/guides/autoglm-phone-9b-vs-multilingual.html"><span>Models</span><h3>AutoGLM-Phone-9B vs. Multilingual</h3><p>Choose a model according to the language on the phone screen.</p><b>Read guide →</b></a>
+            </div>
+        </section>
+
+        <section class="section faq-section" id="faq">
+            <div class="shell section-intro narrow"><p class="eyebrow">Common questions</p><h2>AutoGLM FAQ</h2></div>
+            <div class="shell faq-list">
+                <details><summary>Is this the official AutoGLM website?</summary><p>No. This is an independent English-language resource site. For source code, releases, and project-specific setup instructions, use the official <a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM repository</a>.</p></details>
+                <details><summary>Can AutoGLM automate any mobile application?</summary><p>No framework can guarantee reliable automation across every application state. Compatibility depends on the device, model, visible interface, authorization state, and the task. Begin with a representative test environment.</p></details>
+                <details><summary>What should I automate first?</summary><p>Start with an observable, reversible task on a test device. Avoid credentials, payments, personal messages, account changes, and confidential data until you have defined and tested approval controls.</p></details>
+            </div>
+        </section>
     </main>
-
-    <!-- Deployment Modal -->
-    <div class="modal" id="deploymentModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 data-zh="AutoGLM AI部署方案选择" data-en="AutoGLM AI Deployment Plan Selection">AutoGLM AI部署方案选择</h2>
-                <p data-zh="根据您的需求选择最适合的部署模式" data-en="Choose the most suitable deployment mode according to your needs">根据您的需求选择最适合的部署模式</p>
-            </div>
-
-            <div class="deployment-options-grid">
-                <div class="deployment-option-card">
-                    <div class="deployment-option-title">
-                        <i class="fas fa-laptop"></i>
-                        <span data-zh="本地部署方案" data-en="Local Deployment Solution">本地部署方案</span>
-                    </div>
-                    <div class="deployment-option-desc">
-                        <span data-zh="完全本地化运行，数据不离开您的设备，适合对安全要求极高的场景" data-en="Completely local operation, data never leaves your device, suitable for high-security requirement scenarios">完全本地化运行，数据不离开您的设备，适合对安全要求极高的场景</span>
-                    </div>
-                    <ul class="deployment-option-specs">
-                        <li data-zh="所有计算在本地设备完成" data-en="All computation completed on local device">所有计算在本地设备完成</li>
-                        <li data-zh="数据安全性最高，完全可控" data-en="Highest data security, completely controllable">数据安全性最高，完全可控</li>
-                        <li data-zh="需要一定的硬件配置支持" data-en="Requires certain hardware configuration support">需要一定的硬件配置支持</li>
-                        <li data-zh="适合金融、医疗等高安全行业" data-en="Suitable for high-security industries like finance, medical">适合金融、医疗等高安全行业</li>
-                        <li data-zh="一次性投入，长期成本较低" data-en="One-time investment, lower long-term costs">一次性投入，长期成本较低</li>
-                    </ul>
-                </div>
-
-                <div class="deployment-option-card">
-                    <div class="deployment-option-title">
-                        <i class="fas fa-cloud"></i>
-                        <span data-zh="云端部署方案" data-en="Cloud Deployment Solution">云端部署方案</span>
-                    </div>
-                    <div class="deployment-option-desc">
-                        <span data-zh="所有计算在云端完成，零本地资源占用，支持强大的并发处理能力" data-en="All computation completed in the cloud, zero local resource usage, supports powerful concurrent processing capabilities">所有计算在云端完成，零本地资源占用，支持强大的并发处理能力</span>
-                    </div>
-                    <ul class="deployment-option-specs">
-                        <li data-zh="无需本地高性能硬件" data-en="No need for local high-performance hardware">无需本地高性能硬件</li>
-                        <li data-zh="快速部署，即开即用" data-en="Quick deployment, ready to use immediately">快速部署，即开即用</li>
-                        <li data-zh="支持大规模并发处理" data-en="Supports large-scale concurrent processing">支持大规模并发处理</li>
-                        <li data-zh="自动更新维护，运维简单" data-en="Automatic updates and maintenance, simple operations">自动更新维护，运维简单</li>
-                        <li data-zh="按需付费，成本可控" data-en="Pay-as-you-go, controllable costs">按需付费，成本可控</li>
-                    </ul>
-                </div>
-
-                <div class="deployment-option-card">
-                    <div class="deployment-option-title">
-                        <i class="fas fa-exchange-alt"></i>
-                        <span data-zh="混合部署方案" data-en="Hybrid Deployment Solution">混合部署方案</span>
-                    </div>
-                    <div class="deployment-option-desc">
-                        <span data-zh="平衡安全性和效率的最佳方案，本地执行+云端模型推理" data-en="Best solution balancing security and efficiency, local execution + cloud model inference">平衡安全性和效率的最佳方案，本地执行+云端模型推理</span>
-                    </div>
-                    <ul class="deployment-option-specs">
-                        <li data-zh="普通办公电脑即可作为客户端" data-en="Regular office computer is sufficient as client">普通办公电脑即可作为客户端</li>
-                        <li data-zh="云端GPU集群提供强大算力" data-en="Cloud GPU cluster provides powerful computing power">云端GPU集群提供强大算力</li>
-                        <li data-zh="数据本地处理，模型云端推理" data-en="Local data processing, cloud model inference">数据本地处理，模型云端推理</li>
-                        <li data-zh="灵活的成本控制策略" data-en="Flexible cost control strategy">灵活的成本控制策略</li>
-                        <li data-zh="适合大多数企业的平衡选择" data-en="Balanced choice suitable for most enterprises">适合大多数企业的平衡选择</li>
-                    </ul>
-                </div>
-
-                <div class="deployment-option-card">
-                    <div class="deployment-option-title">
-                        <i class="fas fa-rocket"></i>
-                        <span data-zh="快速开始方案" data-en="Quick Start Solution">快速开始方案</span>
-                    </div>
-                    <div class="deployment-option-desc">
-                        <span data-zh="零配置的体验方案，立即试用AutoGLM AI的强大功能" data-en="Zero-configuration experience solution, immediately try the powerful features of AutoGLM AI">零配置的体验方案，立即试用AutoGLM AI的强大功能</span>
-                    </div>
-                    <ul class="deployment-option-specs">
-                        <li data-zh="无需安装，直接在线体验" data-en="No installation required, experience online directly">无需安装，直接在线体验</li>
-                        <li data-zh="5分钟快速上手" data-en="5-minute quick start">5分钟快速上手</li>
-                        <li data-zh="免费试用所有基础功能" data-en="Free trial of all basic features">免费试用所有基础功能</li>
-                        <li data-zh="完整的技术支持服务" data-en="Complete technical support services">完整的技术支持服务</li>
-                        <li data-zh="适合产品评估和学习研究" data-en="Suitable for product evaluation and learning research">适合产品评估和学习研究</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="modal-cta">
-                <a href="#deployment-tutorial" class="btn-primary" id="scrollToDeployment">
-                    <i class="fas fa-book"></i>
-                    <span data-zh="查看详细部署教程" data-en="View Detailed Deployment Tutorial">查看详细部署教程</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Language Switcher Functionality
-        let currentLang = 'en'; // Default language
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            updateLanguage();
-            updateLanguageButtons();
-        }
-
-        function updateLanguage() {
-            // Update all elements with language data attributes
-            const elements = document.querySelectorAll('[data-zh][data-en]');
-            elements.forEach(element => {
-                const content = currentLang === 'zh' ? element.getAttribute('data-zh') : element.getAttribute('data-en');
-                element.textContent = content;
-            });
-
-            // Update page title and description
-            updatePageMeta();
-
-            // Update language direction
-            document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
-        }
-
-        function updateLanguageButtons() {
-            const enBtn = document.getElementById('langEn');
-            const zhBtn = document.getElementById('langZh');
-
-            if (!enBtn || !zhBtn) {
-                return;
-            }
-            
-            if (currentLang === 'en') {
-                enBtn.classList.add('active');
-                zhBtn.classList.remove('active');
-            } else {
-                zhBtn.classList.add('active');
-                enBtn.classList.remove('active');
-            }
-        }
-
-        function updatePageMeta() {
-            const title = document.getElementById('pageTitle');
-            const description = document.getElementById('pageDescription');
-            
-            if (currentLang === 'zh') {
-                title.textContent = 'AutoGLM 官方开源 | 5分钟快速部署 | 完全免费本地AI智能体';
-                description.textContent = '🔥 AutoGLM 官方开源AI智能体，5分钟即可在本地运行！支持手机控制、网页操作、任务自动化。完全免费，数据私有，超越GPT-4o性能160%。立即下载使用。';
-            } else {
-                title.textContent = 'AutoGLM Open Source Guide | Phone Agent Deployment and Safety';
-                description.textContent = 'Independent AutoGLM resource hub with deployment, model-selection, and safety guidance for the open-source phone agent framework.';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => setLanguage('en'));
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                
-                // Close other FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== faqItem && item.classList.contains('active')) {
-                        item.classList.remove('active');
-                        item.querySelector('.faq-answer').style.display = 'none';
-                        item.querySelector('.faq-question i').classList.remove('fa-chevron-up');
-                        item.querySelector('.faq-question i').classList.add('fa-chevron-down');
-                    }
-                });
-                
-                // Toggle current FAQ item
-                faqItem.classList.toggle('active');
-                if (faqItem.classList.contains('active')) {
-                    answer.style.display = 'block';
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                } else {
-                    answer.style.display = 'none';
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                }
-            });
-        });
-
-        // Modal Functions
-        function showDeploymentModal() {
-            const modal = document.getElementById('deploymentModal');
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDeploymentModal() {
-            const modal = document.getElementById('deploymentModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('deploymentModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeDeploymentModal();
-            }
-        });
-
-        // Scroll to deployment tutorial from modal
-        document.getElementById('scrollToDeployment').addEventListener('click', function(e) {
-            e.preventDefault();
-            closeDeploymentModal();
-            document.getElementById('deployment-tutorial').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateLanguage();
-            updateLanguageButtons();
-        });
-    </script>
+    <footer class="site-footer"><div class="shell footer-wrap"><p>Independent AutoGLM resource site. Not an official Z.ai property.</p><div><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a><a href="/guides/open-source-autoglm-phone-9b.html">Deployment guide</a></div></div></footer>
 </body>
 </html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AutoGLM phone agent workflow</title><desc id="desc">A product-style illustration of a phone agent inspecting a device task and waiting for approval before a sensitive action.</desc>
+  <rect width="1200" height="760" fill="#f8fbf8"/>
+  <rect x="36" y="34" width="1128" height="692" rx="8" fill="#fff" stroke="#172126" stroke-width="3"/>
+  <rect x="36" y="34" width="1128" height="68" rx="8" fill="#172126"/><circle cx="79" cy="68" r="9" fill="#d6eadf"/><text x="105" y="74" fill="#eff6f1" font-family="Arial,sans-serif" font-size="24" font-weight="700">AutoGLM / task trace</text><text x="1008" y="74" fill="#a8dbc5" font-family="monospace" font-size="19">OBSERVABLE</text>
+  <rect x="82" y="148" width="465" height="510" rx="5" fill="#f0f5f1" stroke="#cdd8d1" stroke-width="2"/>
+  <text x="120" y="199" fill="#17646d" font-family="monospace" font-size="18">CURRENT TASK</text><text x="120" y="248" fill="#172126" font-family="Arial,sans-serif" font-size="30" font-weight="700">Open Settings and review</text><text x="120" y="286" fill="#172126" font-family="Arial,sans-serif" font-size="30" font-weight="700">device permissions</text>
+  <rect x="120" y="336" width="369" height="70" rx="4" fill="#fff" stroke="#d5deda" stroke-width="2"/><text x="148" y="379" fill="#4f6065" font-family="Arial,sans-serif" font-size="22">1. Inspect visible controls</text>
+  <rect x="120" y="423" width="369" height="70" rx="4" fill="#dceddf" stroke="#17646d" stroke-width="2"/><text x="148" y="466" fill="#104750" font-family="Arial,sans-serif" font-size="22" font-weight="700">2. Plan: tap Permissions</text>
+  <rect x="120" y="510" width="369" height="70" rx="4" fill="#fff" stroke="#d5deda" stroke-width="2"/><text x="148" y="553" fill="#4f6065" font-family="Arial,sans-serif" font-size="22">3. Verify the new state</text>
+  <text x="120" y="625" fill="#718188" font-family="monospace" font-size="17">trace id: test-device-01</text>
+  <rect x="692" y="132" width="292" height="544" rx="33" fill="#172126"/><rect x="709" y="164" width="258" height="470" rx="22" fill="#f9fbf9"/><rect x="796" y="145" width="84" height="9" rx="4" fill="#607176"/>
+  <text x="741" y="220" fill="#65767b" font-family="Arial,sans-serif" font-size="16">SETTINGS</text><text x="741" y="270" fill="#172126" font-family="Arial,sans-serif" font-size="25" font-weight="700">Permissions</text>
+  <line x1="741" y1="302" x2="932" y2="302" stroke="#d5deda" stroke-width="2"/><text x="741" y="344" fill="#172126" font-family="Arial,sans-serif" font-size="20">Camera</text><rect x="890" y="322" width="43" height="25" rx="13" fill="#17646d"/><circle cx="919" cy="335" r="9" fill="#fff"/>
+  <line x1="741" y1="374" x2="932" y2="374" stroke="#d5deda" stroke-width="2"/><text x="741" y="416" fill="#172126" font-family="Arial,sans-serif" font-size="20">Location</text><rect x="890" y="394" width="43" height="25" rx="13" fill="#cdd8d1"/><circle cx="903" cy="407" r="9" fill="#fff"/>
+  <line x1="741" y1="446" x2="932" y2="446" stroke="#d5deda" stroke-width="2"/><text x="741" y="488" fill="#172126" font-family="Arial,sans-serif" font-size="20">Microphone</text><rect x="890" y="466" width="43" height="25" rx="13" fill="#cdd8d1"/><circle cx="903" cy="479" r="9" fill="#fff"/>
+  <rect x="1014" y="318" width="118" height="148" rx="5" fill="#fff8e9" stroke="#c28a27" stroke-width="2"/><text x="1037" y="355" fill="#8d6216" font-family="monospace" font-size="16">CHECKPOINT</text><text x="1037" y="390" fill="#172126" font-family="Arial,sans-serif" font-size="18" font-weight="700">Approval</text><text x="1037" y="417" fill="#172126" font-family="Arial,sans-serif" font-size="18" font-weight="700">required</text><path d="M1014 392 L984 392" stroke="#c28a27" stroke-width="3"/>
+  <path d="M548 445 C610 445 616 398 692 398" fill="none" stroke="#17646d" stroke-width="4"/><path d="M681 389 L699 398 L681 407" fill="none" stroke="#17646d" stroke-width="4"/>
+  <text x="610" y="372" fill="#17646d" font-family="monospace" font-size="17">PLAN</text>
+</svg>
