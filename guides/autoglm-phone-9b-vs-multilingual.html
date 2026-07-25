@@ -3,32 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoGLM-Phone-9B vs Multilingual: Which Phone Agent Model to Use?</title>
-    <meta name="description" content="Compare AutoGLM-Phone-9B and AutoGLM-Phone-9B-Multilingual for Chinese, English, and mixed-language mobile interfaces before deployment.">
+    <title>AutoGLM-Phone-9B vs Multilingual Guide</title>
+    <meta name="description" content="Compare AutoGLM-Phone-9B vs Multilingual for Chinese, English, and mixed-language mobile interfaces. Choose a model and validate it before deployment.">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="AutoGLM AI Guides">
     <link rel="canonical" href="https://www.autoglmai.net/guides/autoglm-phone-9b-vs-multilingual">
+    <link rel="icon" type="image/svg+xml" href="/images/autoglm-phone-agent-workflow.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.autoglmai.net/guides/autoglm-phone-9b-vs-multilingual">
+    <meta property="og:title" content="AutoGLM-Phone-9B vs Multilingual Guide">
+    <meta property="og:description" content="Compare AutoGLM-Phone-9B vs Multilingual on interface language, task prompts, and practical phone-agent evaluation.">
+    <meta property="og:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="760">
+    <meta property="og:image:alt" content="AutoGLM phone agent workflow showing an observed mobile action and approval checkpoint">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AutoGLM-Phone-9B vs Multilingual Guide">
+    <meta name="twitter:description" content="A practical comparison of AutoGLM-Phone-9B and Multilingual for phone-agent deployment.">
+    <meta name="twitter:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
     <link rel="stylesheet" href="/styles/guides.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AutoGLM-Phone-9B vs Multilingual: Which Phone Agent Model to Use?","datePublished":"2026-07-25","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/autoglm-phone-9b-vs-multilingual"}</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"AutoGLM-Phone-9B vs Multilingual Guide","description":"A practical comparison of AutoGLM-Phone-9B and the Multilingual model for mobile interface automation.","datePublished":"2026-07-25","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/autoglm-phone-9b-vs-multilingual","image":"https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png"}
+    </script>
 </head>
 <body>
     <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="/guides/open-source-autoglm-phone-9b">Deployment</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a></nav></div></header>
     <main class="article">
-        <div class="eyebrow">Model selection</div>
-        <h1>AutoGLM-Phone-9B vs. Multilingual: choose for the interface your agent will see.</h1>
-        <p class="lede">Both released model variants support the same Phone Agent framework. The practical choice is not a benchmark race: it is whether the mobile interfaces and tasks your agent must read are Chinese-only or include English and other languages.</p>
-        <div class="meta"><span>Published Jul 25, 2026</span><span>4 minute read</span><span>Deployment planning</span></div>
-        <img class="hero-image" src="https://raw.githubusercontent.com/zai-org/Open-AutoGLM/main/resources/enable-ui-automation.jpg" alt="Phone automation settings shown in the official Open-AutoGLM documentation">
-        <p class="caption">Use a test device and validate the complete interaction path before applying either model to a real workflow.</p>
-        <h2>The short answer</h2>
-        <div class="facts"><div class="fact"><strong>Chinese applications</strong><span>Start with AutoGLM-Phone-9B, which the official documentation says is optimized for Chinese mobile apps.</span></div><div class="fact"><strong>English or mixed UI</strong><span>Start with AutoGLM-Phone-9B-Multilingual, described as supporting English scenarios and applications containing other languages.</span></div><div class="fact"><strong>Unknown mix</strong><span>Test the multilingual variant first, then compare action traces on the same fixed task set.</span></div></div>
-        <h2>What stays the same</h2>
-        <p>Both variants are used through the Open-AutoGLM Phone Agent framework. The framework connects to Android through ADB or to HarmonyOS through HDC, reads a screen through a vision-language model, plans an action sequence, and performs device operations. The developer setup, safety boundaries, and need for manual handling of authentication are the same.</p>
-        <h2>What should drive your choice</h2>
-        <table class="compare"><thead><tr><th>Decision factor</th><th>Phone-9B</th><th>Phone-9B-Multilingual</th></tr></thead><tbody><tr><td>Official positioning</td><td>Optimized for Chinese mobile applications.</td><td>Supports English scenarios and other language content.</td></tr><tr><td>Best first test</td><td>A workflow whose instructions, labels, and app content are Chinese.</td><td>A workflow containing English labels, multilingual content, or switching locales.</td></tr><tr><td>Deployment path</td><td>Serve the selected model with a compatible endpoint, then point the agent to it.</td><td>Same framework; official documentation includes a vLLM serving example for this model.</td></tr><tr><td>How to validate</td><td colspan="2">Run the same small, reversible workflow several times. Compare whether the model identifies the intended element, preserves task intent, and stops at the correct boundary.</td></tr></tbody></table>
-        <div class="callout warning"><p><strong>Do not infer language support from a single successful demo.</strong> Evaluate screens with the fonts, app layouts, permission dialogs, and task phrasing used in your actual environment. Model selection is an operational test, not a label-only decision.</p></div>
-        <h2>A compact evaluation plan</h2>
-        <ol class="steps"><li>Build a 10-task set with no credentials, payments, or destructive actions.</li><li>Include the exact languages, app labels, and common modal dialogs the agent will encounter.</li><li>Run each task with clear stop conditions and capture screenshots and traces.</li><li>Score successful completion, unexpected actions, manual takeovers, and refusal or stop behavior separately.</li><li>Use the model that is more reliable on your interface mix, not the model that is simply easier to install.</li></ol>
-        <section class="sources"><h2>Primary sources</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official repository</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B model card</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual model card</a></li></ul></section>
+        <div class="eyebrow">Model selection guide</div>
+        <h1>AutoGLM-Phone-9B vs Multilingual: choose for the screen your agent reads</h1>
+        <p class="lede">AutoGLM-Phone-9B vs Multilingual is a practical deployment decision, not a benchmark contest. Both models work with the same phone-agent framework. The useful question is whether the interfaces, prompts, and system dialogs in your workflow are primarily Chinese, primarily English, or genuinely mixed-language.</p>
+        <div class="meta"><span>Published Jul 25, 2026</span><span>Updated Jul 25, 2026</span><span>9 minute read</span></div>
+        <img class="hero-image" src="/images/autoglm-phone-agent-workflow.png" width="1200" height="760" alt="AutoGLM phone agent workflow showing a planned device action and human approval checkpoint">
+        <p class="caption">A useful comparison begins with a controlled device, representative screens, and a record of each action the model proposes.</p>
+        <div class="facts"><div class="fact"><strong>Chinese UI</strong><span>Start with AutoGLM-Phone-9B when the tasks and target applications are primarily Chinese.</span></div><div class="fact"><strong>English or mixed UI</strong><span>Start with the Multilingual model when the agent needs to read English or other non-Chinese content.</span></div><div class="fact"><strong>Unknown mix</strong><span>Run both models against the same safe task set before selecting a deployment default.</span></div></div>
+
+        <h2>AutoGLM-Phone-9B vs Multilingual: the short answer</h2>
+        <p>For Chinese-language mobile applications, AutoGLM-Phone-9B is the natural first model to evaluate. The official project positions the base model for Chinese mobile apps. For English screens, other language content, or applications that switch locale, begin with AutoGLM-Phone-9B-Multilingual. The comparison is about compatibility with what the agent can see and what the operator asks it to do.</p>
+        <p>Do not choose a model from the name alone. In an AutoGLM-Phone-9B vs Multilingual evaluation, the actual screen matters: fonts, abbreviated labels, icons, error states, embedded web views, and system permission dialogs can all change a task. The best result is the model that reliably identifies the intended control, preserves the original task goal, and stops at the correct boundary on your own representative devices.</p>
+        <div class="callout"><p><strong>Do not infer universal language support from one successful demo.</strong> A model can complete a simple screen transition and still struggle with a different locale, application layout, or modal dialog. Treat model selection as an operational test with repeatable evidence.</p></div>
+
+        <h2>What stays the same in AutoGLM-Phone-9B vs Multilingual</h2>
+        <p>Both choices use the Open-AutoGLM phone-agent framework. Android workflows connect through Android Debug Bridge, while HarmonyOS workflows use HDC. The agent receives a task, reads the visible interface through a vision-language model, plans an action, and applies that action through the connected device tooling. The same deployment hygiene applies to either model: authorized test devices, bounded tasks, screenshots or traces, and a person in control of sensitive steps.</p>
+        <p>The two models also share the same limits. Neither model should be treated as a guarantee of safe automation across every app state. Authentication, MFA, account recovery, payments, credential entry, and data submission remain human checkpoints. An AutoGLM-Phone-9B vs Multilingual test should score correct stops and manual handoffs separately from task completion so that an unsafe action is never mistaken for a success.</p>
+
+        <h2>AutoGLM-Phone-9B vs Multilingual by interface language</h2>
+        <p>Language is more than the language of the user's prompt. Consider the task instruction, every label the model must read, the app's runtime locale, the operating-system dialogs, and content loaded inside a web view. A Chinese-language task can still fail if an English system permission sheet appears at a critical step. Likewise, an English application can contain Chinese product names, mixed-language search results, or a localized checkout flow.</p>
+        <table class="compare"><thead><tr><th>Decision factor</th><th>AutoGLM-Phone-9B</th><th>AutoGLM-Phone-9B-Multilingual</th></tr></thead><tbody><tr><td>Official positioning</td><td>Designed for Chinese mobile application scenarios.</td><td>Intended for English scenarios and applications containing other languages.</td></tr><tr><td>Best first test</td><td>A task whose prompts, labels, and primary app content are Chinese.</td><td>A task with English labels, multiple languages, or changing locale.</td></tr><tr><td>Representative screens</td><td>Chinese navigation, search, error, and system permission screens.</td><td>English and mixed-language navigation, error, and permission screens.</td></tr><tr><td>Decision evidence</td><td colspan="2">Run the same small, reversible task set and compare element selection, task fidelity, unexpected actions, manual takeovers, and correct stops.</td></tr></tbody></table>
+        <p>The most useful AutoGLM-Phone-9B vs Multilingual comparison keeps all other variables constant. Use the same device image, application version, task prompt, model endpoint configuration where applicable, and stopping rule. Changing several variables at once produces an interesting demo but not a decision a team can repeat.</p>
+
+        <h2>Build a fair AutoGLM-Phone-9B vs Multilingual test set</h2>
+        <p>A focused test set is better than a large uncontrolled benchmark. Start with ten to fifteen small tasks that do not require personal accounts, credentials, payments, or destructive actions. Each task should have a clear expected result and a screen you can inspect afterwards. Include the ordinary path, a screen with similar controls, an empty or error state, and a modal dialog that forces the agent to decide whether it should pause.</p>
+        <ol class="steps"><li><strong>List the screens the agent will actually encounter.</strong> Include app labels, system prompts, embedded browser content, and any locale switching users can trigger.</li><li><strong>Write task prompts in the expected user language.</strong> For a mixed-language workflow, include the realistic mix rather than translating everything into one language for the test.</li><li><strong>Set the same boundary for both runs.</strong> Define allowed applications, actions, a stop condition, and any action that requires approval.</li><li><strong>Capture evidence.</strong> Save the prompt, screenshots, action trace, result, manual takeover, and unexpected action for each run.</li><li><strong>Review failure categories.</strong> Separate screen-reading errors, planning errors, device-control errors, and safe refusals or stops before declaring one model better.</li></ol>
+        <p>When you review the AutoGLM-Phone-9B vs Multilingual evidence, look for consistency rather than one highest score. A model that takes an extra safe pause may be the better choice for a workflow where the next screen can affect a real account. A model that reads every label correctly but cannot control the test device is not a language-model failure; it is a deployment problem that needs separate debugging.</p>
+
+        <h2>Interpret AutoGLM-Phone-9B vs Multilingual results safely</h2>
+        <p>Use clear success criteria. A successful run reaches the stated result, operates only within the allowed application and action scope, and stops before any out-of-bounds change. An incomplete run that pauses at a sensitive decision can be the correct result. Marking every non-completion as failure will push an evaluation toward risky autonomy instead of dependable supervised operation.</p>
+        <div class="facts"><div class="fact"><strong>Element selection</strong><span>Did the model identify the intended visible control, rather than a similar label or icon?</span></div><div class="fact"><strong>Task fidelity</strong><span>Did it follow the operator's original goal instead of on-screen instructions that changed the scope?</span></div><div class="fact"><strong>Boundary behavior</strong><span>Did it stop, request approval, or hand over when the task reached a sensitive action?</span></div></div>
+        <p>Record the failure mode in plain language. For example, distinguish "could not read the English error message" from "device connection did not accept the tap" or "stopped correctly before submitting a form." This record helps a team decide whether AutoGLM-Phone-9B vs Multilingual is a language choice, a task-design issue, or a device setup issue.</p>
+
+        <h2>Deployment choices after the comparison</h2>
+        <p>Once you choose a model, run it first on a controlled device or emulator. Keep the task scope narrow, restrict device authorization to trusted hosts, and preserve human approval for account, data, or payment actions. Model selection does not remove the need for a deployment boundary. It simply gives the phone agent a better starting point for the interfaces it is expected to understand.</p>
+        <p>For teams with multiple locales, do not assume one AutoGLM-Phone-9B vs Multilingual decision will remain permanent. Re-run the small evaluation set after a major app redesign, a locale expansion, a changed device image, or an updated model endpoint. The comparison becomes useful when it is a repeatable release check rather than a one-time assertion.</p>
+        <p><a href="/guides/open-source-autoglm-phone-9b">Read the AutoGLM-Phone-9B deployment guide.</a> For confirmation gates, task scope, and untrusted on-screen content, see the <a href="/guides/autoglm-security-prompt-injection">AutoGLM security guide.</a></p>
+
+        <h2>AutoGLM-Phone-9B vs Multilingual FAQ</h2>
+        <h3>Which model should I use for a Chinese app with English system dialogs?</h3>
+        <p>Test the actual workflow with both candidates when system dialogs are essential to the task. Start from the base model's documented positioning, but make the final decision from representative screens and action traces.</p>
+        <h3>Can I compare the models with a production account?</h3>
+        <p>Do not use production accounts for the first comparison. Use a test device, a dedicated profile, public content, and reversible tasks so unexpected actions do not affect real data or users.</p>
+        <h3>Does a higher completion rate settle the comparison?</h3>
+        <p>No. Review unexpected actions, manual takeovers, and correct stops as well. A model that reaches an end state by taking an unsafe action is not a better production choice.</p>
+
+        <section class="sources"><h2>AutoGLM-Phone-9B vs Multilingual primary sources</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official repository</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B model card</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual model card</a></li></ul></section>
     </main>
     <footer class="site-footer"><span>Independent AutoGLM resource site. Not an official Z.ai property.</span><a href="/">Back to AutoGLM AI</a></footer>
 </body>
