@@ -3,39 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoGLM-Phone-9B Open Source: Deployment Guide and What's New</title>
-    <meta name="description" content="A practical guide to the open-source AutoGLM-Phone-9B phone agent: model options, Android and HarmonyOS requirements, local serving, and safety boundaries.">
+    <title>AutoGLM-Phone-9B Deployment Guide</title>
+    <meta name="description" content="Deploy AutoGLM-Phone-9B with Android ADB or HarmonyOS HDC. Compare model options, run a supervised first task, and set practical safety boundaries.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.autoglmai.net/guides/open-source-autoglm-phone-9b.html">
+    <meta name="author" content="AutoGLM AI Guides">
+    <link rel="canonical" href="https://www.autoglmai.net/guides/open-source-autoglm-phone-9b">
+    <link rel="icon" type="image/svg+xml" href="/images/autoglm-phone-agent-workflow.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.autoglmai.net/guides/open-source-autoglm-phone-9b">
+    <meta property="og:title" content="AutoGLM-Phone-9B Deployment Guide">
+    <meta property="og:description" content="A practical guide to deploying AutoGLM-Phone-9B with tested device connections, model selection, and safety boundaries.">
+    <meta property="og:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="760">
+    <meta property="og:image:alt" content="AutoGLM phone agent workflow showing an observed device action and approval checkpoint">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AutoGLM-Phone-9B Deployment Guide">
+    <meta name="twitter:description" content="Deploy AutoGLM-Phone-9B with Android or HarmonyOS device control and supervised task boundaries.">
+    <meta name="twitter:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
     <link rel="stylesheet" href="/styles/guides.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AutoGLM-Phone-9B Open Source: Deployment Guide and What's New","datePublished":"2025-12-09","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/open-source-autoglm-phone-9b.html"}</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"AutoGLM-Phone-9B Deployment Guide","description":"A practical developer guide to deploying the AutoGLM-Phone-9B phone agent with supervised device control.","datePublished":"2025-12-09","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/open-source-autoglm-phone-9b","image":"https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png"}
+    </script>
 </head>
 <body>
-    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a><a href="/guides/autoglm-security-prompt-injection.html">Security</a></nav></div></header>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a><a href="/guides/autoglm-security-prompt-injection">Security</a></nav></div></header>
     <main class="article">
-        <div class="eyebrow">Open-source update</div>
-        <h1>AutoGLM-Phone-9B is open source. Here is what you need to run it.</h1>
-        <p class="lede">The Phone Agent framework exposes a practical route from a natural-language request to supervised phone actions. It uses screen understanding, planning, and Android Debug Bridge or HarmonyOS Device Connector control instead of a proprietary cloud-phone workflow.</p>
-        <div class="meta"><span>Published Dec 9, 2025</span><span>Updated Jul 25, 2026</span><span>7 minute read</span></div>
-        <img class="hero-image" src="https://raw.githubusercontent.com/zai-org/Open-AutoGLM/main/resources/screenshot-20251209-181423.png" alt="AutoGLM phone agent interface from the official project documentation">
-        <p class="caption">Official project screenshot, linked from the Open-AutoGLM documentation.</p>
-        <div class="facts"><div class="fact"><strong>Two model choices</strong><span>The base Phone-9B model targets Chinese mobile applications; the Multilingual version is intended for English and other language content.</span></div><div class="fact"><strong>Device control</strong><span>Android connects through ADB. HarmonyOS support uses HDC. Both require developer tooling and device authorization.</span></div><div class="fact"><strong>Serving options</strong><span>Run your own OpenAI-compatible service through vLLM or use a listed hosted model provider.</span></div></div>
-        <h2>What changed</h2>
-        <p>The open project and model cards published in December 2025 make the Phone Agent stack available for research and development. The project describes its model as a vision-language agent that reads the active screen, plans the next operation, and executes a workflow. It also includes confirmation for sensitive actions and manual takeover for authentication steps.</p>
-        <div class="callout"><p><strong>Important scope:</strong> this is a developer framework, not a promise of unattended access to every app. Login, MFA, payment, and identity checks should remain user-controlled checkpoints.</p></div>
-        <h2>Choose the right model first</h2>
-        <table class="compare"><thead><tr><th>Model</th><th>Use it when</th><th>Primary source</th></tr></thead><tbody><tr><td>AutoGLM-Phone-9B</td><td>Your target phone interfaces and task prompts are primarily Chinese.</td><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">Model card</a></td></tr><tr><td>AutoGLM-Phone-9B-Multilingual</td><td>Your workflow contains English or other non-Chinese interface text.</td><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">Model card</a></td></tr></tbody></table>
-        <h2>Minimum deployment path</h2>
-        <ol class="steps"><li>Use Python 3.10 or later and install the project requirements.</li><li>For Android, install platform-tools, enable USB debugging, and validate the connection with <code>adb devices</code>. For HarmonyOS, configure HDC and verify the target connection.</li><li>Install the required Android input method when using ADB text entry.</li><li>Start an OpenAI-compatible model endpoint. The official documentation provides vLLM parameters for the multilingual model.</li><li>Run one harmless, observable task before enabling any production workflow.</li></ol>
+        <div class="eyebrow">Open-source deployment guide</div>
+        <h1>AutoGLM-Phone-9B deployment: what to prepare before your first run</h1>
+        <p class="lede">AutoGLM-Phone-9B is an open-source phone-agent model for developers who need to test supervised Android or HarmonyOS workflows. This guide explains the deployment decisions that matter first: choosing the right model variant, connecting a controlled device, serving the model, and keeping a person in charge of sensitive actions.</p>
+        <div class="meta"><span>Published Dec 9, 2025</span><span>Updated Jul 25, 2026</span><span>9 minute read</span></div>
+        <img class="hero-image" src="/images/autoglm-phone-agent-workflow.png" width="1200" height="760" alt="AutoGLM phone agent workflow showing a planned device action and an approval checkpoint">
+        <p class="caption">Workflow illustration: inspect the visible interface, plan a bounded action, execute it on a test device, and review the result.</p>
+        <div class="facts"><div class="fact"><strong>Base model</strong><span>AutoGLM-Phone-9B is positioned for Chinese-language mobile interfaces and tasks.</span></div><div class="fact"><strong>Device control</strong><span>Android connects through ADB; HarmonyOS support uses HDC. Both require explicit authorization.</span></div><div class="fact"><strong>Operator control</strong><span>Start with observable, reversible tasks and keep approval gates for sensitive actions.</span></div></div>
+
+        <h2>What AutoGLM-Phone-9B changes for phone-agent development</h2>
+        <p>AutoGLM-Phone-9B brings the phone-agent loop into an open development workflow. Instead of treating the phone as a remote black box, the framework works from the visible screen state: the model reads the interface, proposes the next operation, the connected device tooling applies that operation, and the developer verifies what changed. That sequence is useful when an interface is dynamic and the correct next step depends on a button, prompt, or status message the agent can see.</p>
+        <p>The important expectation is not that AutoGLM-Phone-9B will autonomously complete every mobile task. A reliable deployment makes the run inspectable. It records the prompt, limits the applications that are in scope, uses a known device state, and stops when a condition is met. Those controls let a team decide whether an unexpected result came from the model, the screen, the task wording, or the device connection.</p>
+        <div class="callout"><p><strong>Scope first:</strong> AutoGLM-Phone-9B is a developer framework for supervised device automation. Login, MFA, payments, account recovery, credential entry, and identity checks should remain user-controlled checkpoints.</p></div>
+
+        <h2>Choose the AutoGLM-Phone-9B model variant for your interface</h2>
+        <p>Choose a model based on the language and layout of the screens you need to control, not on an abstract benchmark. The base AutoGLM-Phone-9B model is documented for Chinese mobile applications. AutoGLM-Phone-9B-Multilingual is intended for English and other non-Chinese interface content. The device setup and safety boundary are the same for both, but the correct first evaluation set is different.</p>
+        <table class="compare"><thead><tr><th>Model</th><th>Start here when</th><th>Validate before expanding scope</th></tr></thead><tbody><tr><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B</a></td><td>Your prompts, screen labels, and target applications are primarily Chinese.</td><td>Element recognition, task phrasing, permission dialogs, and the end condition for your workflow.</td></tr><tr><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual</a></td><td>Your workflow includes English, another language, or a changing app locale.</td><td>Mixed-language screens, common system dialogs, and how the model handles alternate labels.</td></tr></tbody></table>
+        <p>Use representative screens rather than a single success case. Include an empty state, an error message, similar-looking controls, and the confirmation prompt that appears before a consequential action. A useful AutoGLM-Phone-9B test asks whether the agent can explain the relevant visual difference before it is allowed to act. This gives you a meaningful deployment signal without turning a model name into a guarantee.</p>
+        <p><a href="/guides/autoglm-phone-9b-vs-multilingual">Read the AutoGLM-Phone-9B vs. Multilingual comparison guide.</a></p>
+
+        <h2>AutoGLM-Phone-9B deployment requirements</h2>
+        <p>Before you run AutoGLM-Phone-9B, prepare one supported device, the relevant developer connection, a model endpoint, and a small task with a clear stop condition. Android development normally uses Android platform-tools and ADB. HarmonyOS workflows use HDC. In both cases, the machine that runs the agent must be trusted by the device and the device should be reserved for testing whenever possible.</p>
+        <ol class="steps"><li><strong>Prepare the host environment.</strong> Use the Python version and dependency requirements listed in the official Open-AutoGLM repository. Keep the project environment separate from unrelated production services.</li><li><strong>Connect a controlled device.</strong> For Android, enable USB debugging and confirm the connection with <code>adb devices</code>. For HarmonyOS, configure HDC and confirm that the intended target is visible. Revoke old debugging authorizations instead of reusing unknown devices.</li><li><strong>Install required input support.</strong> Follow the official setup notes for device input where text entry is needed. Verify this on the test device before evaluating the agent itself.</li><li><strong>Serve the selected model.</strong> Start the supported OpenAI-compatible endpoint. The official documentation includes serving guidance, including a vLLM path for the multilingual model.</li><li><strong>Define one bounded task.</strong> Name the application, desired outcome, allowed actions, and the point at which the AutoGLM-Phone-9B run must stop.</li></ol>
         <pre class="code">git clone https://github.com/zai-org/Open-AutoGLM.git
 cd Open-AutoGLM
 pip install -r requirements.txt
 pip install -e .
 adb devices</pre>
-        <h2>Run with controls, not blind autonomy</h2>
-        <p>Use a test device or emulator for experimentation. Keep USB or remote ADB access limited to your trusted network. Start with read-only or reversible tasks such as opening an application and searching a public phrase. Require user approval before any action that sends data, changes account settings, spends money, or transmits credentials.</p>
-        <p>For automation teams, pair each task with a clear stop condition, a human review step, and retained screenshots or logs. These controls matter more than a high task-completion rate because the agent acts through the same interfaces a person uses.</p>
-        <section class="sources"><h2>Primary sources</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official repository and setup guide</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B model card</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual model card</a></li></ul></section>
+        <p>These commands are a connection check, not a complete production recipe. Use the official repository for current dependency versions, model-serving parameters, and project updates. A deployment becomes repeatable only when the device state, model endpoint, and task definition are recorded alongside the commands.</p>
+
+        <h2>Run a supervised first AutoGLM-Phone-9B task</h2>
+        <p>The first AutoGLM-Phone-9B task should be harmless and easy to review. Good examples are opening a named app, navigating to a public screen, reading a visible setting, or searching a public phrase. Avoid workflows that send messages, alter account settings, install software, reveal personal information, or spend money. The goal of the first run is to validate the control loop, not to demonstrate maximum autonomy.</p>
+        <p>Write the task as an instruction a reviewer could evaluate. State the application, the intended result, and the stop condition. For example: open the settings application, navigate to the permissions page, report which permission is enabled, and stop before changing anything. Save the screen captures and action trace. If the model takes an unexpected branch, reduce the task rather than adding broader permissions or retrying blindly.</p>
+        <div class="facts"><div class="fact"><strong>Observe</strong><span>Confirm the current screen and the specific control relevant to the task.</span></div><div class="fact"><strong>Act</strong><span>Allow only the next reversible operation that advances the stated objective.</span></div><div class="fact"><strong>Verify</strong><span>Review the resulting screen and stop when the task reaches its defined boundary.</span></div></div>
+
+        <h2>Safety boundaries for AutoGLM-Phone-9B deployments</h2>
+        <p>A phone agent can encounter untrusted instructions in web pages, messages, search results, or app content. Treat on-screen text as task data, not as a replacement for the operator's goal. Keep USB and remote ADB access on trusted networks, use a dedicated test account where appropriate, and avoid placing credentials in a context the agent can read or transmit.</p>
+        <p>Approval checkpoints are part of a good AutoGLM-Phone-9B deployment. Require a person to review any action that sends data, changes permissions, modifies an account, accepts a legal agreement, spends money, or moves information between accounts. Keep logs long enough to review an abnormal run, and make device disconnection a simple way to stop it. These constraints improve both security and debugging quality.</p>
+        <ul class="checklist"><li>Use a test device, emulator, or separate device profile.</li><li>Restrict the run to the apps and accounts required by the task.</li><li>Define actions that need approval and actions the agent must never perform.</li><li>Capture task prompts, screenshots, and action traces for review.</li><li>Stop and shrink the task after unexpected behavior rather than widening access.</li></ul>
+        <p><a href="/guides/autoglm-security-prompt-injection">Read the AutoGLM security and prompt-injection guide.</a></p>
+
+        <h2>AutoGLM-Phone-9B deployment FAQ</h2>
+        <h3>Can AutoGLM-Phone-9B automate every Android or HarmonyOS app?</h3>
+        <p>No. Results depend on the model, the language and structure of the interface, device authorization, application state, and task definition. Validate AutoGLM-Phone-9B against a representative test set before treating a workflow as dependable.</p>
+        <h3>Should I use a personal phone for the first deployment?</h3>
+        <p>No. Use a test device, emulator, or isolated profile. It reduces the impact of a mistaken action and gives you a stable environment for comparison between runs.</p>
+        <h3>Where should I get the current installation commands?</h3>
+        <p>Use the official repository as the source of truth for setup, dependencies, model files, and license terms. This guide explains the deployment decisions around those commands.</p>
+
+        <section class="sources"><h2>Primary AutoGLM-Phone-9B sources</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official repository and setup documentation</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B model card</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual model card</a></li></ul></section>
     </main>
     <footer class="site-footer"><span>Independent AutoGLM resource site. Not an official Z.ai property.</span><a href="/">Back to AutoGLM AI</a></footer>
 </body>
