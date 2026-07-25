@@ -8,6 +8,11 @@
   },
   "redirects": [
     {
+      "source": "/index-bilingual.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Run AutoGLM Safely: Prompt-Injection Risks and Guardrails</title>
+    <meta name="description" content="Practical safeguards for AutoGLM phone-agent experiments: permission boundaries, confirmation gates, trusted-device setup, and response to prompt injection.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.autoglmai.net/guides/autoglm-security-prompt-injection.html">
+    <link rel="stylesheet" href="/styles/guides.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Run AutoGLM Safely: Prompt-Injection Risks and Guardrails","datePublished":"2026-07-25","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/autoglm-security-prompt-injection.html"}</script>
+</head>
+<body>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="/guides/open-source-autoglm-phone-9b.html">Deployment</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a></nav></div></header>
+    <main class="article">
+        <div class="eyebrow">Security briefing</div>
+        <h1>Run AutoGLM with explicit boundaries against prompt injection.</h1>
+        <p class="lede">A phone agent reads untrusted screens and takes actions. That combination changes the threat model: malicious instructions can appear inside a web page, an app, a message, or an image and attempt to redirect the task.</p>
+        <div class="meta"><span>Published Jul 25, 2026</span><span>5 minute read</span><span>Operational guidance</span></div>
+        <img class="hero-image" src="https://raw.githubusercontent.com/zai-org/Open-AutoGLM/main/resources/screenshot-20251210-120416.png" alt="Android permissions screen in the Open-AutoGLM setup documentation">
+        <p class="caption">Permissions are a security boundary. Official setup documentation asks users to review device permissions carefully.</p>
+        <div class="callout danger"><p><strong>This is not a vulnerability notice.</strong> A July 2026 security report discussed laboratory prompt-injection attacks against open-source Android agents. It does not establish an AutoGLM CVE or a confirmed compromise of every installation. Treat it as a reason to deploy defense in depth.</p></div>
+        <h2>What can go wrong</h2>
+        <p>Prompt injection is content that tries to change an agent's objective. The injected instruction may be visible text or text rendered in a way intended for a model rather than a person. A phone agent can be exposed while reading a page, a chat, an app listing, or a QR-adjacent instruction. The concern rises when the agent also has access to privileged ADB, a shell, network credentials, or unattended approval flows.</p>
+        <h2>Five controls to use from day one</h2>
+        <ol class="steps"><li><strong>Use a dedicated device or emulator.</strong> Do not connect a development agent to your primary phone, personal accounts, password manager, or production admin session.</li><li><strong>Limit the task scope.</strong> Give the agent a concrete allowed action list and a stop condition. Treat any instruction found on screen as data, not a new system instruction.</li><li><strong>Keep sensitive action confirmation on.</strong> Require a human approval gate before sending data, granting permissions, making purchases, changing settings, or opening a shell.</li><li><strong>Restrict ADB and remote access.</strong> Use trusted USB or a private network, revoke unused debugging authorizations, and do not expose ADB to the public internet.</li><li><strong>Log and review.</strong> Retain task prompts, screenshots, action traces, and approval records. Stop the run when the plan diverges from the user's stated goal.</li></ol>
+        <h2>Set the permissions boundary before the first run</h2>
+        <div class="facts"><div class="fact"><strong>Allowed</strong><span>Open a named app, search public content, navigate a pre-approved test flow.</span></div><div class="fact"><strong>Approval required</strong><span>Submit forms, send messages, install software, make a purchase, or reveal private data.</span></div><div class="fact"><strong>Never unattended</strong><span>Credential entry, MFA, account recovery, developer settings changes, and shell commands.</span></div></div>
+        <p>The project documentation already includes sensitive-operation confirmation and manual takeover for login or verification-code scenarios. Keep those gates in the workflow; do not bypass them to improve apparent automation success.</p>
+        <h2>When an agent behaves unexpectedly</h2>
+        <ul class="checklist"><li>Terminate the task and disconnect the device from remote debugging.</li><li>Review the last task prompt, screen capture, and requested action before restarting.</li><li>Revoke any temporary device authorization or API key that may have been exposed.</li><li>Reduce the next test to a smaller, reversible, fully observable action.</li><li>Report reproducible security behavior through the official project's issue or security-contact process rather than publishing credentials or exploit steps.</li></ul>
+        <section class="sources"><h2>Sources and further reading</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official documentation</a></li><li><a href="https://thehackernews.com/2026/07/open-source-android-ai-agents-could-let.html" target="_blank" rel="noopener noreferrer">July 2026 report on prompt injection risks in Android agents</a></li><li><a href="https://raw.githubusercontent.com/zai-org/Open-AutoGLM/main/resources/privacy_policy_en.txt" target="_blank" rel="noopener noreferrer">Project terms and safety notice</a></li></ul></section>
+    </main>
+    <footer class="site-footer"><span>Independent AutoGLM resource site. Not an official Z.ai property.</span><a href="/">Back to AutoGLM AI</a></footer>
+</body>
+</html>

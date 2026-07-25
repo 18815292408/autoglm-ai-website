@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">AutoGLM Open Source | Free Local AI Agent | Function Calling & Desktop Automation</title>
-    <meta name="description" id="pageDescription" content="AutoGLM official open-source AI agent with advanced Function Calling, desktop automation, and document processing. Deploy locally in 5 minutes. 100% free, private data, outperforms GPT-4o by 160%. Start now!">
+    <title id="pageTitle">AutoGLM Open Source Guide | Phone Agent Deployment and Safety</title>
+    <meta name="description" id="pageDescription" content="Independent AutoGLM resource hub with practical deployment, model-selection, and safety guidance for the open-source phone agent framework.">
     <meta name="keywords" content="AutoGLM, AutoGLM AI, AutoGLM open source, AutoGLM function calling, AutoGLM desktop automation, AutoGLM document processing, AutoGLM API, AutoGLM GitHub, Zhipu AI, local AI agent, private AI deployment, AutoGLM tutorial, AutoGLM mobile assistant, AutoGLM automation tools, AutoGLM hybrid deployment, AutoGLM technical architecture, AutoGLM deployment guide, AutoGLM performance, AutoGLM applications, AutoGLM enterprise solutions, AutoGLM screen understanding, AutoGLM task execution, AutoGLM API integration, GLM-Z1-9B, MobileRL, AutoGLM Docker, AutoGLM Kubernetes, AutoGLM open source project, AutoGLM lightweight model, function calling AI, desktop automation AI, document processing AI">
-    <meta name="author" content="Zhipu AI">
+    <meta name="author" content="AutoGLM AI Guides">
     <meta name="robots" content="index, follow">
     
     <!-- Google Analytics Verification - Force Rebuild -->
@@ -25,14 +25,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://autoglmai.net/">
     <meta property="og:title" content="AutoGLM Open Source | Free Local AI Agent | Function Calling & Desktop Automation">
-    <meta property="og:description" content="AutoGLM official open-source AI agent with advanced Function Calling, desktop automation, and document processing. Deploy locally in 5 minutes. 100% free, outperforms GPT-4o by 160%.">
+    <meta property="og:description" content="Independent AutoGLM resource hub with deployment, model-selection, and safety guidance for the open-source phone agent framework.">
     <meta property="og:image" content="https://autoglmai.net/images/autoglm-open-source-og.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://autoglmai.net/">
     <meta property="twitter:title" content="AutoGLM Open Source | Free Local AI Agent | Function Calling & Desktop Automation">
-    <meta property="twitter:description" content="AutoGLM official open-source AI agent with advanced Function Calling, desktop automation, and document processing. Deploy locally in 5 minutes. 100% free, outperforms GPT-4o by 160%.">
+    <meta property="twitter:description" content="Independent AutoGLM resource hub with deployment, model-selection, and safety guidance for the open-source phone agent framework.">
     <meta property="twitter:image" content="https://autoglmai.net/images/autoglm-open-source-twitter.jpg">
     
     <!-- Schema.org Structured Data -->
@@ -48,15 +48,15 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "AutoGLM official open-source AI agent with advanced Function Calling, desktop automation, and document processing. Deploy locally in 5 minutes.",
+      "description": "Independent resource hub for the AutoGLM open-source phone agent framework.",
       "author": {
         "@type": "Organization",
-        "name": "Zhipu AI"
+        "name": "AutoGLM AI Guides"
       },
       "featureList": "Function Calling, Desktop Automation, Document Processing, Mobile Control, API Integration",
       "softwareVersion": "1.0",
-      "downloadUrl": "https://github.com/thudm/autoglm",
-      "license": "https://github.com/thudm/autoglm/blob/main/LICENSE"
+      "downloadUrl": "https://github.com/zai-org/Open-AutoGLM",
+      "license": "https://github.com/zai-org/Open-AutoGLM/blob/main/LICENSE"
     }
     </script>
     
@@ -88,9 +88,8 @@
     <!-- Critical CSS for above-the-fold content -->
     <style>@font-face{font-family:'Font Awesome 6 Free';font-display:swap}@font-face{font-family:'Font Awesome 6 Brands';font-display:swap}:root{--primary-gradient:linear-gradient(135deg,#FFB366 0%,#FF8C42 50%,#FF6B35 100%);--light-gradient:linear-gradient(135deg,#FFCC99 0%,#FFB366 100%);--dark-bg:#0a0a0a;--card-bg:rgba(255,255,255,.05);--text-primary:#fff;--text-secondary:#b0b0b0;--accent-orange:#FF8C42;--accent-light:#FFCC99;--border-color:rgba(255,255,255,.1);--success-color:#4CAF50;--code-bg:rgba(0,0,0,.8)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--dark-bg);color:var(--text-primary);line-height:1.6;overflow-x:hidden}.navbar{position:fixed;top:0;width:100%;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);z-index:1000;padding:1rem 0}.nav-container{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.8rem;font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}.nav-links{display:flex;list-style:none;gap:2rem;align-items:center}.nav-links a{color:var(--text-secondary);text-decoration:none;font-weight:500;transition:color .3s ease}.nav-links a:hover{color:var(--accent-orange)}.language-switcher{display:flex;gap:.5rem;background:rgba(255,255,255,.1);border-radius:25px;padding:.25rem}.lang-btn{padding:.5rem 1rem;border:none;background:transparent;color:var(--text-secondary);cursor:pointer;border-radius:20px;transition:all .3s ease;font-weight:500}.lang-btn.active{background:var(--primary-gradient);color:#fff}.hero{padding:9rem 2rem 4rem;text-align:left;position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(255,140,66,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,107,53,.1) 0%,transparent 50%);z-index:-1}.hero-content{max-width:1300px;margin:0 auto;position:relative;z-index:1}.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;align-items:center}.hero-left{display:flex;flex-direction:column;gap:1rem}.hero-eyebrow{font-size:.95rem;color:var(--accent-light);letter-spacing:.02em;text-transform:uppercase;font-weight:700}.hero-title{font-size:clamp(2.6rem,5vw,4rem);font-weight:900;margin-bottom:.75rem;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}.hero-subtitle{font-size:1.1rem;color:var(--text-secondary);margin-bottom:1rem;max-width:820px}.hero-meta{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0 1.5rem}.meta-chip{padding:.65rem 1rem;border:1px solid var(--border-color);border-radius:999px;background:rgba(255,255,255,.04);font-size:.95rem;color:var(--text-primary)}.hero-buttons{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:flex-start}.btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:700;transition:all .3s ease;border:none;cursor:pointer}.btn-primary{background:var(--primary-gradient);color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(255,140,66,.3)}.btn-secondary{background:transparent;color:var(--text-primary);border:2px solid var(--border-color)}.btn-secondary:hover{border-color:var(--accent-orange);color:var(--accent-orange)}.hero-keywords{font-size:.95rem;color:var(--text-secondary);margin-top:.5rem}.quickstart-card{background:rgba(255,255,255,.04);border:1px solid var(--border-color);border-radius:16px;padding:1.5rem;box-shadow:0 12px 30px rgba(0,0,0,.25);backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:1rem}.quickstart-header{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1.05rem}.quickstart-badge{padding:.35rem .75rem;border-radius:12px;background:rgba(255,140,66,.15);color:var(--accent-orange);font-size:.9rem;border:1px solid rgba(255,140,66,.25)}.quickstart-step{display:flex;flex-direction:column;gap:.45rem}.step-title{font-weight:700;font-size:1rem;color:var(--text-primary)}.code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:.92rem;line-height:1.45;white-space:pre-wrap;word-break:break-word}.quickstart-note{font-size:.9rem;color:var(--text-secondary)}.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.fade-in.visible{opacity:1;transform:translateY(0)}@media (max-width:768px){.nav-links{display:none}.hero{padding:7rem 1.25rem 3rem;min-height:auto}.hero-buttons{flex-direction:column;align-items:flex-start}.quickstart-card{padding:1.25rem}}</style>
     
-    <!-- Non-critical CSS will be loaded asynchronously -->
-    <link rel="preload" href="styles/non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/non-critical.css"></noscript>
+    <link rel="stylesheet" href="styles/non-critical.css">
+    <link rel="stylesheet" href="styles/home-redesign.css">
     
     <!-- Performance optimization: DNS prefetch for future navigation -->
     <link rel="dns-prefetch" href="//github.com">
@@ -99,21 +98,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">AutoGLM AI</a>
+            <a href="#home" class="logo">AutoGLM AI</a>
             <ul class="nav-links">
-                <li><a href="#home" data-zh="AutoGLM AI首页" data-en="AutoGLM AI Home">AutoGLM AI首页</a></li>
-                <li><a href="#features" data-zh="AutoGLM AI核心特性" data-en="AutoGLM AI Core Features">AutoGLM AI核心特性</a></li>
-                <li><a href="#deep-tech" data-zh="AutoGLM AI技术架构" data-en="AutoGLM AI Tech Architecture">AutoGLM AI技术架构</a></li>
-                <li><a href="#enhanced-performance" data-zh="AutoGLM AI性能数据" data-en="AutoGLM AI Performance">AutoGLM AI性能数据</a></li>
-                <li><a href="#deployment" data-zh="AutoGLM AI部署方案" data-en="AutoGLM AI Deployment">AutoGLM AI部署方案</a></li>
-                <li><a href="#deployment-tutorial" data-zh="AutoGLM AI部署教程" data-en="AutoGLM AI Tutorial">AutoGLM AI部署教程</a></li>
-                <li><a href="#ecosystem" data-zh="AutoGLM AI生态系统" data-en="AutoGLM AI Ecosystem">AutoGLM AI生态系统</a></li>
-                <li><a href="#faq" data-zh="AutoGLM AI常见问题" data-en="AutoGLM AI FAQ">AutoGLM AI常见问题</a></li>
+                <li><a href="#features">Capabilities</a></li>
+                <li><a href="#deep-tech">Architecture</a></li>
+                <li><a href="#deployment-tutorial">Deployment</a></li>
+                <li><a href="guides/open-source-autoglm-phone-9b.html">Guides</a></li>
             </ul>
-            <div class="language-switcher">
-                <button class="lang-btn active" id="langEn" onclick="setLanguage('en')">EN</button>
-                <button class="lang-btn" id="langZh" onclick="setLanguage('zh')">中文</button>
-            </div>
         </div>
     </nav>
 
@@ -121,6 +112,33 @@
     <main role="main">
         <!-- Hero Section -->
         <section class="hero" id="home">
+            <div class="home-hero">
+                <div class="home-hero-copy">
+                    <div class="hero-eyebrow">Open phone agent framework</div>
+                    <h1 class="hero-title">Build a phone agent you can inspect.</h1>
+                    <p class="hero-subtitle">AutoGLM turns a natural-language task into observable Android or HarmonyOS actions. Run it on your own test device, connect your preferred model endpoint, and keep a person in the loop for sensitive steps.</p>
+                    <div class="hero-buttons">
+                        <a class="btn-primary" href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Open the project</a>
+                        <a class="btn-secondary" href="guides/open-source-autoglm-phone-9b.html"><i class="fas fa-book-open"></i> Read the deployment guide</a>
+                    </div>
+                    <div class="hero-notes"><span>Android via ADB</span><span>HarmonyOS via HDC</span><span>Human approval for sensitive actions</span></div>
+                    <div class="hero-utility" aria-label="AutoGLM framework overview">
+                        <div class="utility-item"><strong>01 / PERCEIVE</strong>Interpret the active screen.</div>
+                        <div class="utility-item"><strong>02 / PLAN</strong>Choose the next bounded action.</div>
+                        <div class="utility-item"><strong>03 / VERIFY</strong>Review outcomes before proceeding.</div>
+                    </div>
+                </div>
+                <figure class="agent-preview">
+                    <div class="preview-bar"><span>DEVICE / TEST-ANDROID</span><span class="preview-status">OBSERVABLE RUN</span></div>
+                    <div class="device-screen" aria-label="English Android developer options preview">
+                        <div class="device-title">Developer options</div>
+                        <div class="device-row"><div><strong>USB debugging</strong><span>Allow ADB access for this test device</span></div><span class="toggle-on" aria-hidden="true"></span></div>
+                        <div class="device-row"><div><strong>Wireless debugging</strong><span>Off outside the trusted network</span></div><span class="toggle-off" aria-hidden="true"></span></div>
+                        <div class="device-row"><div><strong>Install via USB</strong><span>Requires confirmation</span></div><span class="toggle-on" aria-hidden="true"></span></div>
+                    </div>
+                    <figcaption class="action-trace"><strong>task</strong> Open Settings and review device permissions <span>-></span> wait for approval</figcaption>
+                </figure>
+            </div>
             <div class="hero-content fade-in">
                 <div class="hero-grid">
                     <div class="hero-left">
@@ -153,7 +171,7 @@
                         </div>
 
                         <div class="hero-buttons">
-                            <button class="btn-primary" onclick="window.location.href='https://github.com/thudm/autoglm'" style="font-size: 1.1rem; padding: 1.2rem 2rem;">
+                            <button class="btn-primary" onclick="window.location.href='https://github.com/zai-org/Open-AutoGLM'" style="font-size: 1.1rem; padding: 1.2rem 2rem;">
                                 <i class="fas fa-download"></i>
                                 <span data-zh="🚀 立即免费下载" data-en="🚀 Download Free Now">🚀 立即免费下载</span>
                             </button>
@@ -225,7 +243,7 @@
                             <!-- 快速开始步骤简化 -->
                             <div class="quickstart-step">
                                 <div class="step-title" data-zh="1️⃣ 克隆项目（2分钟）" data-en="1️⃣ Clone Project (2 min)">1️⃣ 克隆项目（2分钟）</div>
-                                <div class="code-block">git clone https://github.com/thudm/autoglm.git<br>cd autoglm</div>
+                                <div class="code-block">git clone https://github.com/zai-org/Open-AutoGLM.git<br>cd Open-AutoGLM</div>
                             </div>
 
                             <div class="quickstart-step">
@@ -258,7 +276,7 @@
         <!-- Pain Points Section -->
     <section class="section pain-points" id="features">
         <div class="container">
-            <h2 class="section-title fade-in" data-zh="这些AI智能体部署困扰，AutoGLM AI为您解决！" data-en="AI Agent Deployment Challenges? AutoGLM AI Has the Solutions!">这些AI智能体部署困扰，AutoGLM AI为您解决！</h2>
+            <h2 class="section-title fade-in" data-zh="先控制环境，再让智能体执行任务" data-en="Control the environment before you automate it.">先控制环境，再让智能体执行任务</h2>
             
             <div class="pain-grid">
                 <div class="pain-card fade-in">
@@ -300,7 +318,7 @@
     <!-- Solutions Section -->
     <section class="section solutions" id="solutions">
         <div class="container">
-            <h2 class="section-title fade-in" data-zh="AutoGLM AI核心解决方案" data-en="AutoGLM AI Core Solutions">AutoGLM AI核心解决方案</h2>
+            <h2 class="section-title fade-in" data-zh="围绕可观察设备操作构建的框架" data-en="A framework built around observable device actions.">围绕可观察设备操作构建的框架</h2>
             
             <div class="solution-grid">
                 <div class="solution-item fade-in">
@@ -364,7 +382,7 @@
     <!-- Tech Architecture Section -->
     <section class="section tech-details" id="deep-tech">
         <div class="container">
-            <h2 class="section-title fade-in" data-zh="AutoGLM AI深度技术架构：突破性的AutoGLM AI智能体设计" data-en="AutoGLM AI Deep Tech Architecture: Revolutionary AutoGLM AI Agent Design">AutoGLM AI深度技术架构：突破性的AutoGLM AI智能体设计</h2>
+            <h2 class="section-title fade-in" data-zh="构成可观察手机智能体的组件" data-en="The components behind an observable phone agent.">构成可观察手机智能体的组件</h2>
             
             <div class="tech-grid">
                 <div class="tech-card fade-in">
@@ -476,7 +494,7 @@
     <!-- Deployment Section -->
     <section class="section tech-details" id="deployment">
         <div class="container">
-            <h2 class="section-title fade-in" data-zh="AutoGLM AI权威基准测试：详细性能数据展示" data-en="AutoGLM AI Authoritative Benchmark Tests: Detailed Performance Data">AutoGLM AI权威基准测试：详细性能数据展示</h2>
+            <h2 class="section-title fade-in" data-zh="选择适合任务的部署边界" data-en="Choose a deployment boundary that fits the task.">选择适合任务的部署边界</h2>
             
             <div class="tech-grid">
                 <div class="tech-card fade-in">
@@ -599,7 +617,7 @@
     <!-- Deployment Tutorial Section -->
     <section class="section tech-details" id="deployment-tutorial">
         <div class="container">
-            <h2 class="section-title fade-in" data-zh="开始部署AutoGLM AI" data-en="Start Deploying AutoGLM AI">开始部署AutoGLM AI</h2>
+            <h2 class="section-title fade-in" data-zh="从受控设备和可逆任务开始" data-en="Start with a bounded device and a reversible task.">从受控设备和可逆任务开始</h2>
             
             <div class="workflow fade-in">
                 <div class="deployment-tutorial-content">
@@ -619,8 +637,8 @@ conda activate autoglm
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # 安装AutoGLM AI
-git clone https://github.com/thudm/autoglm.git
-cd autoglm
+git clone https://github.com/zai-org/Open-AutoGLM.git
+cd Open-AutoGLM
 pip install -e .</code>
                             </div>
                         </div>
@@ -1117,7 +1135,7 @@ autoglm backup --path ~/autoglm-backup</code>
                     <i class="fas fa-rocket"></i>
                     <span data-zh="立即开始部署" data-en="Start Deployment Now">立即开始部署</span>
                 </button>
-                <a href="https://github.com/thudm/autoglm" class="btn-secondary" target="_blank">
+                <a href="https://github.com/zai-org/Open-AutoGLM" class="btn-secondary" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i>
                     <span data-zh="访问GitHub仓库" data-en="Visit GitHub Repository">访问GitHub仓库</span>
                 </a>
@@ -1146,7 +1164,10 @@ autoglm backup --path ~/autoglm-backup</code>
                     <h3 data-zh="AutoGLM AI资源" data-en="AutoGLM AI Resources">AutoGLM AI资源</h3>
                     <ul>
                         <li><a href="#deployment-tutorial" data-zh="部署教程" data-en="Deployment Tutorial">部署教程</a></li>
-                        <li><a href="https://github.com/thudm/autoglm" data-zh="GitHub仓库" data-en="GitHub Repository" target="_blank">GitHub仓库</a></li>
+                        <li><a href="https://github.com/zai-org/Open-AutoGLM" data-zh="GitHub仓库" data-en="GitHub Repository" target="_blank" rel="noopener noreferrer">GitHub仓库</a></li>
+                        <li><a href="guides/open-source-autoglm-phone-9b.html" data-zh="开源部署指南" data-en="Open-Source Deployment Guide">Open-Source Deployment Guide</a></li>
+                        <li><a href="guides/autoglm-security-prompt-injection.html" data-zh="安全运行指南" data-en="Security Guide">Security Guide</a></li>
+                        <li><a href="guides/autoglm-phone-9b-vs-multilingual.html" data-zh="模型版本对比" data-en="Model Comparison">Model Comparison</a></li>
                         <li><a href="#faq" data-zh="常见问题" data-en="FAQ">常见问题</a></li>
                         <li><a href="#ecosystem" data-zh="生态系统" data-en="Ecosystem">生态系统</a></li>
                     </ul>
@@ -1196,7 +1217,7 @@ autoglm backup --path ~/autoglm-backup</code>
                 </div>
 
                 <p style="margin-top: 2rem; text-align: center; opacity: 0.7;">
-                    <span data-zh="© 2024 智谱AI. AutoGLM AI是智谱AI开源项目。" data-en="© 2024 Zhipu AI. AutoGLM AI is an open source project by Zhipu AI.">© 2024 智谱AI. AutoGLM AI是智谱AI开源项目。</span>
+                    <span data-zh="独立 AutoGLM 资源网站，非 Z.ai 官方网站。" data-en="Independent AutoGLM resource site. Not an official Z.ai property.">Independent AutoGLM resource site. Not an official Z.ai property.</span>
                 </p>
             </div>
         </div>
@@ -1318,6 +1339,10 @@ autoglm backup --path ~/autoglm-backup</code>
         function updateLanguageButtons() {
             const enBtn = document.getElementById('langEn');
             const zhBtn = document.getElementById('langZh');
+
+            if (!enBtn || !zhBtn) {
+                return;
+            }
             
             if (currentLang === 'en') {
                 enBtn.classList.add('active');
@@ -1336,10 +1361,12 @@ autoglm backup --path ~/autoglm-backup</code>
                 title.textContent = 'AutoGLM 官方开源 | 5分钟快速部署 | 完全免费本地AI智能体';
                 description.textContent = '🔥 AutoGLM 官方开源AI智能体，5分钟即可在本地运行！支持手机控制、网页操作、任务自动化。完全免费，数据私有，超越GPT-4o性能160%。立即下载使用。';
             } else {
-                title.textContent = 'AutoGLM Open Source | 5-Min Quick Setup | Free Local AI Agent';
-                description.textContent = '🔥 AutoGLM official open source AI agent, run locally in 5 minutes! Support phone control, web automation, task automation. Completely free, private data, outperforms GPT-4o by 160%. Download now.';
+                title.textContent = 'AutoGLM Open Source Guide | Phone Agent Deployment and Safety';
+                description.textContent = 'Independent AutoGLM resource hub with deployment, model-selection, and safety guidance for the open-source phone agent framework.';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => setLanguage('en'));
 
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(question => {
@@ -1442,4 +1469,3 @@ autoglm backup --path ~/autoglm-backup</code>
     </script>
 </body>
 </html>
-

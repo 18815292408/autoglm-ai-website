@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGLM-Phone-9B Open Source: Deployment Guide and What's New</title>
+    <meta name="description" content="A practical guide to the open-source AutoGLM-Phone-9B phone agent: model options, Android and HarmonyOS requirements, local serving, and safety boundaries.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.autoglmai.net/guides/open-source-autoglm-phone-9b.html">
+    <link rel="stylesheet" href="/styles/guides.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AutoGLM-Phone-9B Open Source: Deployment Guide and What's New","datePublished":"2025-12-09","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/open-source-autoglm-phone-9b.html"}</script>
+</head>
+<body>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a><a href="/guides/autoglm-security-prompt-injection.html">Security</a></nav></div></header>
+    <main class="article">
+        <div class="eyebrow">Open-source update</div>
+        <h1>AutoGLM-Phone-9B is open source. Here is what you need to run it.</h1>
+        <p class="lede">The Phone Agent framework exposes a practical route from a natural-language request to supervised phone actions. It uses screen understanding, planning, and Android Debug Bridge or HarmonyOS Device Connector control instead of a proprietary cloud-phone workflow.</p>
+        <div class="meta"><span>Published Dec 9, 2025</span><span>Updated Jul 25, 2026</span><span>7 minute read</span></div>
+        <img class="hero-image" src="https://raw.githubusercontent.com/zai-org/Open-AutoGLM/main/resources/screenshot-20251209-181423.png" alt="AutoGLM phone agent interface from the official project documentation">
+        <p class="caption">Official project screenshot, linked from the Open-AutoGLM documentation.</p>
+        <div class="facts"><div class="fact"><strong>Two model choices</strong><span>The base Phone-9B model targets Chinese mobile applications; the Multilingual version is intended for English and other language content.</span></div><div class="fact"><strong>Device control</strong><span>Android connects through ADB. HarmonyOS support uses HDC. Both require developer tooling and device authorization.</span></div><div class="fact"><strong>Serving options</strong><span>Run your own OpenAI-compatible service through vLLM or use a listed hosted model provider.</span></div></div>
+        <h2>What changed</h2>
+        <p>The open project and model cards published in December 2025 make the Phone Agent stack available for research and development. The project describes its model as a vision-language agent that reads the active screen, plans the next operation, and executes a workflow. It also includes confirmation for sensitive actions and manual takeover for authentication steps.</p>
+        <div class="callout"><p><strong>Important scope:</strong> this is a developer framework, not a promise of unattended access to every app. Login, MFA, payment, and identity checks should remain user-controlled checkpoints.</p></div>
+        <h2>Choose the right model first</h2>
+        <table class="compare"><thead><tr><th>Model</th><th>Use it when</th><th>Primary source</th></tr></thead><tbody><tr><td>AutoGLM-Phone-9B</td><td>Your target phone interfaces and task prompts are primarily Chinese.</td><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">Model card</a></td></tr><tr><td>AutoGLM-Phone-9B-Multilingual</td><td>Your workflow contains English or other non-Chinese interface text.</td><td><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">Model card</a></td></tr></tbody></table>
+        <h2>Minimum deployment path</h2>
+        <ol class="steps"><li>Use Python 3.10 or later and install the project requirements.</li><li>For Android, install platform-tools, enable USB debugging, and validate the connection with <code>adb devices</code>. For HarmonyOS, configure HDC and verify the target connection.</li><li>Install the required Android input method when using ADB text entry.</li><li>Start an OpenAI-compatible model endpoint. The official documentation provides vLLM parameters for the multilingual model.</li><li>Run one harmless, observable task before enabling any production workflow.</li></ol>
+        <pre class="code">git clone https://github.com/zai-org/Open-AutoGLM.git
+cd Open-AutoGLM
+pip install -r requirements.txt
+pip install -e .
+adb devices</pre>
+        <h2>Run with controls, not blind autonomy</h2>
+        <p>Use a test device or emulator for experimentation. Keep USB or remote ADB access limited to your trusted network. Start with read-only or reversible tasks such as opening an application and searching a public phrase. Require user approval before any action that sends data, changes account settings, spends money, or transmits credentials.</p>
+        <p>For automation teams, pair each task with a clear stop condition, a human review step, and retained screenshots or logs. These controls matter more than a high task-completion rate because the agent acts through the same interfaces a person uses.</p>
+        <section class="sources"><h2>Primary sources</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official repository and setup guide</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B model card</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual model card</a></li></ul></section>
+    </main>
+    <footer class="site-footer"><span>Independent AutoGLM resource site. Not an official Z.ai property.</span><a href="/">Back to AutoGLM AI</a></footer>
+</body>
+</html>
