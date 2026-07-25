@@ -28,7 +28,7 @@
     </script>
 </head>
 <body>
-    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a><a href="/guides/autoglm-security-prompt-injection">Security</a></nav></div></header>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="/guides/autoglm-deployment-guide">Deployment</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a><a href="/guides/autoglm-security-prompt-injection">Security</a></nav></div></header>
     <main class="article">
         <div class="eyebrow">Open-source deployment guide</div>
         <h1>AutoGLM-Phone-9B deployment: what to prepare before your first run</h1>
@@ -57,7 +57,7 @@ cd Open-AutoGLM
 pip install -r requirements.txt
 pip install -e .
 adb devices</pre>
-        <p>These commands are a connection check, not a complete production recipe. Use the official repository for current dependency versions, model-serving parameters, and project updates. A deployment becomes repeatable only when the device state, model endpoint, and task definition are recorded alongside the commands.</p>
+        <p>These commands are a connection check, not a complete production recipe. Use the official repository for current dependency versions, model-serving parameters, and project updates. A deployment becomes repeatable only when the device state, model endpoint, and task definition are recorded alongside the commands. For the broader device, endpoint, and first-task path, use the <a href="/guides/autoglm-deployment-guide">AutoGLM deployment guide</a>.</p>
 
         <h2>Run a supervised first AutoGLM-Phone-9B task</h2>
         <p>The first AutoGLM-Phone-9B task should be harmless and easy to review. Good examples are opening a named app, navigating to a public screen, reading a visible setting, or searching a public phrase. Avoid workflows that send messages, alter account settings, install software, reveal personal information, or spend money. The goal of the first run is to validate the control loop, not to demonstrate maximum autonomy.</p>

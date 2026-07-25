@@ -70,7 +70,7 @@ td a { font-weight: 800; }
 .checklist ul { padding-left: 20px; margin: 18px 0 22px; color: #d0d9d5; font-size: .9rem; }
 .checklist li { margin-bottom: 11px; }
 .checklist a { color: #a9e7cb; font-weight: 800; }
-.resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
 .resource { display: flex; min-height: 270px; flex-direction: column; padding: 25px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
 .resource:hover { border-color: var(--teal); background: #f8fcf9; }
 .resource > span { margin-bottom: 36px; color: var(--teal); font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; }

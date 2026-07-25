@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGLM Deployment Guide: Phone Agent Setup</title>
+    <meta name="description" content="Use this AutoGLM deployment guide to set up a supervised phone agent with Android ADB or HarmonyOS HDC, a model endpoint, and safety checks.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AutoGLM AI Guides">
+    <link rel="canonical" href="https://www.autoglmai.net/guides/autoglm-deployment-guide">
+    <link rel="icon" type="image/svg+xml" href="/images/autoglm-phone-agent-workflow.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.autoglmai.net/guides/autoglm-deployment-guide">
+    <meta property="og:title" content="AutoGLM Deployment Guide: Phone Agent Setup">
+    <meta property="og:description" content="Set up a supervised AutoGLM phone agent with controlled device access, a model endpoint, and safer first tasks.">
+    <meta property="og:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="760">
+    <meta property="og:image:alt" content="AutoGLM phone agent workflow showing an observed device action and approval checkpoint">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AutoGLM Deployment Guide: Phone Agent Setup">
+    <meta name="twitter:description" content="A practical AutoGLM deployment guide for supervised Android and HarmonyOS phone-agent setup.">
+    <meta name="twitter:image" content="https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png">
+    <link rel="stylesheet" href="/styles/guides.css">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"AutoGLM Deployment Guide: Phone Agent Setup","description":"A practical guide to preparing a supervised AutoGLM phone agent with device control, a model endpoint, and safety boundaries.","datePublished":"2026-07-25","dateModified":"2026-07-25","author":{"@type":"Organization","name":"AutoGLM AI Guides"},"mainEntityOfPage":"https://www.autoglmai.net/guides/autoglm-deployment-guide","image":"https://www.autoglmai.net/images/autoglm-phone-agent-workflow.png"}
+    </script>
+</head>
+<body>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span>AutoGLM</span> AI Guides</a><nav class="top-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="/guides/open-source-autoglm-phone-9b">Phone-9B</a><a href="/guides/autoglm-security-prompt-injection">Security</a><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Official project</a></nav></div></header>
+    <main class="article">
+        <div class="eyebrow">Phone agent setup</div>
+        <h1>AutoGLM Deployment Guide for Phone Agent Setup</h1>
+        <p class="lede">This AutoGLM deployment guide explains how to prepare a supervised phone agent: connect a controlled Android or HarmonyOS device, choose a compatible model endpoint, define a bounded first task, and keep approval gates around sensitive actions. Use it as a planning guide alongside the current instructions in the official project repository.</p>
+        <div class="meta"><span>Published Jul 25, 2026</span><span>Updated Jul 25, 2026</span><span>10 minute read</span></div>
+        <img class="hero-image" src="/images/autoglm-phone-agent-workflow.png" width="1200" height="760" alt="AutoGLM phone agent workflow showing a planned device action and a human approval checkpoint">
+        <p class="caption">A supervised deployment loop: inspect the screen, plan a bounded action, execute on a controlled device, and verify the result.</p>
+        <div class="facts"><div class="fact"><strong>Controlled device</strong><span>Use a trusted Android or HarmonyOS test device, emulator, or isolated profile.</span></div><div class="fact"><strong>Model endpoint</strong><span>Choose a model variant that matches the interface language and serve it through the supported setup.</span></div><div class="fact"><strong>Human boundary</strong><span>Pause before account, data, payment, permission, or credential actions.</span></div></div>
+
+        <h2>What this AutoGLM deployment guide covers</h2>
+        <p>An AutoGLM deployment is more than installing a package or connecting a phone. It joins four pieces: a supported device, a device-control connection, a model endpoint, and an operator-defined task. The framework reads the active screen, plans the next action, and applies that action through the connected device tooling. A useful deployment keeps each part visible so a developer can tell whether a problem comes from the screen, the task, the model, or the device connection.</p>
+        <p>Use this AutoGLM deployment guide to set the operating boundary before the first task. Decide which device is in scope, which apps the agent may open, what result the task should reach, and where the run must stop. This makes the first experiment safer and produces evidence that is useful when the interface or model changes later.</p>
+        <div class="callout"><p><strong>Important scope:</strong> AutoGLM is a developer framework for supervised phone automation. It should not be treated as a promise of unattended access to every mobile application or every account state. Login, MFA, payments, account recovery, and credential entry remain operator-controlled steps.</p></div>
+
+        <h2>AutoGLM deployment guide: prepare the device</h2>
+        <p>Start with a device you can reset, inspect, and disconnect. An emulator is useful for repeatable tests; a dedicated physical device is useful when the workflow depends on real hardware behavior. Avoid a primary phone, a production administrator account, or an environment with private messages, password managers, financial apps, or personal credentials. The goal is to reduce the effect of an unexpected action while you learn how the agent behaves.</p>
+        <p>Android AutoGLM deployment typically uses Android Debug Bridge, commonly called ADB. HarmonyOS workflows use HDC. Both require the device to trust the host computer. Confirm the connection before involving the model so that a device-control issue is not mistaken for a reasoning issue. Revoke old debugging authorizations and make sure the target shown by your tooling is the intended test device.</p>
+        <ol class="steps"><li><strong>Prepare a clean test environment.</strong> Install only the applications and accounts required by the first task. Use public or test data where possible.</li><li><strong>Connect with authorized tooling.</strong> For Android, install platform-tools, enable USB debugging, and verify the device with <code>adb devices</code>. For HarmonyOS, configure HDC and verify the target connection.</li><li><strong>Confirm input support.</strong> Follow the official project setup for device text input when the task needs it. Test input independently before evaluating the agent.</li><li><strong>Restrict the network boundary.</strong> Keep ADB or remote device access on a trusted USB connection or private network. Do not expose debugging services publicly.</li></ol>
+        <pre class="code">git clone https://github.com/zai-org/Open-AutoGLM.git
+cd Open-AutoGLM
+pip install -r requirements.txt
+pip install -e .
+adb devices</pre>
+        <p>These commands are a basic connection check, not a complete production recipe. The official <a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM repository</a> is the source of truth for current dependency versions, device prerequisites, model-serving parameters, and license details. Use this AutoGLM deployment guide to plan the sequence around those current commands.</p>
+
+        <h2>AutoGLM deployment guide: choose a model endpoint</h2>
+        <p>Choose the model according to the language and visual content of the interface the agent must read. The base AutoGLM-Phone-9B model is documented for Chinese-language mobile applications. The multilingual variant is intended for English and other non-Chinese content. This choice does not change the need for a controlled device or an approval boundary, but it affects the screens and prompts you should use in the first evaluation.</p>
+        <table class="compare"><thead><tr><th>Decision</th><th>What to use</th><th>What to verify</th></tr></thead><tbody><tr><td>Primarily Chinese app and task</td><td>Begin evaluation with <a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B</a>.</td><td>Chinese labels, task prompts, system dialogs, and the target screen state.</td></tr><tr><td>English or mixed-language workflow</td><td>Begin evaluation with <a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual</a>.</td><td>English labels, alternate locales, embedded web content, and permission dialogs.</td></tr><tr><td>Unknown interface mix</td><td>Run the same small task set with both models.</td><td>Element selection, task fidelity, unexpected actions, manual takeover, and correct stops.</td></tr></tbody></table>
+        <p>A good AutoGLM deployment records the endpoint selected, the model version, the device state, and the task prompt. Include an error screen and a similar-looking control in the evaluation, not only a happy path. This AutoGLM deployment guide uses that evidence to distinguish a screen-reading issue from a task-design or device-connection issue.</p>
+        <p><a href="/guides/autoglm-phone-9b-vs-multilingual">Read the AutoGLM-Phone-9B vs Multilingual comparison guide.</a></p>
+
+        <h2>AutoGLM deployment guide: run the first task</h2>
+        <p>The first task should be observable, reversible, and small enough for a person to evaluate. Opening a named application, navigating to a public screen, searching a known phrase, or reporting a visible status are useful choices. Do not begin with a task that sends messages, edits account details, grants permissions, installs software, reveals private information, or spends money.</p>
+        <p>Write the objective so that another person can check whether the run stayed in bounds. State the app, the intended result, allowed actions, and the stop condition. For example: open the settings application, navigate to a named page, report the visible permission status, and stop before changing anything. A strong AutoGLM deployment guide should make the intended boundary as clear as the intended result.</p>
+        <div class="facts"><div class="fact"><strong>Observe</strong><span>Confirm the current screen and identify the control relevant to the stated task.</span></div><div class="fact"><strong>Act</strong><span>Allow the next reversible operation only when it advances the defined objective.</span></div><div class="fact"><strong>Verify</strong><span>Review the new screen and stop when the task reaches its boundary.</span></div></div>
+        <p>Save the prompt, screenshots, action trace, model endpoint, and result. When the agent takes an unexpected branch, reduce the task first. Do not grant broader device access or disable confirmation just to make the next run finish. That approach protects the test environment and makes debugging faster.</p>
+
+        <h2>AutoGLM deployment guide: configure safety checks</h2>
+        <p>An AutoGLM deployment needs a boundary between a proposed action and a consequential action. Require human review before data leaves the device, an account changes, a permission is granted, a message is sent, a purchase is made, or a new application is installed. The operator should see the relevant final screen, recipient, account, and effect before approving anything irreversible.</p>
+        <p>Prompt injection matters when a task reads untrusted web pages, messages, documents, or application content. Treat instructions discovered on screen as data, not as a replacement for the original task. Keep the agent's allowed apps and actions narrow, avoid placing credentials in a context it can read, and maintain a clear way to disconnect the device or end the run.</p>
+        <ul class="checklist"><li>Use a test device, emulator, or separate device profile.</li><li>Limit the run to named applications and known accounts.</li><li>Define actions that require approval and actions the agent must never perform.</li><li>Keep task prompts, screenshots, and action traces for review.</li><li>Stop and reduce scope after unexpected behavior.</li></ul>
+        <p><a href="/guides/autoglm-security-prompt-injection">Read the AutoGLM security and prompt-injection guide.</a></p>
+
+        <h2>AutoGLM deployment guide: troubleshoot methodically</h2>
+        <p>When a task fails, first identify which part of the deployment is failing. A missing device connection, unauthorized debugging host, unavailable input method, or incorrect endpoint is different from a model that chose the wrong button. Avoid changing multiple variables at once. Capture the last visible screen, the requested action, and the exact device connection state before retrying.</p>
+        <table class="compare"><thead><tr><th>Symptom</th><th>First check</th><th>Safe next step</th></tr></thead><tbody><tr><td>Target device is not available</td><td>Verify ADB or HDC authorization and the active device identity.</td><td>Reconnect only the intended test device and confirm the connection before rerunning.</td></tr><tr><td>Text entry or tap does not work</td><td>Check the official input setup and a direct manual device test.</td><td>Fix the device-control path before changing the model or prompt.</td></tr><tr><td>Model selects the wrong visible control</td><td>Review the screenshot, interface language, prompt wording, and similar controls.</td><td>Use a smaller task and representative screen set to isolate the reading or planning issue.</td></tr><tr><td>Agent reaches a sensitive screen</td><td>Confirm whether the task boundary requires a human approval checkpoint.</td><td>Stop the run and redesign the task to pause before that action.</td></tr></tbody></table>
+        <p>A deployment log turns future maintenance into a repeatable process. When an app redesigns a screen or the model endpoint changes, rerun the same small test set and compare the resulting traces. The AutoGLM deployment guide process is more reliable than assuming the original setup remains compatible forever.</p>
+
+        <h2>AutoGLM deployment guide FAQ</h2>
+        <h3>How do I deploy AutoGLM on Android?</h3>
+        <p>Prepare a controlled Android device or emulator, install the project requirements from the official repository, authorize the host through ADB, verify the connection, configure the required model endpoint, and start with one reversible supervised task.</p>
+        <h3>What is required for AutoGLM ADB setup?</h3>
+        <p>You need Android platform-tools, USB debugging enabled on the intended test device, a trusted host authorization, and a successful connection check with <code>adb devices</code>. Keep the connection private and revoke authorizations you no longer use.</p>
+        <h3>Can I deploy AutoGLM on a personal phone?</h3>
+        <p>Do not use a personal phone for the first deployment. A test device, emulator, or separate profile limits the effect of a mistaken action and makes the environment easier to reset and evaluate.</p>
+        <h3>Where do I find current AutoGLM installation commands?</h3>
+        <p>Use the official project repository for the current commands and requirements. This guide explains the surrounding deployment choices, first-task boundary, and troubleshooting process.</p>
+
+        <section class="sources"><h2>AutoGLM deployment guide sources</h2><ul><li><a href="https://github.com/zai-org/Open-AutoGLM" target="_blank" rel="noopener noreferrer">Open-AutoGLM official repository and setup documentation</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B model card</a></li><li><a href="https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual" target="_blank" rel="noopener noreferrer">AutoGLM-Phone-9B-Multilingual model card</a></li><li><a href="/guides/open-source-autoglm-phone-9b">AutoGLM-Phone-9B deployment guide</a></li></ul></section>
+    </main>
+    <footer class="site-footer"><span>Independent AutoGLM resource site. Not an official Z.ai property.</span><a href="/">Back to AutoGLM AI</a></footer>
+</body>
+</html>
