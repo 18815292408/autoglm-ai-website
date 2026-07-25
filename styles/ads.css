@@ -1,0 +1,67 @@
+.ad-placement {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: min(1120px, calc(100% - 40px));
+    min-height: 82px;
+    margin: 34px auto;
+    overflow: hidden;
+}
+
+.ad-placement::before {
+    content: 'Advertisement';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #7a8784;
+    font: 10px/1.2 Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.ad-frame-shell { display: flex; align-items: center; justify-content: center; max-width: 100%; padding-top: 18px; }
+.ad-frame { display: block; max-width: 100%; border: 0; background: transparent; }
+.ad-mobile-frame { display: none; }
+.ad-native { min-height: 300px; }
+.ad-native .ad-frame-shell { width: min(100%, 900px); }
+.ad-native .ad-frame { width: 100%; }
+.ad-compact { min-height: 82px; }
+.ad-rectangle { min-height: 286px; }
+
+.ad-sponsored-link {
+    display: block;
+    width: fit-content;
+    margin: 16px auto 28px;
+    color: #77827f;
+    font: 11px/1.4 Arial, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.ad-rail {
+    position: fixed;
+    z-index: 5;
+    top: 92px;
+    display: none;
+    width: 160px;
+    overflow: hidden;
+}
+
+.ad-rail-left { left: 12px; height: 600px; }
+.ad-rail-right { right: 12px; height: 300px; }
+.ad-rail .ad-frame-shell { padding-top: 0; }
+
+@media (min-width: 1540px) {
+    .ad-rail { display: block; }
+}
+
+@media (max-width: 779px) {
+    .ad-desktop-frame { display: none; }
+    .ad-mobile-frame { display: block; }
+    .ad-placement { width: min(100% - 24px, 720px); }
+}
+
+@media (max-width: 520px) {
+    .ad-compact { display: none; }
+}
