@@ -32,8 +32,6 @@ Disallow: /*.bak*
 Disallow: /robots.txt.bak
 Disallow: /sitemap.xml.bak
 
-# Crawl delay to be respectful to server resources
-Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://www.autoglmai.net/sitemap.xml
@@ -45,7 +43,6 @@ Crawl-delay: 0.5
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
