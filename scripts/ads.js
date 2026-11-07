@@ -3,6 +3,11 @@
 
     var AD_BASE = '/ads/';
     var DIRECT_LINK = 'https://www.effectivecpmnetwork.com/d2yqad3s?key=8ffb82b6d14df9058aa20756ef73aa58';
+    var started = false;
+
+    function consentAllowed() {
+        return !!(window.__ADS_GEO && window.__ADS_GEO.allowed === true);
+    }
 
     function frame(src, width, height, className, label) {
         var iframe = document.createElement('iframe');
@@ -114,11 +119,17 @@
     }
 
     function init() {
+        if (started || !consentAllowed()) return;
+        started = true;
         addPagePlacements();
         addSideRails();
         addDirectLink();
         window.setTimeout(loadPageLevelAds, 2500);
     }
+
+    window.addEventListener('ad-consent-change', function (event) {
+        if (event && event.detail === 'allowed') init();
+    });
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init, { once: true });
